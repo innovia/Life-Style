@@ -13,8 +13,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   def admin?
-    true
-    #false
+    !current_user.nil?
   end
   
   private

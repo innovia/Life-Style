@@ -43,11 +43,11 @@ else
 			<div id="header" class="<%= @class %>">		
 			<ul id="navbar">
 				<li id="home"><%= link_to "Home", root_path, :class => "home" %></li>
-				<li id="services"><%= link_to "Services", "#" %></li>
-				<li id="stylists"><%= link_to "Stylists", "#" %></li>
-				<li id="products"><%= link_to "Products", "#" %></li>
-				<li	id="pictures"><%= link_to "Gallery", "#" %></li>
-				<li id="about_us"><%= link_to "About us", "#"  %></li>
+				<li id="services"><%= link_to "Services", services_path %></li>
+				<li id="stylists"><%= link_to "Stylists", stylists_path %></li>
+				<li id="products"><%= link_to "Products", products_path %></li>
+				<li	id="pictures"><%= link_to "Gallery",  pictures_path %></li>
+				<li id="about_us"><%= link_to "About us", about_us_path %></li>
 				<li id="location"><%= link_to "Location", location_path %></li>
 			</ul>
 		</div>
@@ -55,7 +55,14 @@ else
 		<div id="stage">
 			<div id="image_on_stage" style="background: url('/images/<%= @bkg %>') no-repeat;">
 				<div id="see_through_box">	
-					<div id="inner_content" class="content container">				
+					<div id="inner_content" class="content container">	
+					<div> 
+					  <% unless current_user.nil? %>
+					    Logged in as: <%= current_user.login %> <%= link_to 'log out', logout_url %>
+					  <% else %>
+					   <%= link_to "Login", login_url %>
+					  <% end %>
+					</div>			
 						<div id="msg" style="display: none;"></div>
 							<%- unless flash[:notice].blank? -%>
 								<div class="notification">

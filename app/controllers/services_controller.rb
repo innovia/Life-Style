@@ -1,4 +1,5 @@
 class ServicesController < ApplicationController
+  before_filter :require_user, :except => :index
   
   def index
    get_categories
@@ -8,11 +9,7 @@ class ServicesController < ApplicationController
     get_categories
     @service = Service.new
   end 
-   # TODO 
-  #  if @categories.empty?
-  #    @category = Category.new
-  #    @category.services.build
-  #  end
+  
  
  def create
   @service = Service.new(params[:service])
