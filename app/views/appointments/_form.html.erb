@@ -1,0 +1,27 @@
+<fieldset id="personal_info">
+	<legend>Personal Details</legend>
+		<ol>
+			<li> <label for="first_name">First Name:<span class="req">*</span></label> <%= f.text_field :first_name, :size => 20 %></li>
+			<li> <label for="last_name">Last Name:<span class="req">*</span></label> <%= f.text_field :last_name, :size => 20 %></li>
+			<li> <label for="email">e-mail:<span class="req">*</span></label> <%= f.text_field :email, :size => 20 %></li>	
+			<li> <label for="gender">Gender:</label> male <%= f.radio_button :gender, :male %> female <%= f.radio_button :gender, :female %></li>
+			<li> <label for="day_time_phone">Day Time Phone:<span class="req">*</span></label><%= f.text_field :phone_number, :size => 20, :maxlength => 12  %></li>
+			<li> <label for="mobile_phone">Mobile Phone:</label> <%= text_field_tag "cell","",{:size => 20, :maxlength => 12 } %></li>
+		</ol>
+</fieldset>
+
+<p>I would like to book an appointment for <%= f.text_field :requested_time, :class => "date_picker", :size => 10 %>
+at <%= f.time_select(:requested_time) %>	
+</p>
+<p>
+<span class="req">*</span>
+Service: <%= f.collection_select(:service_id, Service.all, :id, :name, :prompt => "Select a service") %>
+<span class="req">*</span>
+by: <%= f.collection_select(:stylist_id, Stylist.all, :id, :full_name,  :prompt => "Select a stylist") %>
+</p>
+<p>
+	First Time Client? <%= check_box_tag :first_time %>	 Referred by:
+</p>
+<p>
+	Note: We would appreciate a 24hrs notice via phone prior to your appointment for any cancellations.
+</p>

@@ -1,0 +1,14 @@
+<h3 class="category_header"><%= @service.category.name.upcase %></h3>
+
+<%= @service.name %>
+<%= number_to_currency(@service.start_price, :precision => 0)  %> 
+<% if @service.end_price.nil? %>
+	+
+<% else %>
+- <%=number_to_currency(@service.end_price, :precision => 0)  %>
+<% end %>
+
+<p>
+<%= link_to "Edit", edit_service_path(@service) %> |
+<%= link_to "<< Services", services_path %>
+</p>

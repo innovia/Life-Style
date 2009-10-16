@@ -1,0 +1,40 @@
+#stylist_bio_textarea{
+	width: 400px;
+	height: 120px;
+}
+
+#stylist_photo_index img{
+	padding: 10px;
+}
+
+#stylist_photo_index h2{
+	display: inline;
+}
+
+#stylists_array {
+	list-style: none;
+	width: 500px;
+	margin: 0 auto;
+}
+
+#stylists_array li{
+	width: 145px;
+	height: 117px;
+	position: relative;
+}
+
+#stylists_array li a{
+	color: orange;
+}
+
+#stylists_array li .delete_icon{
+	position: absolute;
+	top: -13px;
+	left: 65px;
+}
+
+#stylists_array li .stylist_name{
+	position: absolute;
+	top: 87px;
+	left: 10px;
+}

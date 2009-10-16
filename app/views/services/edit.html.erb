@@ -1,0 +1,9 @@
+<h1 class="span-8 prepend-1">Edit Service</h1>
+<%= error_messages_for :service %>
+	<% form_for @service, :html => { :method => :put } do |f| -%>
+	<%= render :partial => 'form', :locals => {:f => f }%>
+	<div class="prepend-1">
+		<%= f.submit "save changes" %>
+		<%= link_to "go back to services", services_path %>
+	</div>
+<% end -%>

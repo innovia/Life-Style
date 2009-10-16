@@ -1,0 +1,71 @@
+/* Services*/
+
+#title{ padding-bottom: 5px;}
+
+.category_header{color: orange; margin:0 auto; width:200px;  padding-bottom: 10px;}
+
+.category_header h4{margin: 0 auto; display: inline;}
+
+
+
+/* Scrollable Services*/
+/* 
+	root element for the scrollable. 
+	when scrolling occurs this element stays still. 
+*/
+div.scrollable {
+	position:relative;
+	overflow:hidden;	 	
+	width: 465px;	
+	height: 300px;
+	margin: 0 auto;
+}
+
+/* 
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a super large width to accomodate scrollable items.
+	it's enough that you set width and height for the root element and
+	not for this element.
+*/
+div.scrollable div.items {	
+	width:20000em;	
+	position:absolute;
+	clear:both;		
+}
+
+div.scrollable div.items div.category {
+	float:left;
+ 	width: 450px;
+	margin-right: 50px;	
+}
+
+/* Scrollable Interface Buttons */
+a.prev, a.next, a.prevPage, a.nextPage {
+	display:block;
+	width:100px;
+	height:50px;
+	position: absolute;
+	top: 145px;
+	cursor:pointer;
+}
+
+/* mouseover state */
+a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
+	background-position:0px -48px;		
+}
+
+a.disabled {
+	visibility:hidden !important;		
+}
+
+a.prev, a.prevPage {
+	background-image:url(/images/scrollable/Services/left.png);
+	margin-top:100px;
+	}
+
+a.next, a.nextPage {
+	background-image:url(/images/scrollable/Services/right.png);
+	background-repeat: no-repeat;
+	left:810px;
+	margin-top:100px;
+}

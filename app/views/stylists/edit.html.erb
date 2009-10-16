@@ -1,0 +1,9 @@
+<h2 class="white_font"> Edit <%= @stylist.full_name.camelize %>'s Details </h2>
+<%= error_messages_for :stylist %>
+<%form_for(:stylist, :url => stylist_url, :html => {:multipart => true, :method => :put}) do |f| -%>
+	<%= render :partial => 'form', :locals => {:f => f }%>
+	<br/>
+	<br/>
+	<%= f.submit "Save Changes" %>
+	<%= link_to "go back to Stylists", stylists_url %>
+<% end -%>

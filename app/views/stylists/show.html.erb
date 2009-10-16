@@ -1,0 +1,13 @@
+<div id="floating_stylists_info">
+	<div id="stylist_picture">
+		<%= image_tag @stylist.photo.url(:original) %>
+		<h3 class="white_font"> <%= @stylist.full_name %></h3>
+	</div>
+	
+	<div id="devider_line"></div>
+	<div id="stylist_display_bio" class="white_font"><%= @stylist.bio %></div>
+
+
+<%= link_to "Edit Stylist", edit_stylist_path(@stylist), :id => "edit_stylist_link" %>
+<%= link_to "<< back",  stylists_path, :id => "back"%>
+</div>

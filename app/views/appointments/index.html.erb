@@ -1,0 +1,15 @@
+<h2>Sechdule an Appointment</h2>
+
+<h3>Fill out this form and we will call or e-mail you to confirm your appointment.</h3>
+
+<div id="appointment_form">
+<% form_for(:appointment) do |f| %>
+  <%= f.error_messages %>
+<%= render :partial => "form", :locals => {:f => f} %> 
+<div id="appt_submit">
+	<%= f.submit 'Create' %>
+ 	<%= link_to 'New appointments', new_appointment_path %>
+</div>
+
+<% end %>
+</div>

@@ -1,0 +1,33 @@
+<% if @pictures.empty? %>
+	<div class="warning ">	
+		<h2>There are no pictures in the database</h2>
+		<p>Start by adding a picture for the gallery</p>
+		<p><%= link_to "add a picture", new_picture_path %></p>		
+	</div>
+<% else %>
+
+<!-- "prev page" button --> 
+<div class="navi prevPage"></div> 
+ 
+<!-- root element for scrollable --> 
+	<div id="triggers"> 
+	<% @pictures.each_with_index do |pic, index| %>
+		<%= image_tag(pic.photo.url(:thumb), :rel => "#photo#{index}" ) %>
+	<% end -%>
+	</div>
+	<!-- "next page" button --> 
+	<div class="navi nextPage"></div> 
+
+	<% @pictures.each_with_index do |pic, index| %>
+	<div class="apple_overlay black" id="photo<%= index %>"> 
+  	<%= image_tag(pic.photo.url(:original)) %>
+		<div class="details"> 
+	  	<h3>The Barcelona Pavilion</h3> 
+			<h4>Barcelona, Spain</h4> 
+			<p>The content ...</p> 
+ 		</div> 
+  </div> 
+<% end -%>
+
+<%= link_to "Add new picture", new_picture_path %>
+<% end -%>

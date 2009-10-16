@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<script>
+if(navigator.userAgent.indexOf("Firefox") != -1)
+{
+   
+}
+else
+{
+   window.location = "http://www.mozilla.org/products/firefox/";
+}
+</script>
+<%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
+<%= stylesheet_link_tag "blueprint/print", :media => "print" %>
+<%= stylesheet_link_tag "blueprint/src/forms", "blueprint/src/typography" %>
+<%= stylesheet_link_tag "application", "boxed", "jquery.alert", "jquery.wysiwyg", "services", "stylists", "products" %>
+
+<!--[if lt IE 8]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+<%= javascript_include_tag "jquery", "jquery.tools.min.ver1.1", "jquery-ui-1.7.1.custom.min", "jquery.wysiwyg", "pixastic.custom_sat", "reflection",  "application" %>
+<title>LifeStyle Salon NYC - 822 BroadWay 212-228.5577</title>
+<% case controller_name
+	 when  "stylists" then @bkg = "salon_back_panoramic.jpg"
+	 when  "services" then @bkg = "salon_front_panoramic.jpg"
+	 when  "products" then @bkg = "products.png"
+	 end -%> 
+
+<% if @bkg.nil? 
+	@bkg =  "salon_back_panoramic.jpg"
+ end %>
+
+
+	<% if controller_name == "info" 
+			@class = controller.action_name
+		 else
+			@class = controller_name
+		 end
+	%>
+	
+</head>
+<body>	
+		<div id="main" class="container">
+			<div id="header" class="<%= @class %>">		
+			<ul id="navbar">
+				<li id="home"><%= link_to "Home", root_path, :class => "home" %></li>
+				<li id="services"><%= link_to "Services", "#" %></li>
+				<li id="stylists"><%= link_to "Stylists", "#" %></li>
+				<li id="products"><%= link_to "Products", "#" %></li>
+				<li	id="pictures"><%= link_to "Gallery", "#" %></li>
+				<li id="about_us"><%= link_to "About us", "#"  %></li>
+				<li id="location"><%= link_to "Location", location_path %></li>
+			</ul>
+		</div>
+		
+		<div id="stage">
+			<div id="image_on_stage" style="background: url('/images/<%= @bkg %>') no-repeat;">
+				<div id="see_through_box">	
+					<div id="inner_content" class="content container">				
+						<div id="msg" style="display: none;"></div>
+							<%- unless flash[:notice].blank? -%>
+								<div class="notification">
+							<h3><%= flash[:notice] -%></h3>
+						</div>
+							<%- end -%>
+							<%- unless flash[:error].blank? -%>
+								<div class="flash_error">
+							<h3><%= flash[:error] -%></h3>
+						</div>
+							<%- end -%>
+					
+							<%= yield %>
+						</div>
+					</div> <!-- /inner content -->
+				</div> <!-- /see throu box -->
+				<div id="logo"><%= image_tag("logo.jpg") %></div>
+			</div><!-- /image on stage -->
+		</div><!-- /stage -->		
+		</div><!-- /main -->							
+	</body>
+</html>

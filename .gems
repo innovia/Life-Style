@@ -1,0 +1,7 @@
+'thoughtbot-paperclip' --version '2.3.0'  --source 'http://gems.github.com'
+
+'mislav-will_paginate' --version '>= 2.3.8' --source 'http://gems.github.com'
+'authlogic'
+'haml'
+'right_aws' --version '>= 1.1.0'
+'aws-s3'

@@ -1,0 +1,9 @@
+<h2>Add a new stylist</h2>
+<% form_for(:stylist, :html => {:multipart => true}, :url => stylists_url) do |f| -%>
+	<%= render :partial => 'form', :locals => {:f => f }%>
+	<br/>
+	<br/>
+	<%= f.submit "Add Stylist" %> 
+	<%= link_to "go back to Stylists", stylists_url %>
+<% end -%>
+

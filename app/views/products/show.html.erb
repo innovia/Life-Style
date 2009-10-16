@@ -1,0 +1,9 @@
+Product Name: <%= @product.title %>
+<div id="product_show_info"><%= @product.info %></div>
+<div class="product_show_photo">
+	<%= image_tag(@product.photo.url(:medium)) %>
+</div>
+<p>
+<%= link_to "Edit Product", :action => "edit" %>
+<%= link_to "<< Products", :action => "index" %>
+</p>

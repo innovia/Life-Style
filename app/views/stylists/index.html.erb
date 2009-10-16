@@ -1,0 +1,35 @@
+<div id="stylist_photo_index">
+		<h2> Stylists </h2>
+		<% if admin? %>
+		<%= link_to image_tag("icons/add.png"), new_stylist_url, :title => "add stylist"%>
+		<% end %>
+	
+	<% if @stylists.empty? %>
+		<div class="warning">	
+			<h2>There are no Stylists in the database</h2>
+			<p>Start by adding a new Stylist</p>
+			<p><%= link_to "add new stylist", new_stylist_path %></p>		
+		</div>
+	<% else %>
+<ul id="stylists_array" class="container">
+	<% @stylists.each do |stylist| %>
+	<li class="column">
+		<% @img =  image_tag stylist.photo.url(:thumb), :class => "stylist_image"  %> 
+		<%= link_to @img, stylist_path(stylist), :title => "Show Stylist" %>
+		<div class="stylist_name"><%= link_to stylist.full_name, stylist_path(stylist), :title => "Show Stylist"  %></div>
+		
+		<% if admin? %>
+			
+		<%= link_to image_tag("icons/large_error.png", :size => "24x24"), stylist_path(stylist), 
+																													:title => "remove stylist",
+																													:id => "delete icon",
+																													:class => "delete_icon",
+																													:confirm => 'Are you sure?', 
+																													:method => :delete %>
+		<% end -%>
+	</li>
+<% end -%>
+<%= will_paginate @stylists %>
+</ul>
+<% end -%>
+</div>

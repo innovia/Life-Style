@@ -1,0 +1,16 @@
+  <div class="append-bottom">
+	<label class="desc" for="product_title">Name:
+  	<span class="req">*</span>
+  </label>
+	<%= f.text_field :title %>
+	</div>
+	
+	<div class="append-bottom">
+	<label class="desc" for="product_info">Product Information: </label>
+	<%= f.text_area :info, :id => "product_info_text_area"  %>
+	</div>
+		
+	<div class="append-bottom">
+	<label for="product_photo">Product Photo: </label>
+	<%= f.file_field :photo %>
+	</div>

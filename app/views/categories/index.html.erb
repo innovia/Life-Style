@@ -1,0 +1,19 @@
+<h1>Services Categories</h1>
+
+<table>
+	<tr>
+	<th>name</th>
+	<th>edit</th>
+	<th>delete</th>
+	</tr>
+	<% @categories.each do |category| %>
+	<tr>
+		<td><%= category.name %></td>
+		<td align="center"><%= link_to "edit", edit_category_path(category) %></td>
+		<td align="center"><%= link_to 'X', category_path(category), :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<%- end -%>
+</table>
+<%= link_to "Add a new category", new_category_path(@category) %>
+
+<p><%= link_to "Services page", services_path %></p>

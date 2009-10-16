@@ -1,0 +1,64 @@
+<div id="services_menu">
+	<h2 id="title" class="services prepend-1">Services</h2>
+	
+	<% if @categories.empty? %>
+		<div class="warning ">	
+			<h2>There are no services in the database</h2>
+			<p>Start by creating a category for the service</p>
+			<p><%= link_to "new category", new_category_path %></p>		
+		</div>
+	<% else %>
+		
+	<!-- navigator --> 
+	<div class="navi"></div> 
+	<!-- prev link --> 
+	<a class="prev"></a> 
+	<!-- root element for scrollable --> 
+	<div class="scrollable">
+	<!-- root element for the items --> 
+		<div class="items">
+				<% @categories.each do |cat| %>
+				<div class="category container"><!--Item Div-->
+						<div class="category_header">
+							<h4><%=h cat.name.upcase %></h4>
+							<% if admin? %>
+							<%= link_to image_tag("icons/add.png"), new_service_url, :title => "add service"%>
+						  <% end %>
+						</div>
+				
+					<%- cat.services.each do |service| -%>
+					<div class="service_item">
+						<h4 class="service_name column span-5 prepend-2"><%= service.name %></h4>
+						<div class="start_price column">
+						<%= number_to_currency(service.start_price, :precision => 0) %>
+						</div>
+						<div class="operator column">
+						<%= service.end_price.nil? ? '&' : '-' %>		
+						</div>
+						<div class="end_price column span-1">
+						<%= number_to_currency(service.end_price, :precision => 0) %>
+						<% if service.end_price.nil? %>
+							up
+						<% end %>
+						</div>
+					  <% if admin? %>
+						<div class="admin_links column">
+						<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_service_path(service), :title => "edit service" %>
+						<%= link_to image_tag("icons/large_error.png", :size => "24x24"), service_path(service), 
+																																:title => "remove service",
+																																:id => "delete icon",
+																																:confirm => 'Are you sure?', 
+																																:method => :delete %>
+						</div>
+						 <% end %>
+					</div>
+					<%- end -%>
+				</div><!--end of Item Div-->
+				<%- end -%>
+		</div> 	<!-- end of root element for the items --> 
+	</div><!-- end of root element for scrollable-->
+	
+	<!-- next link --> 
+	<a class="next"></a>
+	<% end %>
+</div>
