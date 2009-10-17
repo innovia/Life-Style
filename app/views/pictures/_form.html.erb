@@ -1,15 +1,11 @@
-	<div class="left_col left">
-		<%= f.label :descrpition, "Descrpition:" %>
-		<%= f.text_area :description %>
-	</div>
-	<div id="upload_picture_form">
-		<%= f.label :title, "Title:" %>
-		<%= f.text_field :title %>
-		</br>
+	<p>
+	<%= f.label :title, "Title:" %>
+	<%= f.text_field :title %>
+	</p>
+	<p>
+		<%= f.label :descrpition, "Description:" %>
+		<%= f.text_area :description ,:id => "gallery_photo_description" %>
+ 	</p>
+		
 		<%= f.label :photo, "Photo:" %>
 		<%= f.file_field :photo, :size => "20" %>	
-		<p>
-			</br>
-		<%= f.submit "Add Photo" %>
-		</p>
-	</div>

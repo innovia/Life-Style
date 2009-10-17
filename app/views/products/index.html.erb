@@ -2,11 +2,15 @@
 	<h2>Products</h2>
 
 	<% if @products.empty? %>
+	<% unless admin? %>
+	 <h3> Coming soon... </h3>
+	<%- else -%>
 	<div class="warning">	
 		<h2>There are no products in the database</h2>
 		<p>Start by adding a new product</p>
 		<p><%= link_to "add new product", new_product_path %></p>		
 	</div>
+	<% end -%>
 	<% else -%>
 	<%= link_to image_tag("icons/add.png"), new_product_url, :title => "add product" -%>
 

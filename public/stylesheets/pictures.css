@@ -1,0 +1,61 @@
+#gallery_photo_description{
+	height: 100px;
+	width: 350px;
+}
+
+/* the overlayed element */ 
+.apple_overlay { 
+     
+    /* initially overlay is hidden */ 
+    display:none; 
+     
+    /* growing background image */ 
+    background-image:url(/images/overlay/transparent.png); 
+     
+    /*  
+        width after the growing animation finishes 
+        height is automatically calculated 
+    */ 
+    width:640px;         
+     
+    /* some padding to layout nested elements nicely  */ 
+    padding:35px; 
+ 
+    /* a little styling */     
+    font-size:11px; 
+} 
+ 
+/* default close button positioned on upper right corner */ 
+.apple_overlay div.close { 
+    background-image:url(/images/overlay/close.png); 
+    position:absolute; right:5px; top:5px; 
+    cursor:pointer; 
+    height:35px; 
+    width:35px; 
+}
+
+#triggers{
+	margin-top: -30px;
+}
+
+#photos_array {
+	list-style: none;
+	width: 500px;
+	margin: 0 auto;
+}
+
+#photos_array li{
+	width: 145px;
+	height: 100px;
+	position: relative;
+}
+
+#photos_array li a{
+	color: orange;
+}
+
+#photos_array li .delete_icon{
+	position: absolute;
+	top: -13px;
+	left: 89px;
+}

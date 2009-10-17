@@ -20,12 +20,12 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :last_request_at
       
         # Create a super user account
-        user = User.create({
-          :login => "lifestyle", 
-          :password => "112211", 
-          :password_confirmation => "112211", 
-          :active => true
-        })
+        u = User.new
+        u.login = "lifestyle" 
+        u.password = "112211" 
+        u.password_confirmation = "112211"
+        u.active = true
+        u.save
   end
 
   def self.down

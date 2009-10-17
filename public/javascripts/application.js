@@ -1,5 +1,8 @@
 $(document).ready(function() {
-   gallery(); 
+   
+	$('#inner_content').fadeTo(500, 1).fadeIn("3000");
+	
+	gallery(); 
 	
 	$('textarea').wysiwyg({
 		height: 30

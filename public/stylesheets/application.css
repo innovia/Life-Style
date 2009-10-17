@@ -73,7 +73,7 @@ body {background: url('/images/background.jpg'); color: white;}
 }
 
 #see_through_box {
-	background: url('/images/see_through_box.png') no-repeat;
+	background: url('/images/see_through_box.png') repeat;
 	width: 665px;
 	height: 432px;
 	margin: 18px;
@@ -92,6 +92,7 @@ body {background: url('/images/background.jpg'); color: white;}
 #inner_content{
 	padding-top: 15px;
 	width: 500px;
+	display: none;
 }
 
 #logo{

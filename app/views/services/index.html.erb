@@ -2,17 +2,21 @@
 	<h2 id="title" class="services prepend-1">Services</h2>
 	
 	<% if @categories.empty? %>
+	<% unless admin? %>
+	 <h3 class="services prepend-1"> Coming soon... </h3>
+	<%- else -%>
 		<div class="warning ">	
 			<h2>There are no services in the database</h2>
 			<p>Start by creating a category for the service</p>
 			<p><%= link_to "new category", new_category_path %></p>		
 		</div>
+	<% end -%>
 	<% else %>
 		
 	<!-- navigator --> 
 	<div class="navi"></div> 
 	<!-- prev link --> 
-	<a class="prev"></a> 
+	<a class="prev"></a>
 	<!-- root element for scrollable --> 
 	<div class="scrollable">
 	<!-- root element for the items --> 
@@ -61,4 +65,5 @@
 	<!-- next link --> 
 	<a class="next"></a>
 	<% end %>
+	<%= link_to "Categories", categories_path %>
 </div>

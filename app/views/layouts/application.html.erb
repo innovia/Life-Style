@@ -1,20 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<script>
-if(navigator.userAgent.indexOf("Firefox") != -1)
-{
-   
-}
-else
-{
-   window.location = "http://www.mozilla.org/products/firefox/";
-}
-</script>
+
 <%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
 <%= stylesheet_link_tag "blueprint/print", :media => "print" %>
 <%= stylesheet_link_tag "blueprint/src/forms", "blueprint/src/typography" %>
-<%= stylesheet_link_tag "application", "boxed", "jquery.alert", "jquery.wysiwyg", "services", "stylists", "products" %>
+<%= stylesheet_link_tag "application", "boxed", "jquery.alert", "jquery.wysiwyg", "services", "stylists", "products", "pictures" %>
 
 <!--[if lt IE 8]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
 <%= javascript_include_tag "jquery", "jquery.tools.min.ver1.1", "jquery-ui-1.7.1.custom.min", "jquery.wysiwyg", "pixastic.custom_sat", "reflection",  "application" %>
@@ -56,7 +47,7 @@ else
 			<div id="image_on_stage" style="background: url('/images/<%= @bkg %>') no-repeat;">
 				<div id="see_through_box">	
 					<div id="inner_content" class="content container">	
-					<div> 
+					<div class="right"> 
 					  <% unless current_user.nil? %>
 					    Logged in as: <%= current_user.login %> <%= link_to 'log out', logout_url %>
 					  <% else %>

@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :require_user, :except => :index
+  
   def index
    @products = Product.all
   end

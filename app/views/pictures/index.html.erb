@@ -1,9 +1,30 @@
+<!--[if lt IE 7]> 
+<style>  
+div.apple_overlay { 
+    background-image:url(http://static.flowplayer.org/tools/img/overlay/overlay_IE6.gif); 
+    color:#fff; 
+} 
+ 
+/* default close button positioned on upper right corner */ 
+div.apple_overlay div.close { 
+    background-image:url(http://static.flowplayer.org/tools/img/overlay/overlay_close_IE6.gif); 
+ 
+}     
+</style> 
+<![endif]-->
+<div id="gallery">
+	<h2>Gallery</h2>
+
 <% if @pictures.empty? %>
+	<% unless admin? %>
+	 <h2> Coming soon... </h2>
+	<%- else -%>
 	<div class="warning ">	
 		<h2>There are no pictures in the database</h2>
 		<p>Start by adding a picture for the gallery</p>
 		<p><%= link_to "add a picture", new_picture_path %></p>		
 	</div>
+	<% end -%>
 <% else %>
 
 <!-- "prev page" button --> 
@@ -11,9 +32,21 @@
  
 <!-- root element for scrollable --> 
 	<div id="triggers"> 
-	<% @pictures.each_with_index do |pic, index| %>
-		<%= image_tag(pic.photo.url(:thumb), :rel => "#photo#{index}" ) %>
+		<ul id="photos_array" class="container">
+			<% @pictures.each_with_index do |pic, index| %>
+				<li class="left">
+				<%= image_tag(pic.photo.url(:thumb), :rel => "#photo#{index}" ) %>
+				<% if admin? %>
+		  	<%= link_to image_tag("icons/large_error.png", :size => "24x24"), picture_path(pic), 
+																												:title => "remove photo",
+																												:id => "delete icon",
+																												:class => "delete_icon",
+																												:confirm => 'Are you sure?', 
+																												:method => :delete %>
+		  	<% end -%>
+			</li>
 	<% end -%>
+	</ul>
 	</div>
 	<!-- "next page" button --> 
 	<div class="navi nextPage"></div> 
@@ -22,12 +55,15 @@
 	<div class="apple_overlay black" id="photo<%= index %>"> 
   	<%= image_tag(pic.photo.url(:original)) %>
 		<div class="details"> 
-	  	<h3>The Barcelona Pavilion</h3> 
-			<h4>Barcelona, Spain</h4> 
-			<p>The content ...</p> 
+	  	<h3><%= pic.title.capitalize %></h3> 
+			<h4><%= pic.description.capitalize %></h4> 
+			<% if admin? %>
+				<%= link_to "Edit Photo", edit_picture_path(pic) %>
+			<% end %>
  		</div> 
   </div> 
 <% end -%>
-
-<%= link_to "Add new picture", new_picture_path %>
 <% end -%>
+</div>
+<%= link_to "Add new picture", new_picture_path %>
+<%= will_paginate @pictures %>

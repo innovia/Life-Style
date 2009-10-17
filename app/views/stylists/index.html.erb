@@ -1,37 +1,74 @@
+<!--[if lt IE 7]> 
+<style>  
+div.apple_overlay { 
+    background-image:url(http://static.flowplayer.org/tools/img/overlay/overlay_IE6.gif); 
+    color:#fff; 
+} 
+ 
+/* default close button positioned on upper right corner */ 
+div.apple_overlay div.close { 
+    background-image:url(http://static.flowplayer.org/tools/img/overlay/overlay_close_IE6.gif); 
+ 
+}
+</style> 
+<![endif]-->
 <div id="stylist_photo_index">
-		<h2> Stylists </h2>
+	<h2 id="title">Stylists</h2>
 		<% if admin? %>
-		<%= link_to image_tag("icons/add.png"), new_stylist_url, :title => "add stylist"%>
+			<%= link_to image_tag("icons/add.png"), new_stylist_url, :title => "add stylist"%>
 		<% end %>
 	
 	<% if @stylists.empty? %>
+		<% unless admin? %>
+		 <h3> Coming soon... </h3>
+		<%- else -%>
 		<div class="warning">	
 			<h2>There are no Stylists in the database</h2>
-			<% if admin? %>
 			<p>Start by adding a new Stylist</p>
 			<p><%= link_to "add new stylist", new_stylist_path %></p>	
-			<% end %>	
 		</div>
+		<% end %>	
 	<% else %>
-<ul id="stylists_array" class="container">
-	<% @stylists.each do |stylist| %>
-	<li class="column">
-		<% @img =  image_tag stylist.photo.url(:thumb), :class => "stylist_image"  %> 
-		<%= link_to @img, stylist_path(stylist), :title => "Show Stylist" %>
-		<div class="stylist_name"><%= link_to stylist.full_name, stylist_path(stylist), :title => "Show Stylist"  %></div>
-		
-		<% if admin? %>
-			
-		<%= link_to image_tag("icons/large_error.png", :size => "24x24"), stylist_path(stylist), 
+
+		<!-- "prev page" button --> 
+		<div class="navi prevPage"></div> 
+
+		<!-- root element for scrollable --> 
+			<div id="triggers"> 
+			<ul id="stylists_array" class="container">
+			<% @stylists.each_with_index do |stylist, index| %>
+				<li class="column">
+					<%= image_tag(stylist.photo.url(:thumb), :rel => "#photo#{index}" ) %>
+					<% if admin? %>
+			  	<%= link_to image_tag("icons/large_error.png", :size => "24x24"), stylist_path(stylist), 
 																													:title => "remove stylist",
 																													:id => "delete icon",
 																													:class => "delete_icon",
 																													:confirm => 'Are you sure?', 
 																													:method => :delete %>
+			  	<% end -%>
+			</li>
+			<% end -%>
+			</ul>
+			</div>
+		
+		<!-- "next page" button --> 
+		<div class="navi nextPage"></div> 
+		
+		<% @stylists.each_with_index do |stylist, index| %>
+		<div class="apple_overlay black" id="photo<%= index %>"> 
+	  	<%= image_tag(stylist.photo.url(:original)) %>
+			<div class="details"> 
+		  	<h3><%= stylist.full_name.capitalize %></h3> 
+				<h4><%= stylist.bio.capitalize %></h4> 
+				<% if admin? %>
+					<%= link_to "Edit Stylist", edit_stylist_path(stylist) %>
+				<% end %>
+	 		</div> 
+	  </div> 
 		<% end -%>
-	</li>
-<% end -%>
-<%= will_paginate @stylists %>
-</ul>
-<% end -%>
+		
+	
+		<%= will_paginate @stylists %>
+	<% end -%>
 </div>

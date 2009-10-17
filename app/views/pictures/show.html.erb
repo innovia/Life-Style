@@ -1,2 +1,7 @@
 <%= image_tag @picture.photo.url(:thumb) %>
+
+<%= @picture.title %>
+<%= @picture.description %>
 <%= link_to "<< Back", pictures_path %>
+<br/>
+<%= link_to "add another one", new_picture_path %>

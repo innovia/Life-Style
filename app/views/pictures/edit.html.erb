@@ -1,0 +1,10 @@
+<h2> Edit Picture </h2>
+<div class="right"><%= image_tag(@picture.photo.url(:thumb)) %></div>
+<% form_for(@picture, :html => {:multipart => true, :method => "put"}, :url => picture_url) do |f| %>
+	<%= render :partial => "form", :locals => {:f => f}  %>
+	<p class="right">
+	<%= f.submit "Save Changes" %>
+	</p>
+<% end -%>
+
+<%= link_to "Back to Gallery", pictures_path %>
