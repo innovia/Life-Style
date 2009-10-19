@@ -65,5 +65,7 @@
 	<!-- next link --> 
 	<a class="next"></a>
 	<% end %>
-	<%= link_to "Categories", categories_path %>
+	<% if admin? %>
+		<%= link_to "Categories", categories_path %>
+	<% end %>
 </div>

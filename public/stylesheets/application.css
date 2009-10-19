@@ -254,12 +254,88 @@ div.error h3{
 	margin-left:-61px;	
 }
 
+
+
+#index_title{
+	color: #ffde9f;
+	font-size: 120%;
+	margin-left: -93px;
+	margin-top: 22px;
+}
+
+#white_banner{
+	color: #7b7b7b;
+	margin-left: -82px;
+	margin-top: -24px;
+	width: 665px;
+	height: 59px;
+	background-image: url('/images/white_banner.png');
+}
+
+#white_banner p{
+	padding-top: 9px;
+	font-size: 120%;
+}
+
+#hours_box {
+	color: #ffde9f;
+	margin-top: 29px;
+	margin-left: 290px;
+	margin-right: -82px;
+}
+
 #hours {
 	list-style: none;
-	margin-top: 100px;
-	margin-left: 126px;
 }
 
 #hours li {
+	color: #ffde9f;
 	font-size: 150%;
 }
+
+#address{
+	font-size: 22px;
+	color: #ffde9f;
+	margin-top: 60px;
+	margin-left: -43px;
+}
+
+#title {
+	color: #ffde9f;
+}
+
+#minimap{
+	width: 285px;
+	height: 272px;
+	float: left;
+}
+
+#t456{
+ width: 188px;	
+}
+
+#fv{
+	width: 43px;
+}
+
+#path{
+	width: 50px;
+	height: 25px;
+}
+
+
+#side_links {
+	list-style: none;
+	margin-left: -78px;	
+}
+
+#side_links li a{
+	color: #ff711b;
+	background-image: url(/images/side_bar_tab.png);
+}
+
+#side_links li{
+	text-indent: 9999px;
+	width: 18px;
+}
+

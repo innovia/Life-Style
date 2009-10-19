@@ -1,7 +1,24 @@
-<%#= GMap.header %>
-<%#= @map.to_html %>
+<% @bkg = "location.jpg" %>
 
-<%#= @map.div(:width => 493, :height => 300) %>
-<div id="location_map">
-	<%= image_tag('location.jpg') %>
-</div>
+<h2 id="title"> LifeStyle Salon Nyc </h2>
+
+<p>We are located at heart of Greenwich Village on 822 Broadway, Between E11th and E12th St (2 Blocks from Union Square).</p>
+
+<%= link_to image_tag("location_minimap.png", :id => 'minimap'), "http://www.google.com/maps/place?cid=7064010717486732946&q=lifestyle+salon+nyc&hl=en&cd=1&cad=src:pplink&ei=t4zbSuvMLpmSywSW8ZnJAw&sig2=HbAXq6BIgZfedVD2kGd_Aw" %>
+
+<h3 id="title"> How to get here </h3>
+
+By train to 14th St. Union Square:
+
+<%= image_tag('456.png', :id => "t456") %>
+<p></p>
+<p>
+Or 14th Street at 6th Avenue.<br/>
+<%= image_tag('path.png', :id => "path")%>
+<%= image_tag('fv.png', :id => "fv") %>
+</p>
+
+<br/>
+By Bus:<br/>
+
+M1, M2, M3, M6, M7, M9, M14 <br/> stop near Union Square.

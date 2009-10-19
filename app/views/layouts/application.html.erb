@@ -12,7 +12,7 @@
 <title>LifeStyle Salon NYC - 822 BroadWay 212-228.5577</title>
 <% case controller_name
 	 when  "stylists" then @bkg = "salon_back_panoramic.jpg"
-	 when  "services" then @bkg = "salon_front_panoramic.jpg"
+	 when  "services" then @bkg = "services_background.jpg"
 	 when  "products" then @bkg = "products.png"
 	 end -%> 
 
@@ -50,8 +50,7 @@
 					<div class="right"> 
 					  <% unless current_user.nil? %>
 					    Logged in as: <%= current_user.login %> <%= link_to 'log out', logout_url %>
-					  <% else %>
-					   <%= link_to "Login", login_url %>
+					
 					  <% end %>
 					</div>			
 						<div id="msg" style="display: none;"></div>
@@ -66,13 +65,24 @@
 						</div>
 							<%- end -%>
 					
+					<div id="side_nav">
+						<ul id="side_links">
+							<li><%= link_to "Brazilian_Keratin", keratin_path, :id => 'brazilian' %> </li>
+							<li><%= link_to "Appointment", appointments_path %></li>
+							<li><%= link_to "Specials", specials_path %></li>
+							<li><%= link_to "Contact_us", contact_us_path %></li>
+						</ul>
+					</div>
+					
+					
+					
 							<%= yield %>
 						</div>
 					</div> <!-- /inner content -->
 				</div> <!-- /see throu box -->
 				<div id="logo"><%= image_tag("logo.jpg") %></div>
 			</div><!-- /image on stage -->
-		</div><!-- /stage -->		
+		</div><!-- /stage -->	
 		</div><!-- /main -->							
 	</body>
 </html>
