@@ -28,6 +28,15 @@
 		 end
 	%>
 	
+	<script>
+	    $(function () {
+			$(window).load(function() {
+				$('#image_on_stage').removeClass('loading');
+				$('#image_on_stage').css('background-image', "url('/images/<%= @bkg %>')");
+				$('#see_through_box').fadeIn("slow");			
+				});							 
+		});		
+	</script>
 </head>
 <body>	
 		<div id="main" class="container">
@@ -43,9 +52,9 @@
 			</ul>
 		</div>
 		
-		<div id="stage">
-			<div id="image_on_stage" style="background: url('/images/<%= @bkg %>') no-repeat;">
-				<div id="see_through_box">	
+		<div id="stage">	
+			<div id="image_on_stage" class="loading">
+				<div id="see_through_box" style="display: none;">	
 					<div id="inner_content" class="content container">	
 					<div class="right"> 
 					  <% unless current_user.nil? %>
@@ -53,18 +62,16 @@
 					
 					  <% end %>
 					</div>			
-						<div id="msg" style="display: none;"></div>
-							<%- unless flash[:notice].blank? -%>
-								<div class="notification">
-							<h3><%= flash[:notice] -%></h3>
-						</div>
-							<%- end -%>
-							<%- unless flash[:error].blank? -%>
-								<div class="flash_error">
-							<h3><%= flash[:error] -%></h3>
-						</div>
-							<%- end -%>
+					<div id="msg" style="display: none;"></div>
+					<%- unless flash[:notice].blank? -%>
+						<div class="notification"><h3><%= flash[:notice] -%></h3></div>
+					<%- end -%>
+							
+					<%- unless flash[:error].blank? -%>
+						<div class="flash_error"><h3><%= flash[:error] -%></h3></div>
+					<%- end -%>
 					
+					<!--
 					<div id="side_nav">
 						<ul id="side_links">
 							<li><%= link_to "Brazilian_Keratin", keratin_path, :id => 'brazilian' %> </li>
@@ -73,7 +80,7 @@
 							<li><%= link_to "Contact_us", contact_us_path %></li>
 						</ul>
 					</div>
-					
+				-->
 					
 					
 							<%= yield %>

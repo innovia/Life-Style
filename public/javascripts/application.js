@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   
+		
 	$('#inner_content').fadeTo(500, 1).fadeIn("3000");
 	
 	gallery(); 

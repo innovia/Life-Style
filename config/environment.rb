@@ -10,7 +10,6 @@ Rails::Initializer.run do |config|
   config.gem 'mislav-will_paginate', :version => '>= 2.3.8', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'authlogic'
   config.gem 'thoughtbot-paperclip', :version => '2.3.0', :lib => 'paperclip', :source =>  'http://gems.github.com'
-  config.gem 'haml'
   config.time_zone = 'UTC'
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

@@ -339,3 +339,13 @@ div.error h3{
 	width: 18px;
 }
 
+#loader {
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
+}
+
+#image_on_stage.loading {
+  background: url(/images/spinner.gif) no-repeat center center;
+}
