@@ -324,20 +324,35 @@ div.error h3{
 }
 
 
+
 #side_links {
 	list-style: none;
-	margin-left: -78px;	
+	margin-left: -82px;
 }
 
 #side_links li a{
+	float: left;
+	width: 15px;
 	color: #ff711b;
-	background-image: url(/images/side_bar_tab.png);
+	text-indent: -9999px;
+	background-image: url('/images/side_links.png');
+		-moz-border-radius-bottomright: 5px;
+		-moz-border-radius-topright: 5px;
 }
 
-#side_links li{
-	text-indent: 9999px;
-	width: 18px;
+#side_links li#brazilian a {
+	background-position: 0 0;
+	height: 121px;
 }
+
+#side_links li#specials a {
+	background-position:0 -137px;
+	height:73px;
+	margin-left:-30px;
+	margin-top:126px;
+}
+
+
 
 #loader {
   border: 1px solid #ccc;

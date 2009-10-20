@@ -7,9 +7,11 @@
 <%= stylesheet_link_tag "blueprint/src/forms", "blueprint/src/typography" %>
 <%= stylesheet_link_tag "application", "boxed", "jquery.alert", "jquery.wysiwyg", "services", "stylists", "products", "pictures" %>
 
-<!--[if lt IE 8]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+<!--[if lt IE 6]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
 <%= javascript_include_tag "jquery", "jquery.tools.min.ver1.1", "jquery-ui-1.7.1.custom.min", "jquery.wysiwyg", "pixastic.custom_sat", "reflection",  "application" %>
+
 <title>LifeStyle Salon NYC - 822 BroadWay 212-228.5577</title>
+
 <% case controller_name
 	 when  "stylists" then @bkg = "salon_back_panoramic.jpg"
 	 when  "services" then @bkg = "services_background.jpg"
@@ -55,7 +57,17 @@
 		<div id="stage">	
 			<div id="image_on_stage" class="loading">
 				<div id="see_through_box" style="display: none;">	
-					<div id="inner_content" class="content container">	
+					<div id="inner_content" class="content container">
+					
+							<ul id="side_links">
+								<li id="brazilian"><%= link_to "Brazilian_Keratin", keratin_path %> </li>
+								<li><%= link_to "Appointment", appointments_path %></li>
+								<li id="specials"><%= link_to "Specials", specials_path %></li>
+								<li><%= link_to "Contact_us", contact_us_path %></li>
+							</ul>
+						
+					
+
 					<div class="right"> 
 					  <% unless current_user.nil? %>
 					    Logged in as: <%= current_user.login %> <%= link_to 'log out', logout_url %>
@@ -71,16 +83,7 @@
 						<div class="flash_error"><h3><%= flash[:error] -%></h3></div>
 					<%- end -%>
 					
-					<!--
-					<div id="side_nav">
-						<ul id="side_links">
-							<li><%= link_to "Brazilian_Keratin", keratin_path, :id => 'brazilian' %> </li>
-							<li><%= link_to "Appointment", appointments_path %></li>
-							<li><%= link_to "Specials", specials_path %></li>
-							<li><%= link_to "Contact_us", contact_us_path %></li>
-						</ul>
-					</div>
-				-->
+			
 					
 					
 							<%= yield %>
