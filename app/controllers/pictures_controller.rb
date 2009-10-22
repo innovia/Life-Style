@@ -44,8 +44,14 @@ class PicturesController < ApplicationController
   end
   
   
-  def delete
-    @pictures = Picture.all
-    @pictures.all.destroy
-  end
+  def destroy
+     @picture = Picture.find(params[:id])
+     if @picture.destroy
+       flash[:notice] = "product removed"
+       redirect_to pictures_url
+     else 
+       flash[:error] = "Could not remove the product"
+       render "index"
+     end
+   end
 end

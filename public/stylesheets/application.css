@@ -333,6 +333,7 @@ div.error h3{
 #side_links li a{
 	float: left;
 	width: 15px;
+	margin-left: -1px;
 	color: #ff711b;
 	text-indent: -9999px;
 	background-image: url('/images/side_links.png');
@@ -348,9 +349,24 @@ div.error h3{
 #side_links li#specials a {
 	background-position:0 -137px;
 	height:73px;
-	margin-left:-30px;
+	margin-left:-15px;
 	margin-top:126px;
 }
+
+#side_links li#appointments a {
+	background-position:0 -210px;
+	height:107px;
+	margin-left:-15px;
+	margin-top:204px;
+}
+
+#side_links li#contact a {
+	background-position:0 -339px;
+	height:91px;
+	margin-left:-15px;
+	margin-top:321px;
+}
+
 
 
 
@@ -363,4 +379,52 @@ div.error h3{
 
 #image_on_stage.loading {
   background: url(/images/spinner.gif) no-repeat center center;
+}
+
+#appointment_form {
+	
+}
+
+.form-item {
+	display: block;
+}
+
+.form-item label {
+	display: block;
+	float:left;
+	padding:3px 3px 3px 0;
+	width:110px;
+	text-align: right;
+}
+
+
+.female {
+	font-weight: bold;
+	vertical-align: bottom;
+}
+
+.lifter {
+	margin-top: -25px;
+}
+
+.right{
+	float: right;
+}
+
+fieldset {
+	padding: 2px;
+	width: 140px;
+	text-align: center;
+}
+
+legend {
+	text-align: center;
+}
+
+.day_time_phone {
+	margin-top: -10px;
+}
+
+#cancallation-note {
+	
 }

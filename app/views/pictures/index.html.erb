@@ -22,7 +22,7 @@ div.apple_overlay div.close {
 	<div class="warning ">	
 		<h2>There are no pictures in the database</h2>
 		<p>Start by adding a picture for the gallery</p>
-		<p><%= link_to "add a picture", new_picture_path %></p>		
+		<p><%= link_to "Add new picture", new_picture_path %></p>		
 	</div>
 	<% end -%>
 <% else %>
@@ -65,5 +65,7 @@ div.apple_overlay div.close {
 <% end -%>
 <% end -%>
 </div>
-<%= link_to "Add new picture", new_picture_path %>
+<% unless @pictures.empty? %>
+<%= link_to "Add new picture", {:action => "new"} %>
+<% end -%>
 <%= will_paginate @pictures %>

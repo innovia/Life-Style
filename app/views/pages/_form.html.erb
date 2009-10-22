@@ -1,0 +1,52 @@
+<div class="form-item">
+	<label>Full Name: <span class="req"> *</span></label>
+	<%= f.text_field :full_name, :size => 20 %>
+</div>
+		 
+<div class="form-item">
+<label>e-mail:<span class="req"> *</span></label> 
+<%= f.text_field :email, :size => 20 %>	
+</div>
+
+<div class="form-item">
+	<label>Male</label>
+	<%= f.radio_button :gender, :male %>
+	<span class="female">Female</span><%= f.radio_button :gender, :female %>
+</div>
+<br/>
+<div class="form-item">	
+<label>Day Time Phone:<span class="req"> *</span></label>
+<%= f.text_field :phone_number, :size => 20, :maxlength => 12  %>
+</div>
+
+<div class="form-item">
+<label>Mobile Phone: </label> 
+<%= text_field_tag "cell","",{:size => 20, :maxlength => 12 } %>
+</div>
+
+<fieldset>
+	<span class="req">*</span>
+	<legend>Select date and time for your appointment</legend>
+		<%= f.text_field :requested_time, :class => "date_picker", :size => 10 %>
+		at <%= f.time_select(:requested_time) %>	
+</fieldset>
+
+<%= f.label :service, "Service:" %>
+<span class="req">*</span>
+<%= f.collection_select(:service_id, Service.all, :id, :name, :prompt => "Select a service") %>
+
+<%= f.label :by, "By:" %>
+<span class="req">*</span>
+<%= f.collection_select(:stylist_id, Stylist.all, :id, :full_name,  :prompt => "Select a stylist") %>
+<br/>
+
+	<label> First Time Client?</label>
+	<%= check_box_tag :first_time %>	 
+
+	<label>Referred by:</label>
+	<%= f.text_field :referred_by, :size => 20 %>
+	<%= f.submit 'Send Request' %>
+</p>
+<h>
+	Note: We would appreciate a 24hrs notice via phone prior to your appointment for any cancellations.
+</h5>
