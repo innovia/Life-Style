@@ -244,10 +244,10 @@ div.error h3{
 }
 
 #about{
-	height:420px;
 	line-height:1.6;
 	margin-left:-69px;
-	width:213px;
+	margin-top:-23px;
+	width:210px;
 }
 
 #location_map{
@@ -327,44 +327,46 @@ div.error h3{
 
 #side_links {
 	list-style: none;
-	margin-left: -82px;
+	margin-left: -127px;
 }
 
 #side_links li a{
 	float: left;
-	width: 15px;
-	margin-left: -1px;
+	margin-left: -2px;
+	width: 19px;
 	color: #ff711b;
 	text-indent: -9999px;
 	background-image: url('/images/side_links.png');
+	border: 1px solid #999;
 		-moz-border-radius-bottomright: 5px;
 		-moz-border-radius-topright: 5px;
 }
 
 #side_links li#brazilian a {
-	background-position: 0 0;
-	height: 121px;
+	background-position:0 -6px;
+	height:132px;
+	margin-top:-41px;
 }
 
-#side_links li#specials a {
-	background-position:0 -137px;
-	height:73px;
-	margin-left:-15px;
-	margin-top:126px;
+#side_links li#specials a {	
+	background-position:0 -148px;
+	height:77px;
+	margin-left:-21px;
+	margin-top:105px;
 }
 
 #side_links li#appointments a {
-	background-position:0 -210px;
-	height:107px;
-	margin-left:-15px;
-	margin-top:204px;
+	background-position:0 -233px;
+	height:134px;
+	margin-left:-21px;
+	margin-top:192px;
 }
 
 #side_links li#contact a {
-	background-position:0 -339px;
-	height:91px;
-	margin-left:-15px;
-	margin-top:321px;
+	background-position:0 -374px;
+	height:101px;
+	margin-left:-21px;
+	margin-top:338px;
 }
 
 
@@ -423,8 +425,4 @@ legend {
 
 .day_time_phone {
 	margin-top: -10px;
-}
-
-#cancallation-note {
-	
 }

@@ -30,15 +30,7 @@
 		 end
 	%>
 	
-	<script>
-	    $(function () {
-			$(window).load(function() {
-				$('#image_on_stage').removeClass('loading');
-				$('#image_on_stage').css('background-image', "url('/images/<%= @bkg %>')");
-				$('#see_through_box').fadeIn("slow");			
-				});							 
-		});		
-	</script>
+	
 </head>
 <body>	
 		<div id="main" class="container">
@@ -54,20 +46,16 @@
 			</ul>
 		</div>
 		
-		<div id="stage">	
+		<div id="stage">		
 			<div id="image_on_stage" class="loading">
 				<div id="see_through_box" style="display: none;">	
 					<div id="inner_content" class="content container">
-					
 							<ul id="side_links">
 								<li id="brazilian"><%= link_to "Brazilian_Keratin", keratin_path %> </li>
-								<li id="appointments"><%= link_to "Appointment", appointments_path %></li>
 								<li id="specials"><%= link_to "Specials", specials_path %></li>
+								<li id="appointments"><%= link_to "Appointment", appointments_path %></li>
 								<li id="contact"><%= link_to "Contact_us", contact_us_path %></li>
 							</ul>
-						
-					
-
 					<div class="right"> 
 					  <% unless current_user.nil? %>
 					    Logged in as: <%= current_user.login %> <%= link_to 'log out', logout_url %>
@@ -93,6 +81,15 @@
 				<div id="logo"><%= image_tag("logo.jpg") %></div>
 			</div><!-- /image on stage -->
 		</div><!-- /stage -->	
-		</div><!-- /main -->							
+		</div><!-- /main -->
+		<script>
+		    $(function () {
+				$(window).load(function() {
+					$('#image_on_stage').removeClass('loading');
+					$('#image_on_stage').css('background-image', "url('/images/<%= @bkg %>')");
+					$('#see_through_box').fadeIn("slow");			
+					});							 
+			});		
+		</script>							
 	</body>
 </html>
