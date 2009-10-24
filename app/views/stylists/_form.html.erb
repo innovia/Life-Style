@@ -12,10 +12,12 @@
 			<%= f.text_field :last_name %>	
 			</div>
 			
-		<label for="stylist_bio">Stylist bio:
+	<div id="bio">
+			<label for="stylist_bio">Stylist bio:
 			<span class="req">*</span>
 		</label>
-		<%= f.text_area :bio, :id => "stylist_bio_textarea" %>
+		<%= f.text_area :bio, :id => "wysiwyg",  :cols => 60, :rows => 5 %>
+	</div>
 
 		<br/>
 		<label for="photo">Picture: </label>

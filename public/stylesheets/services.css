@@ -38,7 +38,7 @@ div.scrollable div.items div.category {
 }
 
 /* Scrollable Interface Buttons */
-a.prev, a.next, a.prevPage, a.nextPage {
+a.prev_photo , a.next_photo {
 	display:block;
 	width:100px;
 	height:50px;
@@ -56,7 +56,7 @@ a.disabled {
 	visibility:hidden !important;		
 }
 
-a.prev, a.prevPage {
+a.prevphoto{
 	background-image:url(/images/scrollable/Services/left.png);
 	background-repeat: no-repeat;
 	margin-top:100px;

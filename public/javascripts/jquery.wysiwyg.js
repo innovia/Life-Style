@@ -342,8 +342,8 @@
                     newY = ( element.rows * 16 ) + 16;
 
                 var editor = this.editor = $('<iframe></iframe>').css({
-                    minHeight : ( newY - 6 ).toString() + 'px',
-                    width     : ( newX - 8 ).toString() + 'px'
+                    minHeight : '100px', //( newY - 6 ).toString() + 'px',
+                    width     :  ( newX - 8 ).toString() + 'px'
                 }).attr('id', $(element).attr('id') + 'IFrame');
 
                 if ( $.browser.msie )
@@ -369,7 +369,7 @@
                 width : ( newX > 0 ) ? ( newX ).toString() + 'px' : '100%'
             }).addClass('wysiwyg')
               .append(panel)
-              .append( $('<div><!-- --></div>').css({ clear : 'both' }) )
+              //.append( $('<div><!-- --></div>').css({ clear : 'both' }) )
               .append(editor);
 
             $(element)
@@ -561,7 +561,10 @@
             ).mousedown(function() {
                 if ( fn ) fn.apply(self); else self.editorDoc.execCommand(cmd, false, args);
                 if ( self.options.autoSave ) self.saveContent();
-            }).appendTo( this.panel );
+            }).attr('title', cmd[0].toUpperCase()
+                           + cmd.substring(1).replace(/([a-z])([A-Z])/g, '$1 $2')
+                           + (( args != '' ) ? ' ' : '') + args
+            ).appendTo( this.panel );
         },
 
         appendMenuSeparator : function()

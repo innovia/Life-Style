@@ -1,61 +1,81 @@
-#gallery_photo_description{
-	height: 100px;
-	width: 350px;
+#gallery {
+	margin: -20px -68px 0 -68px;
 }
 
-/* the overlayed element */ 
-.apple_overlay { 
-     
-    /* initially overlay is hidden */ 
-    display:none; 
-     
-    /* growing background image */ 
-    background-image:url(/images/overlay/transparent.png); 
-     
-    /*  
-        width after the growing animation finishes 
-        height is automatically calculated 
-    */ 
-    width:640px;         
-     
-    /* some padding to layout nested elements nicely  */ 
-    padding:35px; 
- 
-    /* a little styling */     
-    font-size:11px; 
-} 
- 
-/* default close button positioned on upper right corner */ 
-.apple_overlay div.close { 
-    background-image:url(/images/overlay/close.png); 
-    position:absolute; right:5px; top:5px; 
-    cursor:pointer; 
-    height:35px; 
-    width:35px; 
+/*
+	root element for the scrollable.
+	when scrolling occurs this element stays still.
+*/
+#gallery div.scrollable{
+	/* required settings */
+	position:relative;
+	overflow:hidden;
+	width: 625px;
+	height: 400px;
+	margin-top: -60px;
+	/* custom decorations */
+	border:1px solid #ccc;
+	background:url(/images/h300.png) repeat-x;
 }
 
-#triggers{
-	margin-top: -30px;
+/*
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a extremely large width to accomodate scrollable items.
+	it's enough that you set the width and height for the root element and
+	not for this element.
+*/
+.scrollable .items {
+	/* this cannot be too large */
+	width:20000em;
+	position:absolute;
+	clear:both;
 }
 
-#photos_array {
-	list-style: none;
-	width: 500px;
-	margin: 0 auto;
+/* single scrollable item */
+.scrollable img {
+	height: 330px;
+	float:left;
+	margin: 47px 80px 0;
+	background-color:#fff;
+	padding:2px;
+	border:1px solid #ccc;
+	cursor:pointer;	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
 }
 
-#photos_array li{
-	width: 145px;
-	height: 100px;
-	position: relative;
-}
 
-#photos_array li a{
-	color: orange;
-}
-
-#photos_array li .delete_icon{
+/* Scrollable Interface Buttons */
+#gallery a.prev_photo, a.next_photo {
+	display:block;
+	width: 30px;
+	height:30px;
 	position: absolute;
-	top: -13px;
-	left: 89px;
+	margin-top:150px;
+	top: 145px;
+	cursor:pointer;
+	text-indent:-9999px;
+	background-image: url(/images/scrollable/hori_large.png);
+	z-index: 9999;
+}
+
+#gallery a.prev_photo {
+	background-position: -30px 0;
+	margin-left: 30px;
+}
+
+#gallery a.next_photo {
+	background-position: 0 -30px;
+	z-index: 9999;
+	left:810px;
+	margin-left: 73px;
+}
+
+/* mouseover state */
+#gallery a.prev_photo:hover, a.next_photo:hover {
+	background-position:-90px 0;		
+}
+
+#gallery a.disabled {
+	visibility:hidden !important;		
 }

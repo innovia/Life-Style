@@ -1,14 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
+<%= javascript_include_tag "jquery", "jquery.tools.min.ver1.1", "jquery-ui-1.7.1.custom.min", "jquery.wysiwyg", "reflection",  "application" %>
 
 <%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
 <%= stylesheet_link_tag "blueprint/print", :media => "print" %>
 <%= stylesheet_link_tag "blueprint/src/forms", "blueprint/src/typography" %>
-<%= stylesheet_link_tag "application", "boxed", "jquery.alert", "jquery.wysiwyg", "services", "stylists", "products", "pictures" %>
+<%= stylesheet_link_tag "application", 
+												"boxed", 
+												"jquery.wysiwyg", 
+												"services", "stylists", "products", "pictures" %>
 
 <!--[if lt IE 6]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-<%= javascript_include_tag "jquery", "jquery.tools.min.ver1.1", "jquery-ui-1.7.1.custom.min", "jquery.wysiwyg", "pixastic.custom_sat", "reflection",  "application" %>
+
 
 <title>LifeStyle Salon NYC - 822 BroadWay 212-228.5577</title>
 
@@ -77,8 +81,12 @@
 							<%= yield %>
 						</div>
 					</div> <!-- /inner content -->
-				</div> <!-- /see throu box -->
+				</div> <!-- /see throu box -->			
 				<div id="logo"><%= image_tag("logo.jpg") %></div>
+						<div id="phone_and_address">
+						<p id="phone">(212)-228-5577 </p>
+						<p id="address"> 822 Broadway - New York, NY 10003</p> 
+						</div>
 			</div><!-- /image on stage -->
 		</div><!-- /stage -->	
 		</div><!-- /main -->

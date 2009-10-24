@@ -98,6 +98,7 @@ body {background: url('/images/background.jpg'); color: white;}
 #logo{
 	display: inline;
 }
+
 .notification {
 				-moz-border-radius-bottomleft: 5px;
 				-moz-border-radius-bottomright: 5px;
@@ -118,10 +119,7 @@ div.notification h3{
 }
 
 .notice {
-				-moz-border-radius-bottomleft: 5px;
-				-moz-border-radius-bottomright: 5px;
-				-moz-border-radius-topleft: 5px;
-				-moz-border-radius-topright: 5px;
+				-moz-border-radius: 5px;
 				border: 1px solid #6c6;
 				color: #333;
 				background-color: #cfc;
@@ -174,10 +172,7 @@ div.flash_error h3{
 }
 
 .error {
-				-moz-border-radius-bottomleft: 5px;
-				-moz-border-radius-bottomright: 5px;
-				-moz-border-radius-topleft: 5px;
-				-moz-border-radius-topright: 5px;
+				-moz-border-radius: 5px;
 				border: 1px solid #c66;
 				background-color: #fcc;
 				padding: 5px;
@@ -265,8 +260,8 @@ div.error h3{
 
 #white_banner{
 	color: #7b7b7b;
-	margin-left: -82px;
-	margin-top: -24px;
+	margin-left: -83px;
+	margin-top: 159px;
 	width: 665px;
 	height: 59px;
 	background-image: url('/images/white_banner.png');
@@ -293,11 +288,21 @@ div.error h3{
 	font-size: 150%;
 }
 
-#address{
-	font-size: 22px;
-	color: #ffde9f;
-	margin-top: 60px;
-	margin-left: -43px;
+#phone_and_address{
+	font-weight: bold;
+	font-size: 15px;
+	color: #030303;
+	margin-top: -18px;
+}
+
+#phone {
+	float: right;
+	margin-right: 175px;
+}
+
+#address {
+	float: left;
+	margin-left: 47px;
 }
 
 #title {
@@ -383,9 +388,6 @@ div.error h3{
   background: url(/images/spinner.gif) no-repeat center center;
 }
 
-#appointment_form {
-	
-}
 
 .form-item {
 	display: block;
@@ -409,9 +411,6 @@ div.error h3{
 	margin-top: -25px;
 }
 
-.right{
-	float: right;
-}
 
 fieldset {
 	padding: 2px;
@@ -425,4 +424,8 @@ legend {
 
 .day_time_phone {
 	margin-top: -10px;
+}
+
+#wysiwyg {
+	border: 1px solid #999;
 }

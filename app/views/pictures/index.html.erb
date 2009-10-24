@@ -1,19 +1,5 @@
-<!--[if lt IE 7]> 
-<style>  
-div.apple_overlay { 
-    background-image:url(http://static.flowplayer.org/tools/img/overlay/overlay_IE6.gif); 
-    color:#fff; 
-} 
- 
-/* default close button positioned on upper right corner */ 
-div.apple_overlay div.close { 
-    background-image:url(http://static.flowplayer.org/tools/img/overlay/overlay_close_IE6.gif); 
- 
-}     
-</style> 
-<![endif]-->
 <div id="gallery">
-	<h2 id="title">Gallery</h2>
+	<h2 id="title" align="center">Gallery</h2>
 
 <% if @pictures.empty? %>
 	<% unless admin? %>
@@ -26,45 +12,24 @@ div.apple_overlay div.close {
 	</div>
 	<% end -%>
 <% else %>
+<!-- "previous page" action --> 
+<a class="prev prev_photo">Previous</a> 
 
-<!-- "prev page" button --> 
-<div class="navi prevPage"></div> 
- 
-<!-- root element for scrollable --> 
-	<div id="triggers"> 
-		<ul id="photos_array" class="container">
-			<% @pictures.each_with_index do |pic, index| %>
-				<li class="left">
-				<%= image_tag(pic.photo.url(:thumb), :rel => "#photo#{index}" ) %>
-				<% if admin? %>
-		  	<%= link_to image_tag("icons/large_error.png", :size => "24x24"), picture_path(pic), 
-																												:title => "remove photo",
-																												:id => "delete icon",
-																												:class => "delete_icon",
-																												:confirm => 'Are you sure?', 
-																												:method => :delete %>
-		  	<% end -%>
-			</li>
-	<% end -%>
-	</ul>
-	</div>
-	<!-- "next page" button --> 
-	<div class="navi nextPage"></div> 
+	<!-- root element for scrollable --> 
+	<div class="scrollable">          
+		<!-- root element for the items --> 
+    <div class="items">
+			<% @pictures.each do |pic| %>
+				<%= image_tag (pic.photo.url) %>
+			<% end -%>
+		</div> <!-- /items -->
+	</div> <!-- /scrollable -->
+<% end -%>
 
-	<% @pictures.each_with_index do |pic, index| %>
-	<div class="apple_overlay black" id="photo<%= index %>"> 
-  	<%= image_tag(pic.photo.url(:original)) %>
-		<div class="details"> 
-	  	<h3><%= pic.title.capitalize %></h3> 
-			<h4><%= pic.description.capitalize %></h4> 
-			<% if admin? %>
-				<%= link_to "Edit Photo", edit_picture_path(pic) %>
-			<% end %>
- 		</div> 
-  </div> 
-<% end -%>
-<% end -%>
-</div>
+<!-- "next page" action --> 
+<a class="next next_photo">Next</a>
+
+</div> <!-- /gallery-->
 <% unless @pictures.empty? %>
 <%= link_to "Add new picture", {:action => "new"} %>
 <% end -%>
