@@ -1,15 +1,16 @@
 <h2 id="title">Specials</h2>
 
 <% if @specials.empty? %>
-	<% unless admin? %>
-	 <h2> Coming soon... </h2>
-	<%- else -%>
-	<div class="warning ">	
-		<h2>There are no specials in the database</h2>
-		<p>Start by adding a special</p>
-		<p><%= link_to "Add new special", new_special_path %></p>		
-	</div>
-	<% end -%>
+		<% unless logged_in? %>
+		 <h2> Coming soon... </h2>
+		<%- else -%>
+		<div class="warning ">	
+			<h2>There are no specials in the database</h2>
+			<p>Start by adding a special</p>
+			<p><%= link_to "Add new special", new_special_path %></p>		
+		</div>
+		<% end -%>
+	
 <% else %>
 <table>
   <tr>

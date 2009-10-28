@@ -14,12 +14,12 @@ div.apple_overlay div.close {
 <![endif]-->
 <div id="stylist_photo_index">
 	<h2 id="title">Stylists</h2>
-		<% if admin? %>
+		<% if logged_in? %>
 			<%= link_to image_tag("icons/add.png"), new_stylist_url, :title => "add stylist"%>
 		<% end %>
 	
 	<% if @stylists.empty? %>
-		<% unless admin? %>
+		<% unless logged_in? %>
 		 <h3> Coming soon... </h3>
 		<%- else -%>
 		<div class="warning">	
@@ -39,7 +39,7 @@ div.apple_overlay div.close {
 			<% @stylists.each_with_index do |stylist, index| %>
 				<li class="column">
 					<%= image_tag(stylist.photo.url(:thumb), :rel => "#photo#{index}" ) %>
-					<% if admin? %>
+					<% if logged_in? %>
 			  	<%= link_to image_tag("icons/large_error.png", :size => "24x24"), stylist_path(stylist), 
 																													:title => "remove stylist",
 																													:id => "delete icon",
@@ -61,7 +61,7 @@ div.apple_overlay div.close {
 			<div class="details"> 
 		  	<h3><%= stylist.full_name.capitalize %></h3> 
 				<h4><%= stylist.bio.capitalize %></h4> 
-				<% if admin? %>
+				<% if logged_in? %>
 					<%= link_to "Edit Stylist", edit_stylist_path(stylist) %>
 				<% end %>
 	 		</div> 

@@ -1,6 +1,6 @@
 class StylistsController < ApplicationController
   before_filter :require_user, :except => [:index, :show]
-  
+    
   def index
     @stylists = Stylist.paginate(:per_page => 9, :page => params[:page])
   end

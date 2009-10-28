@@ -1,0 +1,9 @@
+<h2 id="title">Upload new background for <%= @page.title %></h2>
+
+<% form_for @page, :html => { :multipart => true, :method => :put } do |f| -%>
+	 <%= 	hidden_field_tag(:manager) %>
+   <%= f.label :background_picture, "Background Picture" %>
+	 <%= f.file_field :background_picture %>
+	<%= f.submit "Upload", :disable_with => 'Uploading...' %>
+	 <button id="cancel">Cancel</button>
+<% end -%>

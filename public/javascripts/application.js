@@ -2,11 +2,11 @@ $(document).ready(function() {
 		
 	$('#inner_content').fadeTo(500, 1).fadeIn("3000");
 	
-	gallery(); 
+
+	gallery();
 	
-	$('textarea').wysiwyg();
-	
-	
+	enable_edit(); 
+
 	// initialize scrollable  
 	$("div.scrollable").scrollable({size: 1});
 
@@ -25,5 +25,16 @@ $(document).ready(function() {
 		$("#triggers img[rel]").overlay({effect: 'apple'});
 	}
 	
+	function enable_edit(){
+		$('#edit_page').bind('click', function(event) {
+			$('#displayed_content').toggle();
+			$('#editable_content').toggle();
+		});
+		
+		$('.toggle_edit').bind('click', function(event) {
+			$('#displayed_content').toggle();
+			$('#editable_content').toggle();
+		});
+	}
 	
 });

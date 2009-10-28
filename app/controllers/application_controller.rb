@@ -3,16 +3,17 @@
 
 class ApplicationController < ActionController::Base
   helper :all
-  helper_method :admin?, :current_user_session, :current_user
+  helper_method :logged_in?, :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
+  before_filter :preload_page
   
   # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+   filter_parameter_logging :password
 
-  def admin?
+  def logged_in?
     !current_user.nil?
   end
   
@@ -52,5 +53,34 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
+    end
+    
+    def preload_page
+      if controller_name == "pages"
+          unless action_name == "update" or action_name == "edit" or action_name == "destroy"
+            @page = Page.find_or_create_by_title(action_name)
+          else
+            @bkg = "/images/Backgrounds/salon_back_panoramic.jpg"
+            return
+          end
+      else
+        @page = Page.find_or_create_by_title(controller_name)        
+      end
+      
+      # Default Backgrounds
+      # Default background_picture paperclip attachment is salon back panoramic
+    	# Override default background if user uploaded a background picture else revert to default background 
+    	# @bkg is the current background
+    	
+      if @page.background_picture_file_name.nil?
+        case @page.title 
+      	  when "services" then 	@bkg = "/images/Backgrounds/services_background.jpg"
+      		when "products" then 	@bkg = "/images/Backgrounds/products.png"
+      	  when "index"    then  @bkg = "/images/Backgrounds/salon_front_panoramic.jpg"
+      	  else  @bkg = @page.background_picture(:default)
+      	end
+      else 
+      	@bkg = @page.background_picture.url(:bkg)
+      end
     end
 end

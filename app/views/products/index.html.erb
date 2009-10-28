@@ -2,7 +2,7 @@
 	<h2 id="title">Products</h2>
 
 	<% if @products.empty? %>
-	<% unless admin? %>
+	<% unless logged_in? %>
 	 <h3> Coming soon... </h3>
 	<%- else -%>
 	<div class="warning">	
@@ -29,7 +29,7 @@
 					<div class="column prepend-top"><%= image_tag p.photo.url(:thumb) %></div>
 					<h4 class="product_title"><%= p.title.upcase %></h4>
 					<h4 class="product_info column span-8"><%= p.info %></h4>
-				<% if admin? %>
+				<% if logged_in? %>
 				<div class="admin_links">
 				<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_product_path(p), :title => "edit product" %>
 				<%= link_to image_tag("icons/large_error.png", :size => "24x24"), product_path(p), :title => "remove product",

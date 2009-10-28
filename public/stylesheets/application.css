@@ -4,6 +4,8 @@ ul li a {color: blue;}
 
 a {color: orange; text-decoration: none;}
 
+.orange {color: orange;}
+
 body {background: url('/images/background.jpg'); color: white;}
 
 #header {
@@ -238,11 +240,9 @@ div.error h3{
 	color: black;
 }
 
-#about{
-	line-height:1.6;
+.about_us{
 	margin-left:-69px;
 	margin-top:-23px;
-	width:210px;
 }
 
 #location_map{
@@ -374,9 +374,6 @@ div.error h3{
 	margin-top:338px;
 }
 
-
-
-
 #loader {
   border: 1px solid #ccc;
   margin: 0 auto;
@@ -412,20 +409,66 @@ div.error h3{
 }
 
 
-fieldset {
-	padding: 2px;
-	width: 140px;
-	text-align: center;
-}
-
-legend {
-	text-align: center;
-}
-
 .day_time_phone {
 	margin-top: -10px;
 }
 
-#wysiwyg {
-	border: 1px solid #999;
+
+#editable {
+	display: none;
+	margin-left:-53px;
+	margin-top:-30px;
 }
+
+
+#manager{
+ height: 200px;
+ overflow: hidden;
+}		
+
+
+#admin_menu_bar {
+	color: orange;
+	margin: 0 0 0 29px;
+	padding: 0;
+	font-weight: bold;
+}
+
+#admin_menu_bar li{
+ display: inline;
+}
+
+#admin_menu_bar li a{
+  color: red;
+}
+		
+
+table {
+margin:0; padding:0; 
+border-collapse:separate; *border-collapse:collapse; border-spacing:0;
+border:2px solid white;
+width: 100%;
+font: 120%;
+}
+
+
+th {
+	background: #FFBB36 url(/images/sprite.png) repeat-x 0 0; /* header gradient */ 
+	color: #333;
+	font-weight: bold;
+	padding: 8px 8px;
+	text-align: center;
+	border:none; 
+	border-right:1px solid #CBCBCB;/*  inner column border */
+}
+
+tr {
+ border-bottom: 5px solid red;
+}
+
+td {
+ text-align: center !important;
+ background-image: url(/images/h300.png);
+}
+
+

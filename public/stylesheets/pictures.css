@@ -32,7 +32,7 @@
 }
 
 /* single scrollable item */
-.scrollable img {
+.scrollable img.gallery {
 	height: 330px;
 	float:left;
 	margin: 47px 80px 0;

@@ -1,15 +1,15 @@
-<% @bkg = "about_us.jpg" %>
+<%= render :partial => 'shared/load_yui_editor' %>
 
-<h4 id="about">
-Lifestyle Salon NYC is a beautifully modern full service hair salon.  
+<% @bkg = @page.background_picture.url(:bkg) %>
 
-Located in the heart of Manhattan's Greenwich Village, 
 
-Lifestyle Salon features a team of diverse and talented stylists headed by Haim Hazan.
+<div id="editable_content" class="about_us">
+	<h2 id="title">About us</h2>
+	<%= @page.body  %>
+</div> <!-- /editable content-->
 
-In an energetic and warm atmosphere, we offer a wide range of services including cuts, color, extensions ad a variety of straighteners.  
 
-We use the highest quality products to provide the ultimate in hair care 
+<%# unless logged_in? %>
+	<%= render :partial => 'shared/update_page' %>
+<%# end -%>
 
-that leaves you looking and feeling beautiful.  Lifestyle Salon is open 7 days a week to cater to all your styling needs.
-</h4>

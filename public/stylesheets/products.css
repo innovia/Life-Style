@@ -23,7 +23,7 @@
 div.vertical_scrollable{
 	position:relative; 
   	overflow:hidden;
-	height: 307px;      
+	height: 285px;      
 	width: 500px;
 }
 

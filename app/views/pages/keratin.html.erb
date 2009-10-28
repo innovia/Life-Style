@@ -1,4 +1,14 @@
-<h2 id="title">Brazilian Keratin Treatment</h2>
-<% unless admin? %>
+<%= render :partial => 'shared/load_yui_editor' %>
+
+<% @bkg = @page.background_picture.url(:bkg) %>
+
+<div id="editable_content" class="about_us">
+	<h2 id="title">Brazilian Keratin Treatment</h2>
+	<%= @page.body  %>
+</div> <!-- /editable content-->
+
+<% unless logged_in? %>
 	<h2>Coming soon...</h2>
-<% end %>
+<%- else -%>
+	<%= render :partial => 'shared/update_page' %>
+<% end -%>

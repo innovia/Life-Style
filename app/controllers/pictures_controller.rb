@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_filter :require_user, :except => :index
-
+  
   def index
     @pictures = Picture.paginate(:per_page => 9, :page => params[:page])    
   end

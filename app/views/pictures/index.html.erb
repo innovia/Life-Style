@@ -2,7 +2,7 @@
 	<h2 id="title" align="center">Gallery</h2>
 
 <% if @pictures.empty? %>
-	<% unless admin? %>
+	<% unless logged_in? %>
 	 <h2> Coming soon... </h2>
 	<%- else -%>
 	<div class="warning ">	
@@ -20,7 +20,7 @@
 		<!-- root element for the items --> 
     <div class="items">
 			<% @pictures.each do |pic| %>
-				<%= image_tag (pic.photo.url) %>
+				<%= image_tag(pic.photo.url, :class => "gallery" ) %>
 			<% end -%>
 		</div> <!-- /items -->
 	</div> <!-- /scrollable -->

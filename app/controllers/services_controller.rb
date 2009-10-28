@@ -61,4 +61,6 @@ class ServicesController < ApplicationController
   def get_categories
     @categories = Category.all
   end
+  
+  
 end

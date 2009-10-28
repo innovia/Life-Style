@@ -14,29 +14,19 @@
 <!--[if lt IE 6]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
 
 
-<title>LifeStyle Salon NYC - 822 BroadWay 212-228.5577</title>
-
-<% case controller_name
-	 when  "stylists" then @bkg = "salon_back_panoramic.jpg"
-	 when  "services" then @bkg = "services_background.jpg"
-	 when  "products" then @bkg = "products.png"
-	 end -%> 
-
-<% if @bkg.nil? 
-	@bkg =  "salon_back_panoramic.jpg"
- end %>
+<title>LifeStyle Salon NYC - 822 BroadWay (212) 228-5577</title>
 
 
-	<% if controller_name == "info" 
-			@class = controller.action_name
-		 else
-			@class = controller_name
-		 end
+<!-- set the current tab css by header class -->	
+	<% if controller_name == "pages" 
+				@class = controller.action_name
+			 else
+				@class = controller_name
+			 end
 	%>
 	
-	
 </head>
-<body>	
+<body>
 		<div id="main" class="container">
 			<div id="header" class="<%= @class %>">		
 			<ul id="navbar">
@@ -48,7 +38,16 @@
 				<li id="about_us"><%= link_to "About us", about_us_path %></li>
 				<li id="location"><%= link_to "Location", location_path %></li>
 			</ul>
-		</div>
+			<% unless current_user.nil? %>
+			 <ul id="admin_menu_bar">
+		     <li>Logged in as: <%= current_user.login %> </li>
+			 	 <li>| <%= link_to 'Log out', logout_url %> </li>
+				 <li>| <%= link_to "Edit Page:", "#", :id => "edit_page"  %> </li>
+				 <li>| <%= link_to "Pages Manager", manager_path %></li>
+				 <li>| <%= link_to "Service Categories", categories_path %></li>						
+			 </ul>
+		  <% end %>
+		  </div>
 		
 		<div id="stage">		
 			<div id="image_on_stage" class="loading">
@@ -60,13 +59,9 @@
 								<li id="appointments"><%= link_to "Appointment", appointments_path %></li>
 								<li id="contact"><%= link_to "Contact_us", contact_us_path %></li>
 							</ul>
-					<div class="right"> 
-					  <% unless current_user.nil? %>
-					    Logged in as: <%= current_user.login %> <%= link_to 'log out', logout_url %>
-					
-					  <% end %>
-					</div>			
+						
 					<div id="msg" style="display: none;"></div>
+				
 					<%- unless flash[:notice].blank? -%>
 						<div class="notification"><h3><%= flash[:notice] -%></h3></div>
 					<%- end -%>
@@ -74,10 +69,6 @@
 					<%- unless flash[:error].blank? -%>
 						<div class="flash_error"><h3><%= flash[:error] -%></h3></div>
 					<%- end -%>
-					
-			
-					
-					
 							<%= yield %>
 						</div>
 					</div> <!-- /inner content -->
@@ -94,7 +85,7 @@
 		    $(function () {
 				$(window).load(function() {
 					$('#image_on_stage').removeClass('loading');
-					$('#image_on_stage').css('background-image', "url('/images/<%= @bkg %>')");
+					$('#image_on_stage').css('background-image', "url('<%= @bkg %>')");
 					$('#see_through_box').fadeIn("slow");			
 					});							 
 			});		

@@ -1,4 +1,20 @@
-<h2 id="title">Contact us</h2>
-<% unless admin? %>
+<% unless logged_in? %>
 	<h2>Coming soon...</h2>
+	
+<% else %>
+<%= render :partial => 'shared/load_yui_editor' %>
+
+<% @bkg = @page.background_picture.url(:bkg) %>
+
+
+<div id="editable_content" class="about_us">
+	<h2 id="title">Contact us</h2>
+	<%= @page.body  %>
+</div> <!-- /editable content-->
+
+
+<%# unless logged_in? %>
+	<%= render :partial => 'shared/update_page' %>
+<%# end -%>
+
 <% end %>

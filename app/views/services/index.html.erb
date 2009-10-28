@@ -2,7 +2,7 @@
 	<h2 id="title" class="services prepend-1">Services</h2>
 	
 	<% if @categories.empty? %>
-	<% unless admin? %>
+	<% unless logged_in? %>
 	 <h3 class="services prepend-1"> Coming soon... </h3>
 	<%- else -%>
 		<div class="warning ">	
@@ -25,7 +25,7 @@
 				<div class="category container"><!--Item Div-->
 						<div class="category_header">
 							<h4><%=h cat.name.upcase %></h4>
-							<% if admin? %>
+							<% if logged_in? %>
 							<%= link_to image_tag("icons/add.png"), new_service_url, :title => "add service"%>
 						  <% end %>
 						</div>
@@ -45,7 +45,7 @@
 							up
 						<% end %>
 						</div>
-					  <% if admin? %>
+					  <% if logged_in? %>
 						<div class="admin_links column">
 						<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_service_path(service), :title => "edit service" %>
 						<%= link_to image_tag("icons/large_error.png", :size => "24x24"), service_path(service), 
@@ -65,7 +65,7 @@
 	<!-- next link --> 
 	<a class="next"></a>
 	<% end %>
-	<% if admin? %>
+	<% if logged_in? %>
 		<%= link_to "Categories", categories_path %>
 	<% end %>
 </div>

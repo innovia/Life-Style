@@ -1,30 +1,36 @@
 class PagesController < ApplicationController
   
-  def index
-    @bkg = "salon_front_panoramic.jpg"
+  def edit
+    @page = Page.find(params[:id])
   end
   
-  def about_us
+  def update
+    @page = Page.find(params[:id])
+    if @page.update_attributes(params[:page])
     
+      if params[:manager]
+        page_origin = manager_path
+      else
+        page_origin = @page.title.to_sym
+      end
+      
+        redirect_to page_origin
+    else
+      flash[:error] = "Could not save changes please try again."
+      render @page.title.to_sym
+    end
   end
-
-  def location
-    #require 'rubygems'
-    #require 'google_geocode'
-    
-    #gg = GoogleGeocode.new "ABQIAAAAgNb7wpLp8btvZ6Z3iIuF7RQ6RQOc72mUznGOzXn2f-R8JT8lKRSWZK-ZfvNgdw9WbZ5zSIU-TMV1fA" #hard coded
-    #not hardcoded
-    #gg = GoogleGeocode.new YAML.load_file(RAILS_ROOT +‘/config/gmaps_api_key.yml’)[ENV['RAILS_ENV']]
-    #loc = gg.locate "822 broadway newyork, NY 10003"
-    
-  #  @map = GMap.new("map_div")
-   # @map.control_init(:small => true) #add :large_map => true to get zoom controls
-    #@map.center_zoom_init([loc.latitude, loc.longitude],14)
-    #@map.overlay_init(GMarker.new([loc.latitude, loc.longitude],:title => "LifeStyle Salon NYC", :info_bubble => loc.address))
+   
+  def pages_manager
+    @pages = Page.paginate(:per_page => 3, :page => params[:page])
   end
-
-  def specails
-    
+  
+  def destroy
+    @page = Page.find(params[:id])
+    @page.background_picture = nil
+    @page.save
+    flash[:notice] = "Default background picture was restored"
+    redirect_to manager_path
   end
-
+  
 end

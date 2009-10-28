@@ -1,4 +1,3 @@
-
 Given /^there's at least 1 category$/ do
   @category = Category.make
 end
