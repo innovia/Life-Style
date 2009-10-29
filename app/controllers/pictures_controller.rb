@@ -1,6 +1,17 @@
 class PicturesController < ApplicationController
   before_filter :require_user, :except => :index
   
+  def manager
+    @pictures = Picture.paginate(:per_page => 9, :page => params[:page], :order => "position")  
+  end
+  
+  def sort
+    params[:picture].each_with_index do |id, index|
+      Picture.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render :nothing => true
+  end
+  
   def index
     @pictures = Picture.paginate(:per_page => 9, :page => params[:page])    
   end

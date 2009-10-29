@@ -95,3 +95,13 @@
 	top: -13px;
 	left: 89px;
 }
+
+#edit_stylist {
+	margin-left:-50px;
+	margin-top:-30px;
+	width:600px;
+}
+
+#stylist_form_name {
+	margin-top: -30px;
+}

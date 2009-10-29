@@ -1,0 +1,26 @@
+<h2 id="title">Gallery Manager</h2>
+
+<ul id="sortable_gallery">
+	<% @pictures.each do |pic| %>
+			<% content_tag_for(:li, pic, :class => "pic") do %>
+				<%= image_tag(pic.photo.url(:thumb)) %>
+			<% end %>
+	<% end %>
+</ul>
+
+<style type="text/css">
+	#sortable_gallery { list-style-type: none; margin: 0; padding: 0; }
+	#sortable_gallery li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 4em; text-align: center; }
+</style>
+
+
+
+<script type="text/javascript" charset="utf-8">
+	$('#sortable_gallery').sortable({
+																					items:'.pic', 
+																					containment:'parent', 
+																					cursor: 'crosshair',
+																					update: function() {
+	  $.post('<%= sort_pictures_path %>', $(this).sortable('serialize'));
+	}});
+</script>

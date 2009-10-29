@@ -1,8 +1,9 @@
-<h2>Add a new product</h2>
+<div class="pages_wrapper">
+<h2 id="title">Add a new product</h2>
 
 <% form_for(:product, :url => products_url, :html => {:multipart => true}) do |f| -%>
 	<%= render :partial => 'form', :locals => {:f => f }%>
 	<%= f.submit "Add Product" %> 
 	<%= link_to "go back to products", products_path %>
 <% end -%>
-
+</div>

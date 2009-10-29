@@ -1,4 +1,4 @@
-<div id="editable" class="yui-skin-sam">
+<div id="edit_content" class="yui-skin-sam">
 		<% form_for @page, :html => { :multipart => true, :method => :put } do |f| -%>
 	  <%= hidden_field(:page, :title) %>
 	<div>
@@ -11,4 +11,4 @@
 		<%= f.submit "Save Changes" %>
 		<button class="toggle_edit">Cancel</button>
 		<% end -%>
-		</div>
+</div>

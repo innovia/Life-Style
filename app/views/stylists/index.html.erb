@@ -62,7 +62,7 @@ div.apple_overlay div.close {
 		  	<h3><%= stylist.full_name.capitalize %></h3> 
 				<h4><%= stylist.bio.capitalize %></h4> 
 				<% if logged_in? %>
-					<%= link_to "Edit Stylist", edit_stylist_path(stylist) %>
+					<%= link_to image_tag("edit.png"), edit_stylist_path(stylist) %>
 				<% end %>
 	 		</div> 
 	  </div> 

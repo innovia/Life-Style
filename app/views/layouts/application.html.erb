@@ -42,9 +42,15 @@
 			 <ul id="admin_menu_bar">
 		     <li>Logged in as: <%= current_user.login %> </li>
 			 	 <li>| <%= link_to 'Log out', logout_url %> </li>
-				 <li>| <%= link_to "Edit Page:", "#", :id => "edit_page"  %> </li>
+				 <% if controller_name == "pages" %>
+				 	<li>| <%= link_to "Edit/Show Page", "#", :id => "edit_page"  %> </li>
+				 <% end %>
 				 <li>| <%= link_to "Pages Manager", manager_path %></li>
-				 <li>| <%= link_to "Service Categories", categories_path %></li>						
+				 <li>| <%= link_to "Service Categories", categories_path %></li>
+				 <% if controller_name == "pictures" %>
+				 <li>| <%= link_to "New gallery picture", new_picture_path  %> </li>
+				 <li>| <%= link_to "Gallery Manager", gallery_manager_path  %> </li>				
+				 <% end %>					
 			 </ul>
 		  <% end %>
 		  </div>

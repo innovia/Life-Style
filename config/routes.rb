@@ -7,9 +7,14 @@ ActionController::Routing::Routes.draw do |map|
   map.register 'register', :controller => "users", :action => "new"
   map.login 'login', :controller => "user_sessions", :action => "new"  
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'  
-  
-  map.resources :pages, :users, :pictures, :categories, :services, :stylists, :products, :specials
   map.resource :user_session
+ 
+ 
+  map.gallery_manager 'gallery_manager', :controller => "pictures", :action => 'manager' 
+  
+  map.resources :pictures, :collection => { :sort => :post }
+  
+  map.resources :pages, :users, :categories, :services, :stylists, :products, :specials
   
   map.with_options :controller => 'pages' do |page|
     page.manager  'manager', :action => "pages_manager"

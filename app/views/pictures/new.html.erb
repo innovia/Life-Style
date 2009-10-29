@@ -1,8 +1,7 @@
+	<h2 id="title">Add New Picture to Gallery</h2>
 <% form_for(@picture, :html => {:multipart => true}, :url => pictures_path) do |f| -%>
   <%= render :partial => "form", :locals => {:f => f}  %>
-	<p class="right">
 	<%= f.submit "Add Photo" %>
-	</p
 <% end -%>
 
 <%= link_to "Back to Gallery", pictures_path %>

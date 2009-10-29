@@ -14,7 +14,6 @@
 <% else %>
 <!-- "previous page" action --> 
 <a class="prev prev_photo">Previous</a> 
-
 	<!-- root element for scrollable --> 
 	<div class="scrollable">          
 		<!-- root element for the items --> 
@@ -30,7 +29,4 @@
 <a class="next next_photo">Next</a>
 
 </div> <!-- /gallery-->
-<% unless @pictures.empty? %>
-<%= link_to "Add new picture", {:action => "new"} %>
-<% end -%>
 <%= will_paginate @pictures %>

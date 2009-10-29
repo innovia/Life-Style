@@ -1,7 +1,6 @@
 $(document).ready(function() {
 		
 	$('#inner_content').fadeTo(500, 1).fadeIn("3000");
-	
 
 	gallery();
 	
@@ -27,14 +26,15 @@ $(document).ready(function() {
 	
 	function enable_edit(){
 		$('#edit_page').bind('click', function(event) {
-			$('#displayed_content').toggle();
-			$('#editable_content').toggle();
+			$('#display_content').toggle();
+			$('#edit_content').toggle();
 		});
 		
 		$('.toggle_edit').bind('click', function(event) {
-			$('#displayed_content').toggle();
-			$('#editable_content').toggle();
+			$('#display_content').toggle();
+			$('#edit_content').toggle();
 		});
+		
 	}
 	
 });
