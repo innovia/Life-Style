@@ -1,18 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<%= javascript_include_tag "jquery", "jquery.tools.min.ver1.1", "jquery-ui-1.7.1.custom.min", "jquery.wysiwyg", "reflection",  "application" %>
+<%= javascript_include_tag "jquery", "jquery.tools.min.ver1.1", "jquery-ui-1.7.1.custom.min", "reflection", "application" %>
 
 <%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
 <%= stylesheet_link_tag "blueprint/print", :media => "print" %>
-<%= stylesheet_link_tag "blueprint/src/forms", "blueprint/src/typography" %>
+<!--[if IE]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
+
 <%= stylesheet_link_tag "application", 
 												"boxed", 
 												"jquery.wysiwyg", 
 												"services", "stylists", "products", "pictures" %>
-
-<!--[if lt IE 6]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-
 
 <title>LifeStyle Salon NYC - 822 BroadWay (212) 228-5577</title>
 
@@ -26,68 +25,53 @@
 	%>
 	
 </head>
+	
 <body>
-		<div id="main" class="container">
-			<div id="header" class="<%= @class %>">		
-			<ul id="navbar">
-				<li id="home"><%= link_to "Home", root_path, :class => "home" %></li>
-				<li id="services"><%= link_to "Services", services_path %></li>
-				<li id="stylists"><%= link_to "Stylists", stylists_path %></li>
-				<li id="products"><%= link_to "Products", products_path %></li>
-				<li	id="pictures"><%= link_to "Gallery",  pictures_path %></li>
-				<li id="about_us"><%= link_to "About us", about_us_path %></li>
-				<li id="location"><%= link_to "Location", location_path %></li>
-			</ul>
-			<% unless current_user.nil? %>
-			 <ul id="admin_menu_bar">
-		     <li>Logged in as: <%= current_user.login %> </li>
-			 	 <li>| <%= link_to 'Log out', logout_url %> </li>
-				 <% if controller_name == "pages" %>
-				 	<li>| <%= link_to "Edit/Show Page", "#", :id => "edit_page"  %> </li>
-				 <% end %>
-				 <li>| <%= link_to "Pages Manager", manager_path %></li>
-				 <li>| <%= link_to "Service Categories", categories_path %></li>
-				 <% if controller_name == "pictures" %>
-				 <li>| <%= link_to "New gallery picture", new_picture_path  %> </li>
-				 <li>| <%= link_to "Gallery Manager", gallery_manager_path  %> </li>				
-				 <% end %>					
-			 </ul>
-		  <% end %>
-		  </div>
-		
-		<div id="stage">		
-			<div id="image_on_stage" class="loading">
-				<div id="see_through_box" style="display: none;">	
-					<div id="inner_content" class="content container">
-							<ul id="side_links">
-								<li id="brazilian"><%= link_to "Brazilian_Keratin", keratin_path %> </li>
-								<li id="specials"><%= link_to "Specials", specials_path %></li>
-								<li id="appointments"><%= link_to "Appointment", appointments_path %></li>
-								<li id="contact"><%= link_to "Contact_us", contact_us_path %></li>
-							</ul>
-						
-					<div id="msg" style="display: none;"></div>
+		<div class="container">
+		  <div class="span-23" id="header">
+				<ul id="navbar">
+					<li id="home"><%= link_to "Home", root_path, :class => "home" %></li>
+					<li id="services"><%= link_to "Services", services_path %></li>
+					<li id="stylists"><%= link_to "Stylists", stylists_path %></li>
+					<li id="products"><%= link_to "Products", products_path %></li>
+					<li	id="pictures"><%= link_to "Gallery",  pictures_path %></li>
+					<li id="about_us"><%= link_to "About us", about_us_path %></li>
+					<li id="location"><%= link_to "Location", location_path %></li>
+				</ul>
+			</div>
+			
+			<div class="span-23 last" id="stage">
+				<% unless current_user.nil? %>
+				 <ul id="admin_menu_bar">
+				   <li>Logged in as: <%= current_user.login %> </li>
+				 	 <li>| <%= link_to 'Log out', logout_url %> </li>
+					 <% if controller_name == "pages" %>
+					 	<li>| <%= link_to "Edit/Show Page", "#", :id => "edit_page"  %> </li>
+					 <% end %>
+					 <li>| <%= link_to "Pages Manager", manager_path %></li>
+					 <li>| <%= link_to "Service Categories", categories_path %></li>
+					 <% if controller_name == "pictures" %>
+					 <li>| <%= link_to "New gallery picture", new_picture_path  %> </li>
+					 <li>| <%= link_to "Gallery Manager", gallery_manager_path  %> </li>				
+					 <% end %>					
+				 </ul>
+				<% end %> 
 				
-					<%- unless flash[:notice].blank? -%>
-						<div class="notification"><h3><%= flash[:notice] -%></h3></div>
-					<%- end -%>
-							
-					<%- unless flash[:error].blank? -%>
-						<div class="flash_error"><h3><%= flash[:error] -%></h3></div>
-					<%- end -%>
-							<%= yield %>
-						</div>
-					</div> <!-- /inner content -->
-				</div> <!-- /see throu box -->			
-				<div id="logo"><%= image_tag("logo.jpg") %></div>
-						<div id="phone_and_address">
-						<p id="phone">(212)-228-5577 </p>
-						<p id="address"> 822 Broadway - New York, NY 10003</p> 
-						</div>
-			</div><!-- /image on stage -->
-		</div><!-- /stage -->	
-		</div><!-- /main -->
-		<script>
+				<div id="image_on_stage" class="span-18 last push-1">
+			 		<div id="see_through_box" class="span-17">
+			 			content goes here
+			 		</div>
+			  </div>
+				
+				<div id="logo" class="span-4 last"></div>
+		
+				<div id="phone_and_address" class="span-7 push-1">
+					<p id="address"> 822 Broadway - New York, NY 10003</p>
+				</div>
+			</div>
+			
+		</div>		
+	<script>
 		    $(function () {
 				$(window).load(function() {
 					$('#image_on_stage').removeClass('loading');
@@ -96,5 +80,5 @@
 					});							 
 			});		
 		</script>							
-	</body>
+</body>
 </html>

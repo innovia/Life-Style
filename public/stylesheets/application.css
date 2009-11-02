@@ -1,7 +1,5 @@
 /* Application Layout CSS */
 
-ul li a {color: blue;}
-
 a {color: orange; text-decoration: none;}
 
 .orange {color: orange;}
@@ -60,23 +58,76 @@ body {background: url('/images/background.jpg'); color: white;}
 
 #stage{
 	border: 1px solid #999;
-	margin: 0 auto;
 	background-color: white;
-	width: 900px;
-	height: 520px;
 }
 
-#image_on_stage {
- 	width: 698px;
-	height: 465px;
+#admin_menu_bar {
+	color: orange;
+	margin: 0 0 0 40px;
+	padding: 10px 0 5px 0;
+	font-weight: bold;
+}
+
+#admin_menu_bar li{
+ display: inline;
+}
+
+#admin_menu_bar li a{
+  color: red;
+}
+
+#side_links {
+	list-style: none inside !important;
+}
+
+#side_links li a{
 	float: left;
-	margin-top: 27px;
-	margin-left: 27px;
+	margin-left: -2px;
+	width: 19px;
+	color: #ff711b;
+	text-indent: -9999px;
+	background-image: url('/images/side_links.png');
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+		-moz-border-radius-bottomright: 5px;
+		-moz-border-radius-topright: 5px;
+}
+
+#side_links li#brazilian a {
+	background-position:0 -6px;
+	height:132px;
+	margin-top:-41px;
+}
+
+#side_links li#specials a {	
+	background-position:0 -148px;
+	height:77px;
+	margin-left:-21px;
+	margin-top:105px;
+}
+
+#side_links li#appointments a {
+	background-position:0 -233px;
+	height:134px;
+	margin-left:-21px;
+	margin-top:192px;
+}
+
+#side_links li#contact a {
+	background-position:0 -374px;
+	height:101px;
+	margin-left:-21px;
+	margin-top:338px;
+}
+
+
+#image_on_stage {
+	height: 465px;
 }
 
 #see_through_box {
 	background: url('/images/see_through_box.png') repeat;
-	width: 665px;
 	height: 432px;
 	margin: 18px;
 
@@ -92,14 +143,27 @@ body {background: url('/images/background.jpg'); color: white;}
 }
 
 #inner_content{
+	border: 2px solid #999;
+	margin: 0 auto;
 	padding-top: 15px;
-	width: 500px;
+	width: 600px;
+	height: 400px;
+	overflow: auto;
 	display: none;
 }
 
 #logo{
-	display: inline;
+	background:transparent url('/images/logo.jpg');
+	height:513px;
 }
+
+#phone_and_address{
+	font-weight: bold;
+	font-size: 15px;
+	color: #030303;
+}
+
+
 
 .notification {
 				-moz-border-radius-bottomleft: 5px;
@@ -112,7 +176,7 @@ body {background: url('/images/background.jpg'); color: white;}
 				border: 1px solid #6c6;
 				color: #333;
 				background-color: #cfc;
-				padding: 5px 5px 5px 80px;
+				padding: 15px 5px 5px 80px;
 				margin: 10px 0;
 }
 div.notification h3{
@@ -155,7 +219,6 @@ div.warning h5{
 	margin-top: 10px;
 }
 
-
 .flash_error {
 				-moz-border-radius: 5px;
 				background-image:url(/images/icons/large_error.png);
@@ -173,6 +236,17 @@ div.flash_error h3{
 	margin-top: 10px;
 }
 
+.flash_ajax {
+	display: block;
+	position:fixed;
+	bottom:0px;
+	width:100%;
+	z-index:1003;
+	color:#ccc;
+	background-color:#000;
+	padding:4px;
+}
+
 .error {
 				-moz-border-radius: 5px;
 				border: 1px solid #c66;
@@ -180,7 +254,6 @@ div.flash_error h3{
 				padding: 5px;
 				margin: 10px 0;
 }
-
 
 div.error h3{
 	margin-left: 70px;
@@ -211,17 +284,6 @@ div.error h3{
 }
 
 
-
-
-/* General Positioning */
-.left{ float: left; }
-
-.with_a_left_margin{ margin-left: 10px; }
-
-.right{ float: right; }
-
-.clear{	clear: both; }
-
 /* Forms */
 
 .req {
@@ -248,8 +310,6 @@ div.error h3{
 #location_map{
 	margin-left:-61px;	
 }
-
-
 
 #index_title{
 	color: #ffde9f;
@@ -288,26 +348,7 @@ div.error h3{
 	font-size: 150%;
 }
 
-#phone_and_address{
-	font-weight: bold;
-	font-size: 15px;
-	color: #030303;
-	margin-top: -18px;
-}
-
-#phone {
-	float: right;
-	margin-right: 175px;
-}
-
-#address {
-	float: left;
-	margin-left: 47px;
-}
-
-#title {
-	color: #ffde9f;
-}
+#title { color: #ffde9f;}
 
 #minimap{
 	width: 285px;
@@ -329,51 +370,6 @@ div.error h3{
 }
 
 
-
-#side_links {
-	list-style: none;
-	margin-left: -127px;
-}
-
-#side_links li a{
-	float: left;
-	margin-left: -2px;
-	width: 19px;
-	color: #ff711b;
-	text-indent: -9999px;
-	background-image: url('/images/side_links.png');
-	border: 1px solid #999;
-		-moz-border-radius-bottomright: 5px;
-		-moz-border-radius-topright: 5px;
-}
-
-#side_links li#brazilian a {
-	background-position:0 -6px;
-	height:132px;
-	margin-top:-41px;
-}
-
-#side_links li#specials a {	
-	background-position:0 -148px;
-	height:77px;
-	margin-left:-21px;
-	margin-top:105px;
-}
-
-#side_links li#appointments a {
-	background-position:0 -233px;
-	height:134px;
-	margin-left:-21px;
-	margin-top:192px;
-}
-
-#side_links li#contact a {
-	background-position:0 -374px;
-	height:101px;
-	margin-left:-21px;
-	margin-top:338px;
-}
-
 #loader {
   border: 1px solid #ccc;
   margin: 0 auto;
@@ -384,7 +380,6 @@ div.error h3{
 #image_on_stage.loading {
   background: url(/images/spinner.gif) no-repeat center center;
 }
-
 
 .form-item {
 	display: block;
@@ -398,7 +393,6 @@ div.error h3{
 	text-align: right;
 }
 
-
 .female {
 	font-weight: bold;
 	vertical-align: bottom;
@@ -407,7 +401,6 @@ div.error h3{
 .lifter {
 	margin-top: -25px;
 }
-
 
 .day_time_phone {
 	margin-top: -10px;
@@ -425,28 +418,11 @@ div.error h3{
 	margin-top:-30px;
 }
 
-
 #manager{
  height: 200px;
  overflow: hidden;
 }		
 
-
-#admin_menu_bar {
-	color: orange;
-	margin: 0 0 0 29px;
-	padding: 0;
-	font-weight: bold;
-}
-
-#admin_menu_bar li{
- display: inline;
-}
-
-#admin_menu_bar li a{
-  color: red;
-}
-		
 
 table {
 margin:0; padding:0; 
@@ -455,7 +431,6 @@ border:2px solid white;
 width: 100%;
 font: 120%;
 }
-
 
 th {
 	background: #FFBB36 url(/images/sprite.png) repeat-x 0 0; /* header gradient */ 
@@ -475,5 +450,3 @@ td {
  text-align: center !important;
  background-image: url(/images/h300.png);
 }
-
-

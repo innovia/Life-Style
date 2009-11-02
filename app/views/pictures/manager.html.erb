@@ -1,16 +1,55 @@
 <h2 id="title">Gallery Manager</h2>
-
-<ul id="sortable_gallery">
-	<% @pictures.each do |pic| %>
-			<% content_tag_for(:li, pic, :class => "pic") do %>
-				<%= image_tag(pic.photo.url(:thumb)) %>
-			<% end %>
+<div id="sortable_gallery">
+	<% form_for :picture, :url => delete_selected_pictures_path do  -%>
+	<%= submit_tag "Delete Selected" %>
+	
+	<table>
+	<tr>
+		<th><%= check_box_tag 'delete' %></th>
+		<th><%= image_tag("galleryicon.png", :size => '32x32') %></th>
+		<th>Title</th>
+		<th>Created on</th>
+		<th>View</th>
+	</tr>
+	</table>
+<div id="scrollable_gallery">	
+	<table>	
+	<% @pictures.each do |pic| %>		
+				<tr class="pic">
+					<td><%= check_box_tag "picture[]", pic.id  %></td>
+						<% content_tag_for(:td, pic) do %>
+							<%= image_tag(pic.photo.url(:thumb)) %>
+						<% end %>
+					<td><%= pic.title %></td>
+					<td><%= pic.created_at %></td>
+					<td>-></td>
+				</tr>
 	<% end %>
-</ul>
+<% end -%>
+
+	</table>
+</div>
+</div>
 
 <style type="text/css">
-	#sortable_gallery { list-style-type: none; margin: 0; padding: 0; }
-	#sortable_gallery li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 4em; text-align: center; }
+
+	
+	#scrollable_gallery {
+		overflow: auto;
+		height: 285px;
+	}
+
+	
+	#sortable_gallery table{
+		-moz-border-radius-topleft: 5px;
+		-moz-border-radius-topright: 5px;
+	}
+	
+	#sortable_gallery table{ border: 0 !important;}
+	
+	#sortable_gallery td img { margin: 3px 3px 3px 0; padding: 1px;  width: 50px; height: 50px; font-size: 4em; text-align: center; }
+	
+	#sortable_gallery th { background: url('images/th_bkg.jpg') repeat-x !important; padding: 0 !important; border: 0 !important;}
 </style>
 
 
@@ -18,9 +57,14 @@
 <script type="text/javascript" charset="utf-8">
 	$('#sortable_gallery').sortable({
 																					items:'.pic', 
-																					containment:'parent', 
+																					containment:'parent',
+																					axis: 'y', 
 																					cursor: 'crosshair',
 																					update: function() {
 	  $.post('<%= sort_pictures_path %>', $(this).sortable('serialize'));
 	}});
+	
+	$('#delete_selected_pictures').bind('click', function(event) {
+		alert('sss');
+	});
 </script>

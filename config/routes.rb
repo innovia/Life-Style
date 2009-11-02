@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
  
   map.gallery_manager 'gallery_manager', :controller => "pictures", :action => 'manager' 
   
-  map.resources :pictures, :collection => { :sort => :post }
+  map.resources :pictures, :collection => { :sort => :post, :delete_selected => :post }
   
   map.resources :pages, :users, :categories, :services, :stylists, :products, :specials
   

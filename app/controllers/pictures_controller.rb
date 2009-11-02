@@ -2,7 +2,7 @@ class PicturesController < ApplicationController
   before_filter :require_user, :except => :index
   
   def manager
-    @pictures = Picture.paginate(:per_page => 9, :page => params[:page], :order => "position")  
+    @pictures = Picture.all(:order => "position")  
   end
   
   def sort
@@ -11,6 +11,15 @@ class PicturesController < ApplicationController
     end
     render :nothing => true
   end
+  
+  def delete_selected
+      params[:picture].each do |pic|
+        Picture.find(pic).destroy
+      end
+      flash[:notice] = "Requested pictures have been deleted." 
+      redirect_to gallery_manager_path
+  end
+  
   
   def index
     @pictures = Picture.paginate(:per_page => 9, :page => params[:page])    
@@ -55,14 +64,16 @@ class PicturesController < ApplicationController
   end
   
   
-  def destroy
-     @picture = Picture.find(params[:id])
-     if @picture.destroy
-       flash[:notice] = "product removed"
-       redirect_to pictures_url
-     else 
-       flash[:error] = "Could not remove the product"
-       render "index"
-     end
-   end
+  
+  def destroy 
+      @picture = Picture.find(params[:id])
+      if @picture.destroy
+        flash[:notice] = "product removed"
+        redirect_to pictures_url
+      else 
+        flash[:error] = "Could not remove the product"
+        render "index"
+      end 
+  end
+  
 end
