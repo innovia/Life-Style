@@ -59,6 +59,7 @@ body {background: url('/images/background.jpg'); color: white;}
 #stage{
 	border: 1px solid #999;
 	background-color: white;
+	height: 520px;
 }
 
 #admin_menu_bar {
@@ -124,6 +125,7 @@ body {background: url('/images/background.jpg'); color: white;}
 
 #image_on_stage {
 	height: 465px;
+	margin-top: 25px;
 }
 
 #see_through_box {
@@ -143,12 +145,11 @@ body {background: url('/images/background.jpg'); color: white;}
 }
 
 #inner_content{
-	border: 2px solid #999;
-	margin: 0 auto;
-	padding-top: 15px;
-	width: 600px;
-	height: 400px;
-	overflow: auto;
+	height:400px;
+	margin:0 auto 0 24px;
+	overflow:auto;
+	padding-top:15px;
+	width:645px;
 	display: none;
 }
 
@@ -157,13 +158,14 @@ body {background: url('/images/background.jpg'); color: white;}
 	height:513px;
 }
 
-#phone_and_address{
+.footer {
 	font-weight: bold;
 	font-size: 15px;
 	color: #030303;
 }
 
-
+#phone {float: left;}
+#address {margin-left: 450px;}
 
 .notification {
 				-moz-border-radius-bottomleft: 5px;
