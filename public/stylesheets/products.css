@@ -61,17 +61,6 @@ a.disabled {
 	visibility:hidden !important;		
 }
 
-a.prev, a.prevPage {
-	background-image:url(/images/scrollable/Services/left.png);
-	margin-top:100px;
-	}
-
-a.next, a.nextPage {
-	background-image:url(/images/scrollable/Services/right.png);
-	background-repeat: no-repeat;
-	left:810px;
-	margin-top:100px;
-}
 
 div.prev_product {
 	background-image:url(/images/scrollable/arrow/left.png);

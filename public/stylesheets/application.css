@@ -1,3 +1,6 @@
+/* ie png fix */
+ img, div { behavior: url(/iepngfix/iepngfix.htc) }
+
 /* Application Layout CSS */
 
 a {color: orange; text-decoration: none;}
@@ -9,8 +12,6 @@ body {background: url('/images/background.jpg'); color: white;}
 #header {
 	height:50px;
 	margin: 0 auto;
-	position:relative;
-	width:900px;
 	z-index:9998;
 }
 
@@ -57,16 +58,18 @@ body {background: url('/images/background.jpg'); color: white;}
 #header.location #navbar li#location a { background-position: -775px -150px !important; }
 
 #stage{
-	border: 1px solid #999;
+	border-top: 1px solid #999;
+	border-left: 1px solid #999;
+	border-bottom: 1px solid #999;;
 	background-color: white;
-	height: 520px;
+	height: 513px;
 }
 
 #admin_menu_bar {
 	color: orange;
-	margin: 0 0 0 40px;
-	padding: 10px 0 5px 0;
 	font-weight: bold;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 #admin_menu_bar li{
@@ -125,12 +128,15 @@ body {background: url('/images/background.jpg'); color: white;}
 
 #image_on_stage {
 	height: 465px;
-	margin-top: 25px;
+	margin-left:25px;
+	margin-top:25px;
 }
 
 #see_through_box {
 	background: url('/images/see_through_box.png') repeat;
+	*background: url('/images/see_through_ie.png');
 	height: 432px;
+	width: 670px;
 	margin: 18px;
 
 	-moz-border-radius-topleft: 15px;
@@ -146,16 +152,17 @@ body {background: url('/images/background.jpg'); color: white;}
 
 #inner_content{
 	height:400px;
-	margin:0 auto 0 24px;
 	overflow:auto;
 	padding-top:15px;
-	width:645px;
 	display: none;
 }
 
 #logo{
 	background:transparent url('/images/logo.jpg');
 	height:513px;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
 }
 
 .footer {
@@ -322,9 +329,8 @@ div.error h3{
 
 #white_banner{
 	color: #7b7b7b;
-	margin-left: -83px;
 	margin-top: 159px;
-	width: 665px;
+	w/idth: 690px;
 	height: 59px;
 	background-image: url('/images/white_banner.png');
 }
@@ -336,9 +342,8 @@ div.error h3{
 
 #hours_box {
 	color: #ffde9f;
-	margin-top: 29px;
-	margin-left: 290px;
-	margin-right: -82px;
+	margin-left: 300px;
+	padding-top: 15px;
 }
 
 #hours {
@@ -420,6 +425,10 @@ div.error h3{
 	margin-top:-30px;
 }
 
+#padded_content{
+	padding: 25px;
+}
+
 #manager{
  height: 200px;
  overflow: hidden;
@@ -451,4 +460,185 @@ tr {
 td {
  text-align: center !important;
  background-image: url(/images/h300.png);
+}
+
+
+.admin_links{
+	display: inline;
+	margin-left: -8px;
+}
+
+/*************
+/* @Services */
+#title{ padding-bottom: 5px;}
+
+.category_header{color: orange; margin:0 auto; width:200px;  padding-bottom: 10px;}
+
+.category_header h4{margin: 0 auto; display: inline;}
+
+/* Scrollable Services*/
+/* 
+	root element for the scrollable. 
+	when scrolling occurs this element stays still. 
+*/
+div.scrollable {
+	position:relative;
+	overflow:hidden;	 	
+	width: 465px;	
+	height: 300px;
+	margin: 0 auto;
+}
+
+/* 
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a super large width to accomodate scrollable items.
+	it's enough that you set width and height for the root element and
+	not for this element.
+*/
+div.scrollable div.items {	
+	width:20000em;	
+	position:absolute;
+	clear:both;		
+}
+
+div.scrollable div.items div.category {
+	float:left;
+ 	width: 450px;
+	margin-right: 50px;	
+}
+
+/* Scrollable Interface Buttons */
+a.prev_photo , a.next_photo {
+	display:block;
+	width:100px;
+	height:50px;
+	position: absolute;
+	top: 145px;
+	cursor:pointer;
+}
+
+/* mouseover state */
+a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
+	background-position:0px -48px;		
+}
+
+a.disabled {
+	visibility:hidden !important;		
+}
+
+a.prevphoto{
+	background-image:url(/images/scrollable/Services/left.png);
+	background-repeat: no-repeat;
+	margin-top:100px;
+	margin-left: -70px;
+	z-index: 9998;
+	}
+
+a.next, a.nextPage {
+	background-image:url(/images/scrollable/Services/right.png);
+	background-repeat: no-repeat;
+	left:810px;
+	margin-top:100px;
+	margin-left: 55px;
+}
+
+
+
+/*************
+/* @Products */
+
+#products_menu {
+	width: 500px;
+	height: 395px;
+}
+
+#products_menu img {
+	margin-left: 10px;
+}
+#products_menu h2{
+	display: inline;
+}
+
+#product_info_text_area{
+	width: 400px;
+	height: 120px;
+}
+
+div.vertical_scrollable{
+	position:relative; 
+  	overflow:hidden;
+	height: 285px;      
+	width: 500px;
+}
+
+div.vertical_scrollable div.items{     
+    position:absolute; 
+    height:20000em;     
+}
+
+.product_title{
+	color: orange;
+	padding-top: 5px;
+}
+
+
+.product_shelf{
+	height: 100px;
+	border-bottom: 5px solid white;
+}
+
+/* mouseover state */
+a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
+	background-position:0px -48px;		
+}
+
+a.disabled {
+	visibility:hidden !important;		
+}
+
+
+div.prev_product {
+	background-image:url(/images/scrollable/arrow/left.png);
+	width: 18px;
+	margin-left: 290px;
+	text-indent: 9999px;
+	cursor: pointer;
+}
+
+div.next_product {
+	background-image:url(/images/scrollable/arrow/right.png);
+	background-repeat: no-repeat;
+	margin-left: 290px;
+	text-indent: 9999px;
+	cursor: pointer;
+}
+
+/*********** navigator ***********/
+/* position and dimensions of the navigator */
+div.navi {
+	border: 1px solid red;
+	margin-top: 10px;
+	margin-left:260px;
+	width:200px;
+	height:20px;
+}
+
+/* items inside navigator */
+div.navi a {
+	width:8px;
+	height:8px;
+	float:left;
+	margin:3px;
+	background:url('/images/scrollable/arrow/navigator.png') 0 0 no-repeat;
+	display:block;
+}
+
+/* mouseover state */
+div.navi a:hover {
+	background-position:0 -8px;      
+}
+
+/* active state (current page state) */
+div.navi a.active {
+	background-position:0 -16px;     
 }

@@ -1,4 +1,5 @@
-<h1>Login</h1>
+<div id="padded_content">
+<h2 id="title">Login</h2>
 
 <% form_for @user_session, :url => user_session_path do |f| %>
   <%= f.error_messages %>
@@ -12,3 +13,4 @@
   <br />
   <%= f.submit "Login" %>
 <% end %>
+</div>
