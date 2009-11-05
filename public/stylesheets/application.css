@@ -17,13 +17,13 @@ body {background: url('/images/background.jpg'); color: white;}
 
 #navbar { margin: 0; padding: 0; }
 #header #navbar li { display: inline; }
-#header #navbar li a { float: left; width: 125px; height: 0; padding-top: 50px; overflow: hidden; }
-#header #navbar li a.home{width: 150px;}
+#header #navbar li a { float: left; width: 152px; height: 0; padding-top: 50px; overflow: hidden; }
+#header #navbar li a.home{width: 152px;}
 #header #navbar li a { background-image: url(/images/navbar.png); _background-image: url(/images/navbar.gif); background-repeat: no-repeat; }
 
 /* BUTTONS */
 #header #navbar li#home a { background-position: 0 0; }
-#header #navbar li#services a { background-position: -150px 0; }
+#header #navbar li#services a { background-position: -152px 0; }
 #header #navbar li#stylists a { background-position: -275px 0; }
 #header #navbar li#products a { background-position: -400px 0; }
 #header #navbar li#pictures a { background-position: -525px 0; }
@@ -58,39 +58,52 @@ body {background: url('/images/background.jpg'); color: white;}
 #header.location #navbar li#location a { background-position: -775px -150px !important; }
 
 #stage{
-	border-top: 1px solid #999;
-	border-left: 1px solid #999;
-	border-bottom: 1px solid #999;;
+	border: 1px solid #999;
 	background-color: white;
 	height: 513px;
 }
 
+#logo{
+	background:transparent url('/images/logo.png') no-repeat;
+	height:513px;
+}
+
+#admin_menu_container {
+	height: 25px;
+}
+
 #admin_menu_bar {
-	color: orange;
+	color: black;
 	font-weight: bold;
+	display: inline;
 	margin: 0 !important;
-	padding: 0 !important;
 }
 
 #admin_menu_bar li{
- display: inline;
+ 	display: inline;
 }
 
 #admin_menu_bar li a{
   color: red;
 }
 
+#side_links_container {
+ padding-top: 20px;
+}
+
 #side_links {
+	display: inline;
 	list-style: none inside !important;
+	margin: 0 !important;
 }
 
 #side_links li a{
 	float: left;
-	margin-left: -2px;
 	width: 19px;
-	color: #ff711b;
 	text-indent: -9999px;
-	background-image: url('/images/side_links.png');
+	background: white;
+	margin-bottom: 10px;
+	background-image: url('/images/side_links.jpg');
 	border-top: 1px solid #999;
 	border-right: 1px solid #999;
 	border-bottom: 1px solid #999;
@@ -101,35 +114,27 @@ body {background: url('/images/background.jpg'); color: white;}
 #side_links li#brazilian a {
 	background-position:0 -6px;
 	height:132px;
-	margin-top:-41px;
 }
 
 #side_links li#specials a {	
 	background-position:0 -148px;
 	height:77px;
-	margin-left:-21px;
-	margin-top:105px;
 }
 
 #side_links li#appointments a {
 	background-position:0 -233px;
 	height:134px;
-	margin-left:-21px;
-	margin-top:192px;
 }
 
 #side_links li#contact a {
 	background-position:0 -374px;
 	height:101px;
-	margin-left:-21px;
-	margin-top:338px;
 }
 
 
 #image_on_stage {
 	height: 465px;
-	margin-left:25px;
-	margin-top:25px;
+	margin-left: 10px;
 }
 
 #see_through_box {
@@ -157,13 +162,7 @@ body {background: url('/images/background.jpg'); color: white;}
 	display: none;
 }
 
-#logo{
-	background:transparent url('/images/logo.jpg');
-	height:513px;
-	border-top: 1px solid #999;
-	border-right: 1px solid #999;
-	border-bottom: 1px solid #999;
-}
+
 
 .footer {
 	font-weight: bold;
@@ -307,9 +306,11 @@ div.error h3{
 
 
 .show{
-	border: 3px solid red;
+	border: 1px solid red;
 	color: black;
 }
+
+.hide{ display: none;}
 
 .about_us{
 	margin-left:-69px;
