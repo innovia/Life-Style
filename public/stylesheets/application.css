@@ -16,14 +16,15 @@ body {background: url('/images/background.jpg'); color: white;}
 }
 
 #navbar { margin: 0; padding: 0; }
-#header #navbar li { display: inline; }
-#header #navbar li a { float: left; width: 152px; height: 0; padding-top: 50px; overflow: hidden; }
-#header #navbar li a.home{width: 152px;}
+#header #navbar li { display: inline;}
+#header #navbar li a { float: left; width: 125px; height: 0; padding-top: 50px; overflow: hidden; }
+#header #navbar li a.home{width: 150px;}
 #header #navbar li a { background-image: url(/images/navbar.png); _background-image: url(/images/navbar.gif); background-repeat: no-repeat; }
+#header #navbar li#location a { width: 135px; }
 
 /* BUTTONS */
 #header #navbar li#home a { background-position: 0 0; }
-#header #navbar li#services a { background-position: -152px 0; }
+#header #navbar li#services a { background-position: -150px 0; }
 #header #navbar li#stylists a { background-position: -275px 0; }
 #header #navbar li#products a { background-position: -400px 0; }
 #header #navbar li#pictures a { background-position: -525px 0; }
@@ -422,8 +423,7 @@ div.error h3{
 }
 
 .pages_wrapper{
-	margin-left:-53px;
-	margin-top:-30px;
+	margin-left: 40px;
 }
 
 #padded_content{
@@ -436,7 +436,7 @@ div.error h3{
 }		
 
 
-table {
+#pages_manager {
 margin:0; padding:0; 
 border-collapse:separate; *border-collapse:collapse; border-spacing:0;
 border:2px solid white;
@@ -444,7 +444,7 @@ width: 100%;
 font: 120%;
 }
 
-th {
+#pages_manager th {
 	background: #FFBB36 url(/images/sprite.png) repeat-x 0 0; /* header gradient */ 
 	color: #333;
 	font-weight: bold;
@@ -454,11 +454,11 @@ th {
 	border-right:1px solid #CBCBCB;/*  inner column border */
 }
 
-tr {
+#pages_manager tr {
  border-bottom: 5px solid red;
 }
 
-td {
+#pages_manager td {
  text-align: center !important;
  background-image: url(/images/h300.png);
 }
@@ -469,177 +469,117 @@ td {
 	margin-left: -8px;
 }
 
-/*************
-/* @Services */
-#title{ padding-bottom: 5px;}
 
-.category_header{color: orange; margin:0 auto; width:200px;  padding-bottom: 10px;}
+/*********************
+	Stylists 
+*********************/
 
-.category_header h4{margin: 0 auto; display: inline;}
-
-/* Scrollable Services*/
-/* 
-	root element for the scrollable. 
-	when scrolling occurs this element stays still. 
-*/
-div.scrollable {
-	position:relative;
-	overflow:hidden;	 	
-	width: 465px;	
-	height: 300px;
-	margin: 0 auto;
+#triggers {
+	padding: 15px;
 }
 
-/* 
-	root element for scrollable items. Must be absolutely positioned
-	and it should have a super large width to accomodate scrollable items.
-	it's enough that you set width and height for the root element and
-	not for this element.
-*/
-div.scrollable div.items {	
-	width:20000em;	
-	position:absolute;
-	clear:both;		
+#stylist_photo_index img.thumb{
+	padding: 10px;
 }
 
-div.scrollable div.items div.category {
-	float:left;
- 	width: 450px;
-	margin-right: 50px;	
-}
-
-/* Scrollable Interface Buttons */
-a.prev_photo , a.next_photo {
-	display:block;
-	width:100px;
-	height:50px;
-	position: absolute;
-	top: 145px;
-	cursor:pointer;
-}
-
-/* mouseover state */
-a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
-	background-position:0px -48px;		
-}
-
-a.disabled {
-	visibility:hidden !important;		
-}
-
-a.prevphoto{
-	background-image:url(/images/scrollable/Services/left.png);
-	background-repeat: no-repeat;
-	margin-top:100px;
-	margin-left: -70px;
-	z-index: 9998;
-	}
-
-a.next, a.nextPage {
-	background-image:url(/images/scrollable/Services/right.png);
-	background-repeat: no-repeat;
-	left:810px;
-	margin-top:100px;
-	margin-left: 55px;
-}
-
-
-
-/*************
-/* @Products */
-
-#products_menu {
-	width: 500px;
-	height: 395px;
-}
-
-#products_menu img {
-	margin-left: 10px;
-}
-#products_menu h2{
+#stylist_photo_index h2{
 	display: inline;
 }
 
-#product_info_text_area{
-	width: 400px;
-	height: 120px;
-}
-
-div.vertical_scrollable{
-	position:relative; 
-  	overflow:hidden;
-	height: 285px;      
+#stylists_array {
+	list-style: none;
 	width: 500px;
+	margin: 0 auto;
 }
 
-div.vertical_scrollable div.items{     
-    position:absolute; 
-    height:20000em;     
+#stylists_array li{
+	width: 145px;
+	height: 117px;
+	position: relative;
 }
 
-.product_title{
+#stylists_array li a{
 	color: orange;
-	padding-top: 5px;
 }
 
+#stylists_array li .delete_icon{
+	position: absolute;
+	top: -13px;
+	left: 89px;
+}
 
-.product_shelf{
+#stylists_array li .stylist_name{
+	position: absolute;
+	top: 87px;
+	left: 10px;
+}
+
+#gallery_photo_description{
 	height: 100px;
-	border-bottom: 5px solid white;
+	width: 350px;
 }
 
-/* mouseover state */
-a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
-	background-position:0px -48px;		
+.edit_stylist_icon {
+	display: inline;
+	float: left;
+	padding-right:10px;
 }
 
-a.disabled {
-	visibility:hidden !important;		
+.stylist_bio_photo {
+	float: left;
+	padding: 0 15px 15px 0;
+}
+
+.stylist_details {
+	width: 300px;
+}
+/* the overlayed element */ 
+.apple_overlay { 
+    display:none; 
+    background-image:url(/images/overlay/transparent.png); 
+    width:640px;              
+    padding:35px;  
+    font-size:11px; 
+} 
+ 
+/* default close button positioned on upper right corner */ 
+.apple_overlay div.close { 
+    background-image:url(/images/overlay/close.png); 
+    position:absolute; right:5px; top:5px; 
+    cursor:pointer; 
+    height:35px; 
+    width:35px; 
 }
 
 
-div.prev_product {
-	background-image:url(/images/scrollable/arrow/left.png);
-	width: 18px;
-	margin-left: 290px;
-	text-indent: 9999px;
-	cursor: pointer;
+#photos_array {
+	list-style: none;
+	width: 500px;
+	margin: 0 auto;
 }
 
-div.next_product {
-	background-image:url(/images/scrollable/arrow/right.png);
-	background-repeat: no-repeat;
-	margin-left: 290px;
-	text-indent: 9999px;
-	cursor: pointer;
+#photos_array li{
+	width: 145px;
+	height: 100px;
+	position: relative;
 }
 
-/*********** navigator ***********/
-/* position and dimensions of the navigator */
-div.navi {
-	border: 1px solid red;
-	margin-top: 10px;
-	margin-left:260px;
-	width:200px;
-	height:20px;
+#photos_array li a{
+	color: orange;
 }
 
-/* items inside navigator */
-div.navi a {
-	width:8px;
-	height:8px;
-	float:left;
-	margin:3px;
-	background:url('/images/scrollable/arrow/navigator.png') 0 0 no-repeat;
-	display:block;
+#photos_array li .delete_icon{
+	position: absolute;
+	top: -13px;
+	left: 89px;
 }
 
-/* mouseover state */
-div.navi a:hover {
-	background-position:0 -8px;      
+#edit_stylist {
+	margin-left:-50px;
+	margin-top:-30px;
+	width:600px;
 }
 
-/* active state (current page state) */
-div.navi a.active {
-	background-position:0 -16px;     
+#stylist_form_name {
+	margin-top: -30px;
 }

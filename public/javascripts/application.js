@@ -1,7 +1,7 @@
 $(document).ready(function() {
 		
 	$('#inner_content').fadeTo(500, 1).fadeIn("3000");
-
+		
 	gallery();
 	
 	enable_edit(); 
@@ -13,11 +13,9 @@ $(document).ready(function() {
 	        vertical:true,  
 	        size: 1,
 				  prev: 'div.prev_product',
-				 	next: 'div.next_product'
+				  next: 'div.next_product'
 	})
 
-	$('.date_picker').datepicker();
-	
 	
 	
 	function gallery(){

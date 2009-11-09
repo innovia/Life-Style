@@ -13,62 +13,67 @@ div.apple_overlay div.close {
 </style> 
 <![endif]-->
 <div id="stylist_photo_index">
-	<h2 id="title">Stylists</h2>
+	<h2 id="title" class="prepend-1">Stylists</h2>
 		<% if logged_in? %>
-			<%= link_to image_tag("icons/add.png"), new_stylist_url, :title => "add stylist"%>
+			<%= link_to image_tag("add_service.png"), new_stylist_url, :title => "add stylist"%>
 		<% end %>
 	
 	<% if @stylists.empty? %>
 		<% unless logged_in? %>
 		 <h3> Coming soon... </h3>
 		<%- else -%>
-		<div class="warning">	
-			<h2>There are no Stylists in the database</h2>
-			<p>Start by adding a new Stylist</p>
-			<p><%= link_to "add new stylist", new_stylist_path %></p>	
-		</div>
+			<div class="warning">	
+				<h2>There are no Stylists in the database</h2>
+				<p>Start by adding a new Stylist</p>
+				<p><%= link_to "add new stylist", new_stylist_path %></p>	
+			</div>
 		<% end %>	
 	<% else %>
-
-		<!-- "prev page" button --> 
-		<div class="navi prevPage"></div> 
-
-		<!-- root element for scrollable --> 
-			<div id="triggers"> 
-			<ul id="stylists_array" class="container">
-			<% @stylists.each_with_index do |stylist, index| %>
-				<li class="column">
-					<%= image_tag(stylist.photo.url(:thumb), :rel => "#photo#{index}" ) %>
-					<% if logged_in? %>
-			  	<%= link_to image_tag("icons/large_error.png", :size => "24x24"), stylist_path(stylist), 
+	
+	<% content_for :stylists_thumbs do %>
+		<% @stylists.each_with_index do |stylist, index| %>
+			<li class="column">
+				<%= image_tag(stylist.photo.url(:thumb),:size => '100x80', :rel => "#photo#{index}" ) %>
+				<% if logged_in? %>
+  				<%= link_to image_tag("icons/large_error.png",  :size => "24x24"), stylist_path(stylist), 
 																													:title => "remove stylist",
-																													:id => "delete icon",
 																													:class => "delete_icon",
 																													:confirm => 'Are you sure?', 
 																													:method => :delete %>
-			  	<% end -%>
+  			<% end -%>
 			</li>
-			<% end -%>
+		<%- end -%>
+	<%- end -%>
+		
+	<% content_for :stylists do %>		
+		<% @stylists.each_with_index do |stylist, index| %>
+			<div class="apple_overlay black" id="photo<%= index %>"> 
+	  		<div class="stylist_bio_photo column"><%= image_tag(stylist.photo.url(:original)) %></div>
+				<div class="stylist_details column"> 
+		  		<h3><strong><%= stylist.full_name.capitalize %></strong></h3> 
+					<h4><%= stylist.bio.capitalize %></h4> 
+	 			</div> 
+						<% if logged_in? %>
+							<%= link_to image_tag("edit.png", :class => 'edit_stylist_icon') + "<h4> Edit Stylist Bio</h4>", edit_stylist_path(stylist) %>
+						<% end %>
+	  	</div> 
+		<% end -%>
+	<%- end -%>
+		
+		<!-- "prev page" button --> 
+		<div class="navi prevPage"></div> 
+
+		<div id="triggers"> 
+			<ul id="stylists_array" class="container">
+				<%= yield :stylists_thumbs %>
 			</ul>
-			</div>
+		</div>
 		
 		<!-- "next page" button --> 
 		<div class="navi nextPage"></div> 
 		
-		<% @stylists.each_with_index do |stylist, index| %>
-		<div class="apple_overlay black" id="photo<%= index %>"> 
-	  	<%= image_tag(stylist.photo.url(:original)) %>
-			<div class="details"> 
-		  	<h3><%= stylist.full_name.capitalize %></h3> 
-				<h4><%= stylist.bio.capitalize %></h4> 
-				<% if logged_in? %>
-					<%= link_to image_tag("edit.png"), edit_stylist_path(stylist) %>
-				<% end %>
-	 		</div> 
-	  </div> 
-		<% end -%>
-		
-	
+		<%= yield :stylists %>
+
 		<%= will_paginate @stylists %>
-	<% end -%>
+<% end -%>
 </div>

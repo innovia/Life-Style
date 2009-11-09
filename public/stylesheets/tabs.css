@@ -1,0 +1,93 @@
+/* everything is constructed with a single background image */
+/* root element for tabs */
+#services_tabs {	
+	border-bottom:1px solid wheat;	
+	height:30px;
+	margin:0 !important; 
+	padding:0;
+	list-style: none outside;
+	width: 100%;
+}
+
+/* single tab */
+#services_tabs li { 
+	float:left; 
+	margin:0; 
+	padding:0; 
+	text-indent:0; 
+}
+
+/* a- tag inside single tab */
+#services_tabs li a {
+	float:left;
+	display:block;
+	padding:5px 10px;	
+	text-decoration:none;
+	border:1px solid wheat;	
+	border-bottom:0px;
+	height:18px;
+	background-color:#333;
+	color: wheat;
+	margin-right:2px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright:4px;
+	position:relative;
+	top:1px	
+}
+
+#services_tabs a:active {
+	outline: none;
+}
+
+#services_tabs a:hover {
+	background-color: #f7f7f7;	
+	color:#333;
+}
+
+/* selected tab */
+#services_tabs a.current {
+	background-color:#ddd;
+	border-bottom:2px solid #ddd;	
+	color:#000;	
+	cursor:default;
+}
+
+
+/* panes */
+#services_panes {
+	width: 620px;
+	height:300px;	
+}
+
+
+#services_panes {
+	position:relative;
+	overflow:hidden;
+	clear:both;
+}
+
+/* override single pane */
+#services_panes div.pane {
+	background: transparent url(/images/h300.png) repeat-x;
+	float: left;
+	display:block;
+	border-right: 1px solid wheat;
+	border-bottom: 1px solid wheat;
+	border-left: 1px solid wheat;
+	min-height:150px;
+	cursor:pointer;
+	width: 568px;
+	margin-right: 50px;
+	font-size: 16px;
+	color: #FFB;
+	padding: 10px;
+}
+
+/* our additional wrapper element for the items */
+#services_panes .items {
+	width:20000em;
+	position:absolute;
+	clear:both;
+	margin:0;
+	padding:0;
+}
