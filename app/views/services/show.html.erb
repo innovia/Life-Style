@@ -1,14 +1,41 @@
-<h3 class="category_header"><%= @service.category.name.upcase %></h3>
+<div class="prepend-1">
+	<h2 id="title"><%= @service.category.name.upcase %></h3>
+	<h3><%= @service.name %></h3>
+<table id="stylist_levels">
+	<tr>
+	<th>Stylist Level</th>
+	<th>Start Price</th>
+	<th>End Price</th>
+	</tr>
+	<tr>
+		<td>Beginner</td>
+		<td><%= @service.beginner_start_price.nil? ? 'Not Set' : number_to_currency(@service.beginner_start_price, :precision => 0) %> </td>
+		<td>
+		<% unless @service.beginner_start_price.nil? %>
+		<%= @service.beginner_end_price.nil? ? '& up' : number_to_currency(@service.beginner_end_price, :precision => 0)  %> </td>
+		<% end -%>
+	</tr>
+	<tr>
+		<td>Intermidiate</td>
+		<td><%= @service.intermidiate_start_price.nil? ? 'Not Set' : number_to_currency(@service.intermidiate_start_price, :precision => 0) %> </td>
+		<td>
+		<% unless @service.intermidiate_start_price.nil? %>
+		<%= @service.intermidiate_end_price.nil? ? '& up' : number_to_currency(@service.intermidiate_end_price, :precision => 0)  %> </td>
+		<% end -%>
+	</tr>
+	<tr>
+		<td>Senior</td>
+		<td><%= @service.senior_start_price.nil? ? 'Not Set' : number_to_currency(@service.senior_start_price, :precision => 0) %> </td>
+		<td>
+		<% unless @service.senior_start_price.nil? %>
+		<%= @service.senior_end_price.nil? ? '& up' : number_to_currency(@service.senior_end_price, :precision => 0) %>
+		<% end -%>
+		</td>
+	</tr>
+</table>
 
-<%= @service.name %>
-<%= number_to_currency(@service.start_price, :precision => 0)  %> 
-<% if @service.end_price.nil? %>
-	+
-<% else %>
-- <%=number_to_currency(@service.end_price, :precision => 0)  %>
-<% end %>
 
 <p>
 <%= link_to "Edit", edit_service_path(@service) %> |
 <%= link_to "<< Services", services_path %>
-</p>
+</p></div>

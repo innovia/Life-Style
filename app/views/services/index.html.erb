@@ -19,33 +19,73 @@
 	<% content_for :panes do %>
 		<div class="pane"> <!-- pane -->
 		<% if cat.services.empty? %>
-			 <span class="pane"><h4> No items </h4></span>
+			 <span class="pane">
+				<%= link_to image_tag("add_service.png", :size => "24x24") + " add service", new_service_url, :title => "add service"%>
+			 </span>
 		<% end %>
-		<table>
-		<%- cat.services.each do |service| -%> 
+		<table id="services_list" cellpadding="2" cellspacing="2" border="1">
+				<tr>
+					<th rowspan="2">Service description</th>
+					<th colspan="3">Price </th>
+					<% if logged_in? %>
+					<th rowspan="2">edit</th>
+						<th rowspan="2">delete</th>
+							<th rowspan="2">add</th>
+					<% end %>
+				</tr>
+				<tr>
+						<th class="price">Beginner</th>
+						<th class="price">Intermediate</th>
+						<th class="price">Senior</th>
+				</tr>
+			
+				<%- cat.services.each do |service| -%> 		
 				<tr>
 					<td><%= service.name %></td>
-					<td><%= number_to_currency(service.start_price, :precision => 0) %>
-						<%= service.end_price.nil? ? '&' : '-' %>		
-						<%= number_to_currency(service.end_price, :precision => 0) %>
-						<%= service.end_price.nil? ? 'up' : ' ' %>
+
+					<td class="price">
+					<%= service.beginner_start_price.nil? ? 'Not Set' : number_to_currency(service.beginner_start_price, :precision => 0) %> 
+					-
+					<% unless service.beginner_start_price.nil? %>
+					<%= service.beginner_end_price.nil? ? '& up' : number_to_currency(service.beginner_end_price, :precision => 0).to_s  %> 
+					<% end -%>
 					</td>
+					
+					<td class="price">
+					<%= service.intermidiate_start_price.nil? ? 'Not Set' : number_to_currency(service.intermidiate_start_price, :precision => 0) %>
+					-
+					<% unless service.intermidiate_start_price.nil? %>
+					<%= service.intermidiate_end_price.nil? ? '& up' : number_to_currency(service.intermidiate_end_price, :precision => 0)  %> 
+					<% end -%>
+					</td>
+					
+					<td class="price">
+					<%= service.senior_start_price.nil? ? 'Not Set' : number_to_currency(service.senior_start_price, :precision => 0) %> 
+					-
+					<% unless service.senior_start_price.nil? %>
+					<%= service.senior_end_price.nil? ? '& up' : number_to_currency(service.senior_end_price, :precision => 0) %>
+					<% end -%>
+					</td>
+								
 					<% if logged_in? %>
-					<td>
+					<td class="admin_link">
 					<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_service_path(service), :title => "edit service" %>
 					</td>
-					<td><%= link_to image_tag("icons/large_error.png", :size => "24x24"), service_path(service), 
+					
+					<td class="admin_link"><%= link_to image_tag("icons/large_error.png", :size => "24x24"), service_path(service), 
 																															:title => "remove service",
 																															:confirm => 'Are you sure?', 
 																															:method => :delete %></td>
 					</td>
-					<% if cat.services.last == service %>
-						<% if logged_in? %>
-						<td><%= link_to image_tag("add_service.png", :size => "24x24") + " add service", new_service_url, :title => "add service"%> </td>
-						<% end -%>
-					<% end %>
+					
+						<% if cat.services.last == service %>
+							<td class="admin_link"><%= link_to image_tag("add_service.png", :size => "24x24"), new_service_url, :title => "add service"%> </td>
+						<% end %>
+					
+					
+					
 					 <% end %>
-			</tr>
+				</tr>
 		<% end -%> <%# end of services per category %>
 		</table>
 		
