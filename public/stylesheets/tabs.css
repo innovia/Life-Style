@@ -69,6 +69,7 @@
 /* override single pane */
 #services_panes div.pane {
 	background: transparent url(/images/h300.png) repeat-x;
+	filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src='/images/h300.png');
 	float: left;
 	display:block;
 	border-right: 1px solid wheat;

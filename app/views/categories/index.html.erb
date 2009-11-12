@@ -1,19 +1,26 @@
-<h1>Services Categories</h1>
-
-<table>
+<div class="prepend-1">
+	<h2 id="title">Services Categories
+	<%= link_to image_tag("add_service.png", :size => "24x24"), new_category_url(@category), :title => "add category"%> 
+</h2>
+<table id="stylist_levels">
 	<tr>
-	<th>name</th>
-	<th>edit</th>
-	<th>delete</th>
+	<th>Category name</th>
+	<th>Edit</th>
+	<th>Delete</th>
 	</tr>
 	<% @categories.each do |category| %>
 	<tr>
 		<td><%= category.name %></td>
-		<td align="center"><%= link_to "edit", edit_category_path(category) %></td>
-		<td align="center"><%= link_to 'X', category_path(category), :confirm => 'Are you sure?', :method => :delete %></td>
+		<td align="center"><%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_category_path(category), :title => "edit category" %>
+		</td>
+		<td align="center"><%= link_to image_tag("icons/large_error.png", :size => "24x24"), category_path(category), 
+																													:title => "remove category",
+																													:confirm => 'Are you sure?', 
+																													:method => :delete %>
+		</td>
 	</tr>
 	<%- end -%>
 </table>
-<%= link_to "Add a new category", new_category_path(@category) %>
 
-<p><%= link_to "Services page", services_path %></p>
+<h3 class="back"><%= link_to "<< Services page", services_path %></h3>
+</div>

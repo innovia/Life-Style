@@ -1,30 +1,27 @@
-.admin_links{
-	display: inline;
-	margin-left: -8px;
+#actions {
+	width: 590px;
 }
 
-#products_menu {
-	width: 500px;
-	height: 395px;
+#actions a:hover {
+	color: #FFF;
+	text-decoration:underline;
 }
 
-#products_menu img {
-	margin-left: 10px;
-}
-#products_menu h2{
-	display: inline;
+#actions a {
+	color: #FFB;
+	cursor:pointer;
+	font-size:11px;
 }
 
-#product_info_text_area{
-	width: 400px;
-	height: 120px;
+.nextPage {
+	float:right;
 }
 
 div.vertical_scrollable{
 	position:relative; 
   	overflow:hidden;
-	height: 285px;      
-	width: 500px;
+	height: 250px;      
+	width: 590px;
 }
 
 div.vertical_scrollable div.items{     
@@ -32,51 +29,41 @@ div.vertical_scrollable div.items{
     height:20000em;     
 }
 
-.product_title{
-	color: orange;
-	padding-top: 5px;
-}
-
-
 .product_shelf{
-	height: 100px;
+	padding-top: 8px;
+	height: 84px;
 	border-bottom: 5px solid white;
 }
 
-a.prev, a.next, a.prevPage, a.nextPage {
-	display:block;
-	width:100px;
-	height:50px;
-	position: absolute;
-	top: 145px;
-	cursor:pointer;
+.product_title{
+	color: #FFB;
+	padding-top: 5px;
+	display: inline;
 }
 
-/* mouseover state */
-a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
-	background-position:0px -48px;		
+.product_shelf img {
+	float: left;
+	vertical-align:text-top;
+	margin-right: 17px;
 }
 
-a.disabled {
-	visibility:hidden !important;		
+.product_info {
+	display: inline;
+	padding-top: 3px;
+	font-size:100%;
+}
+
+.product_shelf .admin_links{
+	display: inline;
 }
 
 
-div.prev_product {
-	background-image:url(/images/scrollable/arrow/left.png);
-	width: 18px;
-	margin-left: 290px;
-	text-indent: 9999px;
-	cursor: pointer;
+#product_info_text_area{
+	width: 100px;
+	height: 120px;
 }
 
-div.next_product {
-	background-image:url(/images/scrollable/arrow/right.png);
-	background-repeat: no-repeat;
-	margin-left: 290px;
-	text-indent: 9999px;
-	cursor: pointer;
-}
+
 
 /*********** navigator ***********/
 /* position and dimensions of the navigator */
@@ -105,4 +92,4 @@ div.navi a:hover {
 /* active state (current page state) */
 div.navi a.active {
 	background-position:0 -16px;     
-} 	
+}

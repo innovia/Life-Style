@@ -3,26 +3,25 @@ class ServicesController < ApplicationController
   
   def index
    get_categories
+   @category = Category.new
   end
   
   def new
-    get_categories
-    @service = Service.new
+    @category = Category.find(params[:category_id])
+    @service = @category.services.new()
   end 
   
  
  def create
-  @service = Service.new(params[:service])
-  
-  respond_to do |wants|
-    if @service.save
-      flash[:notice] = 'Service was successfully created.'
-      wants.html { redirect_to(@service) }
-    else
-      flash[:error] = "Could not add the service, check the form"
-      wants.html { render :action => "new" }
-    end
-  end
+   @category = Category.find(params[:service][:category_id])
+   @service = @category.services.new(params[:service])
+   if @service.save
+     flash[:notice] = "Successfully created..."
+     redirect_to services_url
+   else
+     flash[:error] = "Could not save, please try again."
+     render  :new
+   end
  end
  
  def show

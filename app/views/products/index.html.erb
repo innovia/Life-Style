@@ -1,5 +1,8 @@
-<div id="products_menu">
-	<h2 id="title">Products</h2>
+<div class="prepend-1">
+	<h2 id="title">Products 
+	<% if logged_in? %>
+		<%= link_to image_tag("add_service.png"), new_product_url, :title => "add product" -%></h2>
+	<% end %>
 
 	<% if @products.empty? %>
 	<% unless logged_in? %>
@@ -12,23 +15,25 @@
 	</div>
 	<% end -%>
 	<% else -%>
-	<%= link_to image_tag("icons/add.png"), new_product_url, :title => "add product" -%>
+	
 
 	<!-- navigator --> 
 	<div class="navi"></div> 
-
-	<!-- prev link --> 
-	<% if @products.count > 1 %>
-		<div class="prev_product">Previous</div>
-	<% end %>
-
-	<div class="vertical_scrollable"> 
-		<div class="items container"> 	
+	
+		<div id="actions">
+		<a class="prevPage">« Back</a>
+		<a class="nextPage">More products »</a>
+		</div>
+	
+	<div class="vertical_scrollable">
+	
+		
+		<div class="items"> 	
 			<% @products.each do |p| %>
 	 			<div class="product_shelf">
-					<div class="column prepend-top"><%= image_tag p.photo.url(:thumb) %></div>
-					<h4 class="product_title"><%= p.title.upcase %></h4>
-					<h4 class="product_info column span-8"><%= p.info %></h4>
+					<%= image_tag p.photo.url(:thumb) %>
+					<p class="product_title"><%= p.title.upcase %></p>
+					<br/><p class="product_info"><%= p.info %></p>
 				<% if logged_in? %>
 				<div class="admin_links">
 				<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_product_path(p), :title => "edit product" %>
@@ -43,11 +48,8 @@
 			<%- end -%>
 		</div> <!-- /items -->
 	</div> 	 <!-- /vertical -->
-	<!-- next link --> 
-	<% if @products.count > 1 %>
-		<div class="next_product">Next</div>
-	<% end %>
-
-
+	
+	
+	
 	<% end -%>
 </div><!-- /products_menu -->

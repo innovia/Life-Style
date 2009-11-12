@@ -3,99 +3,132 @@
 <%= stylesheet_link_tag "tabs" %>
 
 <% if @categories.empty? %>
-<% unless logged_in? %>
- <h3 class="services prepend-1"> Coming soon... </h3>
-<%- else -%>
-	<div class="warning ">	
+	<% unless logged_in? %>
+ 	<h3 class="services prepend-1"> Coming soon... </h3>
+	<%- else -%>
+	<div class="warning">	
 		<h2>There are no services in the database</h2>
 		<p>Start by creating a category for the service</p>
 		<p><%= link_to "new category", new_category_path %></p>		
 	</div>
-<% end -%>
+	<% end -%>
+
 <% else %>
+
 <% content_for :tabs do %>
 	<% @categories.each do |cat| %>
     <li><a id="tab<%= cat.id %>" href="#<%=h cat.name %>"><%=h cat.name.upcase %></a></li>
+	
 	<% content_for :panes do %>
 		<div class="pane"> <!-- pane -->
 		<% if cat.services.empty? %>
-			 <span class="pane">
-				<%= link_to image_tag("add_service.png", :size => "24x24") + " add service", new_service_url, :title => "add service"%>
-			 </span>
-		<% end %>
-		<table id="services_list" cellpadding="2" cellspacing="2" border="1">
-				<tr>
-					<th rowspan="2">Service description</th>
-					<th colspan="3">Price </th>
-					<% if logged_in? %>
-					<th rowspan="2">edit</th>
-						<th rowspan="2">delete</th>
-							<th rowspan="2">add</th>
-					<% end %>
-				</tr>
-				<tr>
-						<th class="price">Beginner</th>
-						<th class="price">Intermediate</th>
-						<th class="price">Senior</th>
-				</tr>
+			<% if logged_in? %>
+				<div class="warning">	
+					<h4>There are no services for the selected category</h4>
+					<p>
+					<%= link_to image_tag("add_service.png", :size => "24x24") + " add service", new_category_service_path(cat), :title => "add service"%>
+					</p>
+				</div>
+			<%- else -%>
+			 <h3>Coming soon...</h3>
+			<% end %> 
 			
-				<%- cat.services.each do |service| -%> 		
-				<tr>
-					<td><%= service.name %></td>
-
-					<td class="price">
+		<%- else -%>
+		
+		<table id="services_list" cellpadding="2" cellspacing="2" border="1">
+			<tr>
+				<th rowspan="2">Service description</th>
+				<th colspan="3">Price </th>
+				
+				<% if logged_in? %>
+				<th rowspan="2">edit</th>
+				<th rowspan="2">delete</th>
+				<th rowspan="2">add</th>
+				<% end %>
+			</tr>
+			
+			<tr>
+				<th class="price">Beginner</th>
+				<th class="price">Intermediate</th>
+				<th class="price">Senior</th>
+			</tr>
+			
+			<%- cat.services.each do |service| -%> 		
+			<tr>
+				<td><%= service.name %></td>
+				
+				<td class="price">
 					<%= service.beginner_start_price.nil? ? 'Not Set' : number_to_currency(service.beginner_start_price, :precision => 0) %> 
 					-
 					<% unless service.beginner_start_price.nil? %>
 					<%= service.beginner_end_price.nil? ? '& up' : number_to_currency(service.beginner_end_price, :precision => 0).to_s  %> 
 					<% end -%>
-					</td>
+				</td>
 					
-					<td class="price">
+				<td class="price">
 					<%= service.intermidiate_start_price.nil? ? 'Not Set' : number_to_currency(service.intermidiate_start_price, :precision => 0) %>
 					-
 					<% unless service.intermidiate_start_price.nil? %>
 					<%= service.intermidiate_end_price.nil? ? '& up' : number_to_currency(service.intermidiate_end_price, :precision => 0)  %> 
 					<% end -%>
-					</td>
+				</td>
 					
-					<td class="price">
+				<td class="price">
 					<%= service.senior_start_price.nil? ? 'Not Set' : number_to_currency(service.senior_start_price, :precision => 0) %> 
 					-
 					<% unless service.senior_start_price.nil? %>
 					<%= service.senior_end_price.nil? ? '& up' : number_to_currency(service.senior_end_price, :precision => 0) %>
 					<% end -%>
-					</td>
+				</td>
 								
-					<% if logged_in? %>
-					<td class="admin_link">
+				<% if logged_in? %>
+				<td class="admin_link">
 					<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_service_path(service), :title => "edit service" %>
-					</td>
+				</td>
 					
-					<td class="admin_link"><%= link_to image_tag("icons/large_error.png", :size => "24x24"), service_path(service), 
+				<td class="admin_link"><%= link_to image_tag("icons/large_error.png", :size => "24x24"), service_path(service), 
 																															:title => "remove service",
 																															:confirm => 'Are you sure?', 
-																															:method => :delete %></td>
-					</td>
-					
-						<% if cat.services.last == service %>
-							<td class="admin_link"><%= link_to image_tag("add_service.png", :size => "24x24"), new_service_url, :title => "add service"%> </td>
-						<% end %>
-					
-					
-					
-					 <% end %>
-				</tr>
+																															:method => :delete %>
+				</td>
+
+				<td class="admin_link">					
+				<% if cat.services.last == service %>
+					<%= link_to image_tag("add_service.png", :size => "24x24"), new_category_service_url(cat), :title => "add service"%> 
+				<% end %>
+				</td>	
+				<% end %>
+				
+			</tr>
 		<% end -%> <%# end of services per category %>
 		</table>
+		<% end -%> <%# end of cat.services.empty? %>
 		
 		</div> <!-- /pane -->
-		<% end -%> <%# end of category %>
-  <% end -%> <%# content for panes %>
+		
+  
+		<% if @categories.last == cat %>
+			<div class="pane">
+				<div class="warning">	
+					<% form_for @category do |f| -%>
+					<%= hidden_field_tag :services_page %>
+					<%= f.label :name, "Category name" %>
+					<%= f.text_field :name %>
+					<%= f.submit "Create" %>
+					<% end -%>
+					
+				</div>
+			</div>
+	 <% end -%>
+	
+	<% end -%> <%# end of category %>
+		<% end -%> <%# content for panes %>
+	
 	<% if logged_in? %>
-	<li><%= link_to image_tag("icons/add.png") + "Add Categroy", new_category_url, :title => "add category"%> </li>
+		<li><%= link_to image_tag("icons/add.png") + "Add Categroy", new_category_url, :title => "add category"%> </li>
   <% end %>
-<% end -%> <%# content for tabs %>
+
+	<% end -%> <%# content for tabs %>
 
 <div id="services_container" class="span-15 push-1">
 	<!-- the tabs -->
@@ -113,25 +146,16 @@
 
 <% end -%>
 
-<!-- activate tabs with JavaScript -->
+
 <script>
-
-
 // wait until document is fully scriptable
 $(document).ready(function() {
 	// select #flowplanes and make it scrollable. use circular and navigator plugins
 	$("#services_panes").scrollable({size: 1}).navigator({
-
-		// select #flowtabs to be used as navigator
 		navi: "#services_tabs",
-
-		// select A tags inside the navigator to work as items (not direct children)
 		naviItem: 'a',
-
-		// assign "current" class name for the active A tag inside navigator
 		activeClass: 'current'
 	});
 	
-	$("#tab1").click();
 });
 </script>

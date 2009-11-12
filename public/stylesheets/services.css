@@ -1,73 +1,41 @@
-/* Services*/
-
-#title{ padding-bottom: 5px;}
-
-.category_header{color: orange; margin:0 auto; width:200px;  padding-bottom: 10px;}
-
-.category_header h4{margin: 0 auto; display: inline;}
-
-/* Scrollable Services*/
-/* 
-	root element for the scrollable. 
-	when scrolling occurs this element stays still. 
-*/
-div.scrollable {
-	position:relative;
-	overflow:hidden;	 	
-	width: 465px;	
-	height: 300px;
-	margin: 0 auto;
+#stylist_levels {
+	width: 350px;
+	border-left: 2px solid #FCFEFD;
+	border-right: 2px solid #FCFEFD;
+	border-bottom: 2px solid #FCFEFD;
 }
 
-/* 
-	root element for scrollable items. Must be absolutely positioned
-	and it should have a super large width to accomodate scrollable items.
-	it's enough that you set width and height for the root element and
-	not for this element.
-*/
-div.scrollable div.items {	
-	width:20000em;	
-	position:absolute;
-	clear:both;		
+#stylist_levels th {
+	color: #333;
+	background:transparent url(/images/th_bkg.jpg) repeat-x scroll 0 0 !important;
 }
 
-div.scrollable div.items div.category {
-	float:left;
- 	width: 450px;
-	margin-right: 50px;	
+#stylist_levels input {
+	text-align: center;
 }
 
-/* Scrollable Interface Buttons */
-a.prev_photo , a.next_photo {
-	display:block;
-	width:100px;
-	height:50px;
-	position: absolute;
-	top: 145px;
-	cursor:pointer;
+
+#services_list {
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 2px;
+	border-style: solid solid solid solid;
+	border-color: white white white white;
+	border-collapse: collapse;
+} 
+
+#services_list td.price {
+	padding:3px !important;
+	text-align:center;
+	width:77px !important;
 }
 
-/* mouseover state */
-a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
-	background-position:0px -48px;		
+#services_list td.admin_link {
+	text-align: center;
+	padding-top: 9px !important;
 }
 
-a.disabled {
-	visibility:hidden !important;		
-}
-
-a.prevphoto{
-	background-image:url(/images/scrollable/Services/left.png);
-	background-repeat: no-repeat;
-	margin-top:100px;
-	margin-left: -70px;
-	z-index: 9998;
-	}
-
-a.next, a.nextPage {
-	background-image:url(/images/scrollable/Services/right.png);
-	background-repeat: no-repeat;
-	left:810px;
-	margin-top:100px;
-	margin-left: 55px;
+#services_list th {
+	text-align: center;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
 }

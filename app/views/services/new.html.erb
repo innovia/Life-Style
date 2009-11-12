@@ -1,4 +1,4 @@
-<h1 class="span-8 prepend-1">Add a new service</h1>
+<h2 class="prepend-1">Add a new service for <%= @category.name %></h2>
 <% form_for @service do |f| -%>
 	<%= render :partial => 'form', :locals => {:f => f }%>
 	<div class="prepend-1">

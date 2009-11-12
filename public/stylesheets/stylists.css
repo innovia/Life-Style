@@ -1,4 +1,12 @@
-#stylist_photo_index img{
+/*********************
+	Stylists 
+*********************/
+
+#triggers {
+	padding: 15px;
+}
+
+#stylist_photo_index img.thumb{
 	padding: 10px;
 }
 
@@ -39,25 +47,26 @@
 	width: 350px;
 }
 
+.edit_stylist_icon {
+	display: inline;
+	float: left;
+	padding-right:10px;
+}
+
+.stylist_bio_photo {
+	float: left;
+	padding: 0 15px 15px 0;
+}
+
+.stylist_details {
+	width: 300px;
+}
 /* the overlayed element */ 
 .apple_overlay { 
-     
-    /* initially overlay is hidden */ 
     display:none; 
-     
-    /* growing background image */ 
     background-image:url(/images/overlay/transparent.png); 
-     
-    /*  
-        width after the growing animation finishes 
-        height is automatically calculated 
-    */ 
-    width:640px;         
-     
-    /* some padding to layout nested elements nicely  */ 
-    padding:35px; 
- 
-    /* a little styling */     
+    width:640px;              
+    padding:35px;  
     font-size:11px; 
 } 
  
@@ -70,9 +79,6 @@
     width:35px; 
 }
 
-#triggers{
-	margin-top: -30px;
-}
 
 #photos_array {
 	list-style: none;
@@ -105,3 +111,4 @@
 #stylist_form_name {
 	margin-top: -30px;
 }
+

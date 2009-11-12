@@ -10,17 +10,19 @@ class CategoriesController <  ApplicationController
   
   def create
     @category = Category.new(params[:category])
-    respond_to do |wants|
       if @category.save
         flash[:notice] = 'Category was successfully created.'
-        wants.html { redirect_to(categories_path) }
-        wants.js { render "/services/new"}
+        
+        if params[:services_page]
+          redirect_to services_path
+        else
+        redirect_to categories_path
+        end
+      
       else
         flash[:error] = "something went wrong"
-        wants.html { render :action => "new" }
-        wants.js { render "/services/new" }
-      end
-    end 
+        render :action => "new" 
+      end 
   end
   
   def edit

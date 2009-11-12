@@ -1,24 +1,15 @@
 	<div class="prepend-1">
+	
 		<div>
-		<% if @categories.empty? %>
-				<%= link_to "Catgory", new_category_path %>
-		<% else %>
-			<%= f.label :category, "Category:" %>
-			<%= f.select(:category_id, @categories.collect	{ |c| [c.name, c.id] }, :tabindex => 0) %>
-		<% end -%>
-		</div>
-		
-		<div>
-	  <label class="desc" for="service_name">Name:
+	  <label class="desc" for="service_name">Service Description:
 	  	<span class="req">*</span>
 	  </label>
-		<%= f.text_field :name, :tabindex => 1 %>
-		
-		
-		
+		<%= f.text_field :name, :tabindex => 1 %>		
 		</div>
 		
-		<table id="stylist_levels">
+		<%= f.hidden_field :category_id, :value  => @category.id %>
+		<br/>
+			<table id="stylist_levels">
 			<tr>
 			<th>Stylist Level</th>
 			<th>Start Price</th>

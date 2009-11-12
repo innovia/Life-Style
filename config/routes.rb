@@ -14,8 +14,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :pictures, :collection => { :sort => :post, :delete_selected => :post }
   
-  map.resources :pages, :users, :categories, :services, :stylists, :products, :specials
+  map.resources :pages, :users, :services, :stylists, :products, :specials
   
+  map.resources :categories, :has_many => :services
+   
   map.with_options :controller => 'pages' do |page|
     page.manager  'manager', :action => "pages_manager"
     page.about_us  'about_us',  :action => "about_us"
