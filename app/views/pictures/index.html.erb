@@ -16,10 +16,10 @@
 <a class="prev prev_photo">Previous</a> 
 	<!-- root element for scrollable --> 
 	<div class="scrollable">          
-		<!-- root element for the items --> 
-    <div class="items">
+		<!-- root element for the items --> 			
+		<div class="items">
 			<% @pictures.each do |pic| %>
-				<%= image_tag(pic.photo.url, :class => "gallery" ) %>
+							<%= image_tag(pic.photo.url, :class => "gallery" ) %>
 			<% end -%>
 		</div> <!-- /items -->
 	</div> <!-- /scrollable -->

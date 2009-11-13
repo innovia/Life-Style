@@ -302,11 +302,6 @@ div.error h3{
 
 .hide{ display: none;}
 
-.about_us{
-	margin-left:-69px;
-	margin-top:-23px;
-}
-
 
 
 #location_map{
@@ -409,8 +404,10 @@ div.error h3{
 
 #edit_content {
 	display: none;
-	margin-left:-53px;
-	margin-top:-30px;
+}
+
+#picture_fields_form {
+ margin-top: 12px;
 }
 
 .pages_wrapper{
@@ -422,42 +419,33 @@ div.error h3{
 }
 
 #manager{
- height: 200px;
  overflow: hidden;
 }		
 
 
 #pages_manager {
-margin:0; padding:0; 
-border-collapse:separate; *border-collapse:collapse; border-spacing:0;
-border:2px solid white;
-width: 100%;
-font: 120%;
+	margin: 0 10px 0 0 !important;
+	padding:0; 
+	border-collapse:separate; *border-collapse:collapse; border-spacing:0;
+	border:2px solid white;
+	width: 90%;
+	font: 120%;
 }
 
 #pages_manager th {
-	background: #FFBB36 url(/images/sprite.png) repeat-x 0 0; /* header gradient */ 
 	color: #333;
-	font-weight: bold;
-	padding: 8px 8px;
 	text-align: center;
-	border:none; 
-	border-right:1px solid #CBCBCB;/*  inner column border */
+	background:transparent url(/images/th_bkg.jpg) repeat-x scroll 0 0 !important;
 }
 
 #pages_manager tr {
- border-bottom: 5px solid red;
 }
+
 
 #pages_manager td {
  text-align: center !important;
- background-image: url(/images/h300.png);
-}
+ border-bottom: 1px dotted white; 
 
-
-.admin_links{
-	display: inline;
-	margin-left: -8px;
 }
 
 

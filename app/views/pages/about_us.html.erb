@@ -1,15 +1,18 @@
+<div class="prepend-1">
+
 <%= render :partial => 'shared/load_yui_editor' %>
 
 <% @bkg = @page.background_picture.url(:bkg) %>
 
 
-<div id="editable_content" class="about_us">
+<div id="display_content" class="about_us">
 	<h2 id="title">About us</h2>
 	<%= @page.body  %>
 </div> <!-- /editable content-->
 
 
-<%# unless logged_in? %>
+<% if logged_in? %>
 	<%= render :partial => 'shared/update_page' %>
-<%# end -%>
+<% end -%>
 
+</div>

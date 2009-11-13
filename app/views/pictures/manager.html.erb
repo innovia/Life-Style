@@ -1,9 +1,10 @@
-<h2 id="title">Gallery Manager</h2>
+<div class="prepend-1">
+	<h2 id="title">Gallery Manager</h2>
 <div id="sortable_gallery">
 	<% form_for :picture, :url => delete_selected_pictures_path do  -%>
 	<%= submit_tag "Delete Selected" %>
 	
-	<table>
+	<table id="pages_manager">
 	<tr>
 		<th><%= check_box_tag 'delete' %></th>
 		<th><%= image_tag("galleryicon.png", :size => '32x32') %></th>
@@ -67,4 +68,4 @@
 	$('#delete_selected_pictures').bind('click', function(event) {
 		alert('sss');
 	});
-</script>
+</script></div>

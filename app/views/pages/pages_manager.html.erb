@@ -1,6 +1,6 @@
-<h2 id="title">Pages Manager</h2>
-
-<strong>From this page you can change the background picture for all pages</strong>
+<div class="prepend-1">
+	<h2 id="title">Pages Manager</h2>
+	<h3>From this page you can change the background picture for all pages</h3>
 
 <div id="manager">
 	<table id="pages_manager">
@@ -11,7 +11,7 @@
 		<th>Restore default</th>
   </tr>
 <% @pages.each do |page| %>
-		  <tr class="table_rows">
+		  <tr>
 		    <td class="orange"><%=h page.title.capitalize %></td>
 		    <td align="center">
 					<% if page.background_picture_file_name.nil? %>
@@ -29,4 +29,4 @@
 <% end %>
 </table>
 </div>
-<%= will_paginate @pages %>
+</div>

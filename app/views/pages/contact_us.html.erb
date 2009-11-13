@@ -1,3 +1,4 @@
+<div class="prepend-1">
 <%= render :partial => 'shared/load_yui_editor' %>
 <% @bkg = @page.background_picture.url(:bkg) %>
 
@@ -14,3 +15,4 @@
 <% if logged_in? %>
 	<%= render :partial => 'shared/update_page' %>
 <% end -%>
+</div>

@@ -2,13 +2,14 @@
 		<% form_for @page, :html => { :multipart => true, :method => :put } do |f| -%>
 	  <%= hidden_field(:page, :title) %>
 	<div>
-		<%= f.label :body, "Content" %><br/>
+		<%= f.label :body, "Content for: #{page_name} page" %><br/>
 		<%= f.text_area :body, :id => "page_editor" %>
 	</div>
-		<p></p>
+	<div id="picture_fields_form">		
 		<%= f.label :background_picture, "Background Picture" %>
 		<%= f.file_field :background_picture %>
 		<%= f.submit "Save Changes" %>
 		<button class="toggle_edit">Cancel</button>
+	</div>
 		<% end -%>
 </div>

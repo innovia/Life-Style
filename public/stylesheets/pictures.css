@@ -1,31 +1,16 @@
-#gallery {
-	margin: -20px -68px 0 -68px;
-}
-
-/*
-	root element for the scrollable.
-	when scrolling occurs this element stays still.
-*/
 #gallery div.scrollable{
-	/* required settings */
 	position:relative;
 	overflow:hidden;
-	width: 625px;
-	height: 400px;
-	margin-top: -60px;
-	/* custom decorations */
+	display: block;
+	width: 600px;
+	height:392px;
+	margin:-50px auto 0;
 	border:1px solid #ccc;
-	background:url(/images/h300.png) repeat-x;
+	background:url(/images/h300.png) repeat-x transparent;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src='/images/h300.png');
 }
 
-/*
-	root element for scrollable items. Must be absolutely positioned
-	and it should have a extremely large width to accomodate scrollable items.
-	it's enough that you set the width and height for the root element and
-	not for this element.
-*/
 .scrollable .items {
-	/* this cannot be too large */
 	width:20000em;
 	position:absolute;
 	clear:both;
@@ -34,8 +19,9 @@
 /* single scrollable item */
 .scrollable img.gallery {
 	height: 330px;
+	width: 442px;
 	float:left;
-	margin: 47px 80px 0;
+	margin: 37px 80px 0;
 	background-color:#fff;
 	padding:2px;
 	border:1px solid #ccc;
@@ -43,7 +29,6 @@
 	-moz-border-radius:4px;
 	-webkit-border-radius:4px;
 }
-
 
 /* Scrollable Interface Buttons */
 #gallery a.prev_photo, a.next_photo {
@@ -56,19 +41,20 @@
 	cursor:pointer;
 	text-indent:-9999px;
 	background-image: url(/images/scrollable/hori_large.png);
+	_background-image: url(/images/scrollable/hori_large.gif);
 	z-index: 9999;
 }
 
+
 #gallery a.prev_photo {
 	background-position: -30px 0;
-	margin-left: 30px;
+	margin-left: 62px;
 }
 
 #gallery a.next_photo {
 	background-position: 0 -30px;
 	z-index: 9999;
-	left:810px;
-	margin-left: 73px;
+	margin-left: 582px;
 }
 
 /* mouseover state */
@@ -79,4 +65,3 @@
 #gallery a.disabled {
 	visibility:hidden !important;		
 }
-

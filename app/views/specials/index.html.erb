@@ -1,4 +1,5 @@
-<h2 id="title">Specials</h2>
+<div class="prepend-1">
+	<h2 id="title">Specials</h2>
 
 <% if @specials.empty? %>
 		<% unless logged_in? %>
@@ -41,4 +42,4 @@
 	<% unless @specials.empty? %>
 	<%= link_to 'New special', new_special_path %>
 	<% end -%>
-<% end -%>
+<% end -%></div>

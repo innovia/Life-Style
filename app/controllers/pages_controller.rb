@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   end
    
   def pages_manager
-    @pages = Page.paginate(:per_page => 3, :page => params[:page])
+    @pages = Page.all(:order => 'updated_at DESC')
   end
   
   def destroy
