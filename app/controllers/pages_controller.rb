@@ -1,5 +1,13 @@
 class PagesController < ApplicationController
   
+  def create
+      @app_req = params[:appointment]
+      AppointmentMailer.deliver_request_for_appointment(@app_req)
+      flash[:notice] = "Sent"
+      redirect_to :thank_you
+  end
+  
+  
   def edit
     @page = Page.find(params[:id])
   end

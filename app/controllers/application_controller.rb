@@ -1,3 +1,15 @@
+=begin
+  TODO 
+  clean up the nav bar
+  appointments mailer
+  location pinpionter
+  bug with bkg uploads
+  add a copyright
+  maybe jut maybe round corners in ie
+  optimize for production
+=end
+
+
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 

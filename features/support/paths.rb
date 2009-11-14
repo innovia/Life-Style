@@ -15,6 +15,7 @@ module NavigationHelpers
     when /the stylists page/ then stylists_path
     when /the stylist page/ then stylist_path
     when /the categories page/ then categories_path 
+    when /ppoinment request form/ then appointments_path
     # Add more mappings here.
     # Here is a more fancy example:
     #

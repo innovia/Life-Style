@@ -24,7 +24,9 @@ ActionController::Routing::Routes.draw do |map|
     page.location 'location',   :action => "location"
     page.keratin 'keratin', :action => "keratin"
     page.appointments 'appointments', :action => "appointments"
+    page.thank_you 'thank_you', :action => "thank_you"
     page.contact_us 'contact_us', :action => "contact_us"
   end
+  
   
 end

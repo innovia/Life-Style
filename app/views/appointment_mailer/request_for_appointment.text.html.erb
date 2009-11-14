@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>
+ <head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />  
+</head>
+  
+<body>
+	<h2>Appointment Request: </h2>
+
+<%= "<strong>#{@app_req[:full_name]}</strong> would like to schedule an appointment for <strong>#{@app_req[:service]}</strong> with <strong>#{@app_req[:stylist]}</strong>" %>
+
+<p>
+<strong><%= @app_req[:gender] == "female" ? 'She' : 'He' %> </strong> would like to come in on:
+
+<strong><%= @app_req[:requested_date] %></strong>
+
+<strong><%= @app_req[:requested_time] %></strong>
+</p>
+
+<p>
+	<h4><%= @app_req[:gender] == "female" ? 'Her' : 'His' %> Contact information:</h4>
+	<p><strong>email:</strong> <%= @app_req[:email] %></p>
+	<p><strong>Day Time Phone:</strong> <%= @app_req[:phone_number] %></p>
+	<p><strong>Cell phone:</strong> <%= @app_req[:cell].blank? ? 'left blank' : @app_req[:cell] %> </p>
+</p>
+
+
+<% if @app_req[:first_time] %>
+</br>
+<p>
+	<strong>Please note:</br></strong>
+	<%= @app_req[:gender] == "female" ? 'She' : 'He' %> is a first time client, and was referred by 
+	<strong><%= @app_req[:referred_by]%></strong>
+</p>
+<% end %>
+
+</body>
+</html>

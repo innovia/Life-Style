@@ -1,10 +1,12 @@
 class AppointmentMailer < ActionMailer::Base
-  
-  def request_an_appointment
-    recipients  "appointments@lifestylesalonnyc.com"
-    from        requester.name
-    subject     "Appointment request from #{requester.name}"
+  default_url_options[:host] = "localhost:8080"  
+   
+  def request_for_appointment(params)
+    @app_req = params
+    subject     "Appointment request from #{params[:full_name]}"
+    from        "#{params[:email]}"
+    reply_to    "#{params[:email]}"
+    recipients  "haimnyc@yahoo.com"
     sent_on     Time.now
-    body        
   end
 end
