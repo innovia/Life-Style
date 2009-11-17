@@ -1,5 +1,6 @@
 <div class="pages_wrapper">
 <h2 id="title"> Edit <%= @stylist.full_name.camelize %>'s Details </h2>
+<br/>
 <%= error_messages_for :stylist %>
 <%form_for(:stylist, :url => stylist_url, :html => {:multipart => true, :method => :put}) do |f| -%>
 	<%= render :partial => 'form', :locals => {:f => f }%>

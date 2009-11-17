@@ -1,5 +1,7 @@
 <div class="pages_wrapper">
 <h2 id="title">Add a new stylist</h2>
+<br/>
+<%= error_messages_for :stylist %>
 <% form_for(:stylist, :html => {:multipart => true}, :url => stylists_url) do |f| -%>
 	<%= render :partial => 'form', :locals => {:f => f }%>
 	<%= f.submit "Add Stylist" %> 

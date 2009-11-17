@@ -258,29 +258,55 @@ div.error h3{
 	margin-top: 10px;
 }
 
+
 #errorExplanation {
-	width: 400px;
+	margin-left: 40px;
+	margin-bottom: 45px;
+	width: 350px;
+	background: transparent url(/images/h300.png) repeat-x;
+ 	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src='/images/h300.png');
 	border: 1px solid #A21C24;
-	
+	position: relative;
+}
+
+#close_error_box {
+	background-image:url(/images/overlay/close.png);
+	_background-image:url(http://static.flowplayer.org/tools/img/overlay/overlay_close_IE6.gif); 
+    
+	cursor:pointer;
+	height:35px;
+	position:absolute;
+	right:-15px;
+	text-indent:-9999px;
+	top:-20px;
+	width:35px;
 }
 
 #errorExplanation h2{
+	margin-bottom: 0px !important;
 	background-color: #A21C24;
-	font-size: 90%;
+	font-size: 120%;
 	color: white;
 	padding-left: 15px;
 }
 
 #errorExplanation p{
-	padding: 10px 15px 0 20px;
+	color: #FFB;
+	margin-bottom: 0px !important;
+	padding: 10px 15px 10px 20px;
 }
 
 #errorExplanation li{
-	font-size: 90%;
-	list-style-type: disc;
+	color: white;
+	list-style-type: circle;
 	margin-left: 40px;
 }
 
+.fieldWithErrors{
+	border:3px solid red;
+	display:inline;
+	padding:1px;
+}
 
 /* Forms */
 
