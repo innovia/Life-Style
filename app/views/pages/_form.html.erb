@@ -1,11 +1,11 @@
 <div class="form-item">
 	<label>Full Name: <span class="req"> *</span></label>
-	<%= text_field_tag :full_name, :size => 20 %>
+	<%= text_field_tag :full_name,{}, :size => 20 %>
 </div>
 
 <div class="form-item">
 <label>e-mail:<span class="req"> *</span></label> 
-<%= text_field_tag :email, :size => 20 %>	
+<%= text_field_tag :email, {}, :size => 20 %>	
 </div>
 
 <div class="form-item">
@@ -16,36 +16,36 @@
 <br/>
 <div class="form-item">	
 <label>Day Time Phone:<span class="req"> *</span></label>
-<%= text_field_tag :phone_number, :size => 20, :maxlength => 12  %>
+<%= text_field_tag :phone_number,{}, :size => 20, :maxlength => 12  %>
 </div>
 
 <div class="form-item">
 <label>Mobile Phone: </label> 
-	<%= text_field_tag :cell, :size => 20, :maxlength => 12 %>
+	<%= text_field_tag :cell, {}, :size => 20, :maxlength => 12 %>
 </div>
 
 <field_tagset>
 	<span class="req">*</span>
 	<legend>Select date and time for your appointment</legend>
-		<%= text_field_tag :requested_date, :class => "date_picker", :size => 10 %>
+		<%= text_field_tag :requested_date,{}, :class => "date_picker", :size => 10 %>
 		at <%= text_field_tag :requested_time %>	
 </field_tagset>
 
 <%= label :service, "Service:" %>
 <span class="req">*</span>
 
-<%#= collection_select(:service, Service.all, :name, :name, :prompt => "Select a service") %>
+<%= select_tag(:service, options_from_collection_for_select(@services, :name, :name)) %>
 
 <%= label :by, "By:" %>
 <span class="req">*</span>
-<%#= collection_select(:stylist, Stylist.all, :full_name, :full_name,  :prompt => "Select a stylist") %>
+<%= select_tag(:stylist, options_from_collection_for_select(@stylists, :full_name, :full_name)) %>
 <br/>
 
 	<label> First Time Client?</label>
 	<%= check_box_tag :first_time %>	 
 
 	<label>Referred by:</label>
-	<%= text_field_tag :referred_by, :size => 20 %>
+	<%= text_field_tag :referred_by,{}, :size => 20 %>
 	<%= submit_tag 'Send Request' %>
 </p>
 <h>

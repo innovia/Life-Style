@@ -30,7 +30,7 @@ $(document).ready(function() {
 		},	
 		messages: {
 			     full_name: {
-			       required: "We need your email address to contact you",
+			       required: "We need your first and last name",
 			       minlength: jQuery.format("At least {0} characters required!")
 			     }
 			   }
@@ -38,6 +38,12 @@ $(document).ready(function() {
 		
 	});
 	
+	$('#requested_date').datepicker();
+	
+	$('#requested_time').timepickr({
+		convention: 12 
+	});
+
 	
 	gallery();
 	

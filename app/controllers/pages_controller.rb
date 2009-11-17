@@ -1,5 +1,10 @@
 class PagesController < ApplicationController
   
+  def appointments
+    @services = Service.all
+    @stylists = Stylist.all
+  end
+  
   def create
       @app_req = params[:appointment]
       AppointmentMailer.deliver_request_for_appointment(@app_req)

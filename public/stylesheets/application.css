@@ -407,11 +407,10 @@ div.error h3{
 }
 
 .form-item label {
-	display: block;
-	float:left;
-	padding:3px 3px 3px 0;
-	width:110px;
+	padding: 4px;
+	width: 110px;
 	text-align: right;
+	margin-left: 13px;
 }
 
 .female {
