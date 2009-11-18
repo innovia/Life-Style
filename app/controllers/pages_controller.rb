@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
   
   def create
-      @app_req = params[:appointment]
+      @app_req = params
       AppointmentMailer.deliver_request_for_appointment(@app_req)
       flash[:notice] = "Sent"
       redirect_to :thank_you

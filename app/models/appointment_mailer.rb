@@ -3,9 +3,8 @@ class AppointmentMailer < ActionMailer::Base
    
   def request_for_appointment(params)
     @app_req = params
-    subject     "Appointment request from #{params[:full_name]}"
+    subject     "Appointment request from #{params[:first_name]} #{params[:last_name]}"
     from        "#{params[:email]}"
-    reply_to    "#{params[:email]}"
     recipients  "appointments@lifestylesalonnyc.com"
     sent_on     Time.now
   end

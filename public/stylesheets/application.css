@@ -402,15 +402,13 @@ div.error h3{
   background: url(/images/spinner.gif) no-repeat center center;
 }
 
-.form-item {
-	display: block;
-}
 
-.form-item label {
-	padding: 4px;
-	width: 110px;
-	text-align: right;
-	margin-left: 13px;
+label.checked {
+	background: transparent url(/images/checked.gif) no-repeat scroll 0 0;
+	border-style: none;
+	margin-left: 10px;
+	padding-right: 14px;
+	padding-top: 0;
 }
 
 .female {

@@ -1,55 +1,74 @@
 <div class="form-item">
-	<label>Full Name: <span class="req"> *</span></label>
-	<%= text_field_tag :full_name,{}, :size => 20 %>
+	<label>First Name: <span class="req"> *</span></label><br/>
+	<%= text_field_tag :first_name,{}, :size => 20 %>
+</div>
+
+<div class="form-item">	
+	<label>Last Name: <span class="req"> *</span></label><br/>
+	<%= text_field_tag :last_name,{}, :size => 20 %>
 </div>
 
 <div class="form-item">
-<label>e-mail:<span class="req"> *</span></label> 
+<label>e-mail:<span class="req"> *</span></label><br/>
 <%= text_field_tag :email, {}, :size => 20 %>	
 </div>
 
 <div class="form-item">
-	<label>Male</label>
-	<%= radio_button_tag :gender, :male %>
-	<span class="female">Female</span><%= radio_button_tag :gender, :female %>
+	<label>
+	    <input type="radio" id="gender_male" name="gender" value="male" />
+	    Male
+	</label>
+	<label>
+	    <input type="radio" id="gender_female" name="gender" value="female" />
+	    Female
+	</label>
+	  <br />
 </div>
 <br/>
 <div class="form-item">	
 <label>Day Time Phone:<span class="req"> *</span></label>
-<%= text_field_tag :phone_number,{}, :size => 20, :maxlength => 12  %>
+<%= text_field_tag :phone_number,{}, :size => 12 %>
 </div>
 
 <div class="form-item">
 <label>Mobile Phone: </label> 
-	<%= text_field_tag :cell, {}, :size => 20, :maxlength => 12 %>
+	<%= text_field_tag :cell, {}, :size => 12 %>
 </div>
 
-<field_tagset>
+<div class="form-item">
 	<span class="req">*</span>
-	<legend>Select date and time for your appointment</legend>
-		<%= text_field_tag :requested_date,{}, :class => "date_picker", :size => 10 %>
-		at <%= text_field_tag :requested_time %>	
-</field_tagset>
+	When would you like to come in? 
+	<%= text_field_tag :requested_date,{}, :class => "date_picker", :size => 10 %>
+</div>
 
+<div class="form-item">
+	<span class="req">*</span>
+	at what time? <%= text_field_tag :hour, {}, :maxlength => 2, :size => 1 %>	: <%= text_field_tag :minute, {}, :maxlength => 2, :size => 1 %>
+</div>
+
+<div class="form-item">
 <%= label :service, "Service:" %>
 <span class="req">*</span>
+<%= select_tag(:service, options_from_collection_for_select(@services, :name, :name), :prompt => 'Pick a Service') %>
+</div>
 
-<%= select_tag(:service, options_from_collection_for_select(@services, :name, :name)) %>
-
+<div class="form-item">
 <%= label :by, "By:" %>
 <span class="req">*</span>
-<%= select_tag(:stylist, options_from_collection_for_select(@stylists, :full_name, :full_name)) %>
+<%= select_tag(:stylist, options_from_collection_for_select(@stylists, :full_name, :full_name), :prompt => 'Pick a Stylist') %>
+</div>
 <br/>
 
 	<label> First Time Client?</label>
 	<%= check_box_tag :first_time %>	 
-
+<br/>
 	<label>Referred by:</label>
 	<%= text_field_tag :referred_by,{}, :size => 20 %>
 	<%= submit_tag 'Send Request' %>
-</p>
-<h>
+<h5>
 	Note: We would appreciate a 24hrs notice via phone prior to your appointment for any cancellations.
 </h5>
+</p>
+
 
 		 

@@ -7,14 +7,14 @@
 <body>
 	<h2>Appointment Request: </h2>
 
-<%= "<strong>#{@app_req[:full_name]}</strong> would like to schedule an appointment for <strong>#{@app_req[:service]}</strong> with <strong>#{@app_req[:stylist]}</strong>" %>
+<%= "<strong>#{@app_req[:first_name]} #{@app_req[:last_name]}</strong> would like to schedule an appointment for <strong>#{@app_req[:service]}</strong> with <strong>#{@app_req[:stylist]}</strong>" %>
 
 <p>
 <strong><%= @app_req[:gender] == "female" ? 'She' : 'He' %> </strong> would like to come in on:
 
 <strong><%= @app_req[:requested_date] %></strong>
 
-<strong><%= @app_req[:requested_time] %></strong>
+<strong><%= @app_req[:hour] %>:<%= @app_req[:minute]  %></strong>
 </p>
 
 <p>

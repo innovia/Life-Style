@@ -10,40 +10,98 @@ $(document).ready(function() {
 		$(this).removeClass("fieldWithErrors");
 		$(this).css("display", "inline")
 	});
+		
+	jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+	    phone_number = phone_number.replace(/\s+/g, ""); 
+		return this.optional(element) || phone_number.length > 9 &&
+			phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+	}, "Please specify a valid phone number");
 	
-	$.validator.setDefaults({
-		submitHandler: function() { alert("submitted!"); }
-	});
-	
+	$("input.remove_title").attr("title", "");
 	
 	$('#appointment').validate({
-		debug: true,
 		rules: {
-		     	full_name:{
-							required: true,
-							minlength: 2
-	   			},
-				email: {
-		       			required: true,
-		       			email: true
-		       }
-		},	
+						first_name:{
+												required: true,
+												minlength: 2
+	 										},
+						last_name:{
+												required: true,
+												minlength: 2
+	 										},
+								email:{
+	       								required: true,
+	       								email: true
+	    								},
+								gender: "required"
+								,
+					phone_number:{
+												required: true,
+												phoneUS: true
+											},
+				requested_date:{
+												required: true,
+												date: true
+											},
+									hour:{
+												required: true,
+												range: [1, 12]
+											},
+					  		minute:{
+												required: true,
+												range: [00, 59]
+											},
+								service: "required"
+								,
+								stylist: "required"
+		}, // End Rules
 		messages: {
-			     full_name: {
-			       required: "We need your first and last name",
-			       minlength: jQuery.format("At least {0} characters required!")
-			     }
-			   }
-		
-		
+		     	first_name:{
+		       required: "We need your first name",
+		       minlength: jQuery.format("At least {0} characters required!")
+		     	},
+					last_name:{
+		       required: "We need your last name",
+		       minlength: jQuery.format("At least {0} characters required!")
+		     	},
+					email: {
+				   		required: "We need your e-mail address so we can contact you",
+					 		email: "Your email address must be in the format of name@domain.com"
+					},
+					gender:{
+				   		required: "Please specify your gender"
+					},
+		phone_number:{
+							required: "We need your phone number to contact you"
+					},
+	requested_date:{ required: "When would you like to come in?"
+					},
+						hour:{ required: "Please specify the hour"
+					},
+					minute:{ required: "Please specify the minute"
+					}
+					
+ 	},
+		// the errorPlacement has to take the table layout into account 
+		errorPlacement: function(error, element) { 
+		    if ( element.is(":radio") ) 
+		        error.appendTo( element.parent().next()); 
+		    else if ( element.is(":checkbox") ) 
+		        error.appendTo ( element.next() ); 
+		    else 
+		        error.appendTo( element.parent() ); 
+		  }, 
+		  
+		  // set this class to error-labels to indicate valid fields 
+		  success: function(label) { 
+		      // set as text for IE 
+					label.html(" ").addClass("checked"); 
+		  }
 	});
 	
 	$('#requested_date').datepicker();
-	
-	$('#requested_time').timepickr({
-		convention: 12 
-	});
-
+	$('#phone_number').mask("(999) 999-9999");
+	$('#cell').mask("(999) 999-9999");	
 	
 	gallery();
 	
