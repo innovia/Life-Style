@@ -1,11 +1,11 @@
 =begin
   TODO 
   clean up the nav bar
-  appointments mailer
+ 
   location pinpionter
-  bug with bkg uploads
+ 
   add a copyright
-  maybe jut maybe round corners in ie
+ 
   optimize for production
 =end
 
@@ -86,6 +86,7 @@ class ApplicationController < ActionController::Base
     	
       if @page.background_picture_file_name.nil?
         case @page.title 
+    	    when "location" then  @bkg = "/images/Backgrounds/location.jpg" 
       	  when "services" then 	@bkg = "/images/Backgrounds/services_background.jpg"
       		when "products" then 	@bkg = "/images/Backgrounds/products.png"
       	  when "index"    then  @bkg = "/images/Backgrounds/salon_front_panoramic.jpg"

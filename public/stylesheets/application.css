@@ -475,3 +475,7 @@ label.checked {
 .back a{
  color: white;
 }
+
+#display_content {
+ width: 570px;
+}
