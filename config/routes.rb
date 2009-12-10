@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :pictures, :collection => { :sort => :post, :delete_selected => :post }
   
-  map.resources :pages, :users, :services, :stylists, :products, :specials
+  map.resources :pages, :users, :services, :stylists, :products
   
   map.resources :categories, :has_many => :services
    
@@ -26,6 +26,7 @@ ActionController::Routing::Routes.draw do |map|
     page.appointments 'appointments', :action => "appointments"
     page.thank_you 'thank_you', :action => "thank_you"
     page.contact_us 'contact_us', :action => "contact_us"
+    page.specials 'specials', :action => "specails"
   end
   
   

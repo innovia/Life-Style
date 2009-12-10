@@ -1,0 +1,18 @@
+<div class="prepend-1">
+
+<%= render :partial => 'shared/load_yui_editor' %>
+
+<% @bkg = @page.background_picture.url(:bkg) %>
+
+
+<div id="display_content" class="specials">
+	<h2 id="title">Specials</h2>
+	<%= @page.body  %>
+</div><!-- /editable content-->
+
+
+<% if logged_in? %>
+	<%= render :partial => 'shared/update_page' %>
+<% end -%>
+
+</div>
