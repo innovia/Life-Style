@@ -3,12 +3,13 @@ class CreateServices < ActiveRecord::Migration
     create_table :services do |t|
       t.references :category
       t.string :name
-      t.integer :beginner_start_price
-      t.integer :beginner_end_price
-      t.integer :intermidiate_start_price
-      t.integer :intermidiate_end_price
+      t.integer :stylist_start_price
+      t.integer :stylist_end_price
       t.integer :senior_start_price
       t.integer :senior_end_price
+      t.integer :master_start_price
+      t.integer :master_end_price
+      
       t.timestamps
     end
   end

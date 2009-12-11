@@ -29,28 +29,30 @@ div.vertical_scrollable div.items{
     height:20000em;     
 }
 
+
+/* Products */
+
 .product_shelf{
 	padding-top: 8px;
 	height: 236px;
+	width: 580px;
 }
 
 .product_title{
 	color: #FFB;
-	padding-top: 5px;
-	display: inline;
+}
+
+.product_info {
+	float: left;
+	width: 400px;
 }
 
 .product_shelf img {
 	float: left;
-	vertical-align:text-top;
+	margin-top: 4px;
 	margin-right: 17px;
 }
 
-.product_info {
-	display: inline;
-	padding-top: 3px;
-	font-size:100%;
-}
 
 .product_shelf .admin_links{
 	display: inline;

@@ -118,8 +118,6 @@ $(document).ready(function() {
 	})
 
 	
-	
-	
 	function gallery(){
 		$("#triggers img[rel]").overlay({effect: 'apple'});
 	}

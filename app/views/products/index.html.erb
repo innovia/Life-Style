@@ -1,5 +1,5 @@
 <div class="prepend-1">
-	<h2 id="title">Products 
+	<h2 id="title">Products </h2>
 	<% if logged_in? %>
 		<%= link_to image_tag("add_service.png"), new_product_url, :title => "add product" -%></h2>
 	<% end %>
@@ -32,8 +32,8 @@
 			<% @products.each do |p| %>
 	 			<div class="product_shelf">
 					<%= image_tag p.photo.url(:thumb) %>
-					<p class="product_title"><%= p.title.upcase %></p>
-					<br/><p class="product_info"><%= p.info %></p>
+					<h3 class="product_title"><%= p.title.upcase %></h3>
+					<h4 class="product_info"><%= p.info %></h4>
 				<% if logged_in? %>
 				<div class="admin_links">
 				<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_product_path(p), :title => "edit product" %>

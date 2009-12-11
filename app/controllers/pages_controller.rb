@@ -5,6 +5,10 @@ class PagesController < ApplicationController
     @stylists = Stylist.all
   end
   
+  def specials
+    
+  end
+  
   def create
       @app_req = params
       AppointmentMailer.deliver_request_for_appointment(@app_req)

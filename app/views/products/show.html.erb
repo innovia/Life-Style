@@ -1,4 +1,4 @@
-Product Name: <%= @product.title %>
+<div class="prepend-1"><h2 id="title">Product Name: <%= @product.title %></h2>
 <div id="product_show_info"><%= @product.info %></div>
 <div class="product_show_photo">
 	<%= image_tag(@product.photo.url(:medium)) %>
@@ -6,4 +6,4 @@ Product Name: <%= @product.title %>
 <p>
 <%= link_to "Edit Product", :action => "edit" %>
 <%= link_to "<< Products", :action => "index" %>
-</p>
+</p></div>

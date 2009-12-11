@@ -74,6 +74,17 @@
 				<div id="image_on_stage" class="span-18">
 					<div id="see_through_box">
 						<div id="inner_content" class="span-17">
+							<%- unless flash[:notice].blank? -%>
+							<div class="notification">
+								<h3><%= flash[:notice] -%></h3>
+							</div>
+							<%- end -%>
+
+							<%- unless flash[:error].blank? -%>
+							<div class="flash_error">
+								<h3><%= flash[:error] -%></h3>
+							</div>
+							<%- end -%>
 							<%= yield %>
 						</div>
 					</div> <!-- /see through -->

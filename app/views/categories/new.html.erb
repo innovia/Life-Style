@@ -1,6 +1,8 @@
-<h1>New Service Category</h1>
+<div class="prepend-1">
+	<h2 id="title">New Service Category</h1>
 
 <% form_for @category do |f| -%>
  <%= render :partial => 'form', :locals => { :f => f }  %>
  <%= f.submit "add category" %>
 <%- end -%>
+</div>

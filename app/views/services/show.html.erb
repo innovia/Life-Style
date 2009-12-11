@@ -8,19 +8,11 @@
 	<th>End Price</th>
 	</tr>
 	<tr>
-		<td>Beginner</td>
-		<td><%= @service.beginner_start_price.nil? ? 'Not Set' : number_to_currency(@service.beginner_start_price, :precision => 0) %> </td>
+		<td>Stylist</td>
+		<td><%= @service.stylist_start_price.nil? ? 'Not Set' : number_to_currency(@service.stylist_start_price, :precision => 0) %> </td>
 		<td>
-		<% unless @service.beginner_start_price.nil? %>
-		<%= @service.beginner_end_price.nil? ? '& up' : number_to_currency(@service.beginner_end_price, :precision => 0)  %> </td>
-		<% end -%>
-	</tr>
-	<tr>
-		<td>Intermidiate</td>
-		<td><%= @service.intermidiate_start_price.nil? ? 'Not Set' : number_to_currency(@service.intermidiate_start_price, :precision => 0) %> </td>
-		<td>
-		<% unless @service.intermidiate_start_price.nil? %>
-		<%= @service.intermidiate_end_price.nil? ? '& up' : number_to_currency(@service.intermidiate_end_price, :precision => 0)  %> </td>
+		<% unless @service.stylist_start_price.nil? %>
+		<%= @service.stylist_end_price.nil? ? '& up' : number_to_currency(@service.stylist_end_price, :precision => 0)  %> </td>
 		<% end -%>
 	</tr>
 	<tr>
@@ -28,7 +20,15 @@
 		<td><%= @service.senior_start_price.nil? ? 'Not Set' : number_to_currency(@service.senior_start_price, :precision => 0) %> </td>
 		<td>
 		<% unless @service.senior_start_price.nil? %>
-		<%= @service.senior_end_price.nil? ? '& up' : number_to_currency(@service.senior_end_price, :precision => 0) %>
+		<%= @service.senior_end_price.nil? ? '& up' : number_to_currency(@service.senior_end_price, :precision => 0)  %> </td>
+		<% end -%>
+	</tr>
+	<tr>
+		<td>Master</td>
+		<td><%= @service.master_start_price.nil? ? 'Not Set' : number_to_currency(@service.master_start_price, :precision => 0) %> </td>
+		<td>
+		<% unless @service.master_start_price.nil? %>
+		<%= @service.master_end_price.nil? ? '& up' : number_to_currency(@service.master_end_price, :precision => 0) %>
 		<% end -%>
 		</td>
 	</tr>

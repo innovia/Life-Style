@@ -49,8 +49,8 @@
 			
 			<tr>
 				<th class="price">Stylist</th>
-				<th class="price">Senior</th>
-				<th class="price">Master</th>
+				<th class="price">Senior Stylist</th>
+				<th class="price">Master Stylist</th>
 			</tr>
 			
 			<%- cat.services.each do |service| -%> 		
@@ -58,32 +58,32 @@
 				<td><%= service.name %></td>
 				
 				<td class="price">
-					<%= service.beginner_start_price.nil? ? 'Not Set' : number_to_currency(service.beginner_start_price, :precision => 0) %> 
+					<%= service.stylist_start_price.nil? ? 'Not Set' : number_to_currency(service.stylist_start_price, :precision => 0) %> 
 					-
-					<% unless service.beginner_start_price.nil? %>
-					<%= service.beginner_end_price.nil? ? '& up' : number_to_currency(service.beginner_end_price, :precision => 0).to_s  %> 
+					<% unless service.stylist_start_price.nil? %>
+					<%= service.stylist_end_price.nil? ? '& up' : number_to_currency(service.stylist_end_price, :precision => 0).to_s  %> 
 					<% end -%>
 				</td>
 					
 				<td class="price">
-					<%= service.intermidiate_start_price.nil? ? 'Not Set' : number_to_currency(service.intermidiate_start_price, :precision => 0) %>
-					-
-					<% unless service.intermidiate_start_price.nil? %>
-					<%= service.intermidiate_end_price.nil? ? '& up' : number_to_currency(service.intermidiate_end_price, :precision => 0)  %> 
-					<% end -%>
-				</td>
-					
-				<td class="price">
-					<%= service.senior_start_price.nil? ? 'Not Set' : number_to_currency(service.senior_start_price, :precision => 0) %> 
+					<%= service.senior_start_price.nil? ? 'Not Set' : number_to_currency(service.senior_start_price, :precision => 0) %>
 					-
 					<% unless service.senior_start_price.nil? %>
-					<%= service.senior_end_price.nil? ? '& up' : number_to_currency(service.senior_end_price, :precision => 0) %>
+					<%= service.senior_end_price.nil? ? '& up' : number_to_currency(service.senior_end_price, :precision => 0)  %> 
+					<% end -%>
+				</td>
+					
+				<td class="price">
+					<%= service.master_start_price.nil? ? 'Not Set' : number_to_currency(service.master_start_price, :precision => 0) %> 
+					-
+					<% unless service.master_start_price.nil? %>
+					<%= service.master_end_price.nil? ? '& up' : number_to_currency(service.master_end_price, :precision => 0) %>
 					<% end -%>
 				</td>
 								
 				<% if logged_in? %>
 				<td class="admin_link">
-					<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_service_path(service), :title => "edit service" %>
+					<%= link_to image_tag("icons/layout_edit.png", :size => "24x24", :class => "edit_icon"), edit_category_service_path(cat, service), :title => "edit service" %>
 				</td>
 					
 				<td class="admin_link"><%= link_to image_tag("icons/large_error.png", :size => "24x24"), service_path(service), 

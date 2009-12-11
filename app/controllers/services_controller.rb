@@ -30,6 +30,7 @@ class ServicesController < ApplicationController
  
  def edit
   get_categories
+  @category = Category.find(params[:category_id])
   @service = Service.find(params[:id])
  end
  

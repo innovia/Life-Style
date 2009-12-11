@@ -18,11 +18,11 @@
 	<%= render :partial => 'shared/load_yui_editor_files' %>
 
 	<script type="text/javascript" charset="utf-8">
-		var editor = new YAHOO.widget.Editor('page_editor', {
+		var editor = new YAHOO.widget.SimpleEditor('page_editor', {
 		  height: '125px', 
 			width: '600px', 
 			animate: true,  
-			handleSubmit: true
+			handleSubmit: true,
 		});
 		editor._defaultToolbar.titlebar = false;
 		editor._defaultToolbar.buttonType = 'advanced'
