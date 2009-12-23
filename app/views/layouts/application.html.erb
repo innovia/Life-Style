@@ -5,6 +5,11 @@
 	<title>LifeStyle Salon NYC - 822 BroadWay (212) 228-5577</title>
 
 <%= javascript_include_tag "jquery", "jquery-ui-1.7.1.custom.min","jquery.tools.min", "jquery.timepicker","jquery.maskedinput.min", "jquery.validate.min", "application" %>
+
+<% if controller_name == "pages" %>
+	<%= render :partial => "shared/init_yui_editor" %>
+<%- end -%>
+
 <%= stylesheet_link_tag "blueprint/src/reset", :media => "screen, projection" %>
 <%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
 <%= stylesheet_link_tag "blueprint/print", :media => "print" %>
@@ -96,12 +101,8 @@
 				
 				<div id="right_col" class="span-3 last">
 					<div id="logo"></div>					
-				</div>
-					
-				
+				</div>	
 			</div> <!-- /stage -->
-			
-			
 		</div>	<!-- /container -->	
 	<script>
 		    $(function () {
@@ -113,6 +114,8 @@
 			});		
 		</script>	
 		
-		<%= yield(:foot) %>						
+		<% if controller_name == "pages" %>
+			<%= render :partial => "shared/call_yui_editor" %>			
+		<%- end -%>						
 </body>
 </html>

@@ -3,12 +3,11 @@
 <div id="display_content" class="about_us">
 	<h2 id="title">About us</h2>
 	<%= @page.body  %>
-</div> <!-- /editable content-->
+</div> <!-- /display content-->
 
 <% if logged_in? %>
 	<%= render :partial => "shared/update_page" %>
 <% end -%>
-
 </div>
 
 

@@ -1,12 +1,10 @@
 <div class="prepend-1">
 <% @bkg = @page.background_picture.url(:bkg) %>
 
-
 <div id="display_content" class="specials">
 	<h2 id="title">Specials</h2>
-	<%= @page.body  %>
-</div> <!-- /editable content-->
-
+	<%= @page.body  %> <!-- display page body-->
+</div> <!-- /display content-->
 
 <% if logged_in? %>
 	<%= render :partial => "shared/update_page" %>

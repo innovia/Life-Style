@@ -1,16 +1,12 @@
-<%= render :partial => "shared/init_yui_editor" %>
 <div id="edit_content" class="yui-skin-sam">
 		<% form_for @page, :html => { :multipart => true, :method => :put } do |f| -%>
-	  <%= hidden_field(:page, :title) %>
-		<%= f.label :body, "Content for: #{page_name} page" %><br/>
-		<%= f.text_area :body, :id => "page_editor" %>
+	  	<%= hidden_field(:page, :title) %>
+			<%= f.label :body, "Content for: #{page_name} page" %><br/>
+			<%= f.text_area :body, :id => "page_editor" %>
 		<br/>
-		<%= f.label :background_picture, "Background Picture" %>
-		<%= f.file_field :background_picture %>
-		<%= f.submit "Save Changes" %>
+			<%= f.label :background_picture, "Background Picture" %>
+			<%= f.file_field :background_picture %>
+			<%= f.submit "Save Changes" %>
 		<button class="toggle_edit">Cancel</button>
 		<% end -%>
-</div>
-
-<%= render :partial => "shared/call_yui_editor" %>
-	
+</div> <!-- / edit content div -->	
