@@ -10,4 +10,7 @@
 	<li>Saturday	10a.m - 7p.m</li>
 	<li>Sunday	11a.m - 6p.m</li>
 	</ul>
+	<% if logged_in? %>
+		<%= yield(:yui_editor) %>
+	<% end -%>
 </div>
