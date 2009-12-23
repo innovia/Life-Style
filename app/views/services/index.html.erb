@@ -62,6 +62,8 @@
 					-
 					<% unless service.stylist_start_price.nil? %>
 					<%= service.stylist_end_price.nil? ? '& up' : number_to_currency(service.stylist_end_price, :precision => 0).to_s  %> 
+					<% else %>
+					 Not Available
 					<% end -%>
 				</td>
 					
