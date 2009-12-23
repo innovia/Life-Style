@@ -3,7 +3,11 @@
 
 <div id="display_content" class="specials">
 	<h2 id="title">Specials</h2>
-	<%= @page.body  %> <!-- display page body-->
+	<% if @page.body.nil? %>
+		<h2>Coming soon...</h2>
+	<%- else -%>
+	<%= @page.body  %>
+	<% end -%><!-- display page body-->
 </div> <!-- /display content-->
 
 <% if logged_in? %>

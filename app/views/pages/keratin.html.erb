@@ -1,7 +1,7 @@
 <div class="prepend-1">
 <% @bkg = @page.background_picture.url(:bkg) %>
 
-<div id="display_content" class="about_us">
+<div id="display_content" class="keratin">
 	<h2 id="title">Brazilian Keratin Treatment</h2>
 	<% if @page.body.nil? %>
 		<h2>Coming soon...</h2>
@@ -11,6 +11,6 @@
 </div> <!-- /editable content-->
 
 <% if logged_in? %>
-	<%= yield(:yui_editor) %>
+	<%= render :partial => "shared/update_page" %>
 <% end -%>
 </div>

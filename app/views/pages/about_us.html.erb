@@ -2,7 +2,11 @@
 <% @bkg = @page.background_picture.url(:bkg) %>
 <div id="display_content" class="about_us">
 	<h2 id="title">About us</h2>
+	<% if @page.body.nil? %>
+		<h2>Coming soon...</h2>
+	<%- else -%>
 	<%= @page.body  %>
+	<% end -%>
 </div> <!-- /display content-->
 
 <% if logged_in? %>

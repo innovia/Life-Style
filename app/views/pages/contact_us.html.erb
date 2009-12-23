@@ -7,9 +7,9 @@
 	<%- else -%>
 	<%= @page.body  %>
 	<% end -%>
-</div> <!-- /editable content-->
+</div> <!-- /display content-->
 
 <% if logged_in? %>
-	<%= yield(:yui_editor) %>
+	<%= render :partial => "shared/update_page" %>
 <% end -%>
 </div>
