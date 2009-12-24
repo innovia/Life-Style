@@ -1,0 +1,38 @@
+<style>
+	table{
+		width: 400px !important;
+	}
+</style>
+<% form_for @schedule do |f| %>
+  <%= f.error_messages %>
+  <p>
+		<%= f.label :stylist_id %><br />
+		<%= f.collection_select(:stylist_id, @stylists, "id", "full_name", :prompt => 'select a stylist') %>
+  </p>
+  <p>
+    Days <br />
+    <div id='custom_weekly'>
+	 	Mon<%= check_box_tag('schedule[day][]','Mon') -%>
+	 	Tue<%= check_box_tag('schedule[day][]','Tue') -%>
+	 	Wed<%= check_box_tag('schedule[day][]','Wed') -%>
+	 	Thu<%= check_box_tag('schedule[day][]','Thu') -%>
+	 	Fri<%= check_box_tag('schedule[day][]','Fri') -%>
+	 	Sat<%= check_box_tag('schedule[day][]','Sat') -%>
+	 	Sun<%= check_box_tag('schedule[day][]','Sun') -%>
+		</div>
+		
+  </p>
+  <table>
+    <tr>
+			<td>From:	</td>
+			<td>
+				<%= f.time_select :start_time %>
+			</td>
+			<td> To:</td>
+			<td>
+				<%= f.time_select :end_time %>
+			</td>
+		</tr>
+  </table>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

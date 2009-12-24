@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :schedules
+  map.resources :stylists, :has_many  => :schedules
 
   map.resource :account, :controller => "users"
   
