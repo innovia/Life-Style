@@ -5,13 +5,14 @@ class PagesController < ApplicationController
     @stylists = Stylist.all
   end
   
-  def specials
-    
-  end
-  
   def create
-      @app_req = params
-      AppointmentMailer.deliver_request_for_appointment(@app_req)
+      if  params['commit'] == "contact us"
+        @mailer = params
+        ContactMailer.deliver_contact_form(@mailer)
+      else
+        @app_req = params
+        AppointmentMailer.deliver_request_for_appointment(@app_req)
+      end
       flash[:notice] = "Sent"
       redirect_to :thank_you
   end
@@ -24,13 +25,11 @@ class PagesController < ApplicationController
   def update
     @page = Page.find(params[:id])
     if @page.update_attributes(params[:page])
-    
       if params[:manager]
         page_origin = manager_path
       else
         page_origin = @page.title.to_sym
       end
-      
         redirect_to page_origin
     else
       flash[:error] = "Could not save changes please try again."

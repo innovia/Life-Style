@@ -7,6 +7,13 @@
 	<%- else -%>
 	<%= @page.body  %>
 	<% end -%>
+
+<% form_tag(pages_path, :id => "contact_form") do -%>
+	<%= hidden_field(:page, :title) %>
+	<%= render :partial => "contact_form"  %> 
+	<%= submit_tag	"contact us" %>
+<% end -%>
+
 </div> <!-- /display content-->
 
 <% if logged_in? %>

@@ -138,6 +138,11 @@ body {background: url('/images/background.jpg'); color: white;}
 	margin-left: 10px;
 }
 
+#image_on_stage img.bkgimg {
+	z-index: 1;
+	display: inline;
+}
+
 #see_through_box {
 	background: url('/images/see_through_box.png') repeat;
 	*background: url('/images/see_through_ie.png');

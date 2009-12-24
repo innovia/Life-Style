@@ -6,7 +6,7 @@
 
 <%= javascript_include_tag "jquery", "jquery-ui-1.7.1.custom.min","jquery.tools.min", "jquery.timepicker","jquery.maskedinput.min", "jquery.validate.min", "application" %>
 
-<% if controller_name == "pages" %>
+<% if controller_name == "pages"  or  controller_name == "stylists" or controller_name == "products"%>
 	<%= render :partial => "shared/init_yui_editor" %>
 <%- end -%>
 
@@ -72,12 +72,13 @@
 						 <li>| <%= link_to "New gallery picture", new_picture_path  %> </li>
 						 <li>| <%= link_to "Gallery Manager", gallery_manager_path  %> </li>	
 						 <% end %>					
-							Life Style Salon NYC (c) Ver 1.0.1		
+							Life Style Salon NYC (c) Ver 1.1		
 					</ul>
 					<% end %> 
 				</div>
 				
 				<div id="image_on_stage" class="span-18">
+					
 					<div id="see_through_box">
 						<div id="inner_content" class="span-17">
 							<%- unless flash[:notice].blank? -%>
@@ -114,7 +115,7 @@
 			});		
 		</script>	
 		
-		<% if controller_name == "pages" %>
+		<% if controller_name == "pages"  or  controller_name == "stylists" or controller_name == "products"%>
 			<%= render :partial => "shared/call_yui_editor" %>			
 		<%- end -%>						
 </body>
