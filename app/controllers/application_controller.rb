@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
     def preload_page
       if controller_name == "pages"
           unless action_name == "update" or action_name == "edit" or action_name == "destroy"
-            @page = Page.find_or_create_by_title(actionw_name)
+            @page = Page.find_or_create_by_title(action_name)
           else
             @bkg = "/images/Backgrounds/salon_back_panoramic.jpg"
             return
