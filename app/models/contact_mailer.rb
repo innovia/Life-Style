@@ -4,7 +4,7 @@ class ContactMailer < ActionMailer::Base
   def contact_form(params)
     @mailer = params
     recipients  "info@lifestylesalonnyc.com"
-    subject     "#{params[:subject]}"
+    subject     "Web Contact us form ::: #{params[:subject]}"
     reply_to    "#{params[:email]}"
     sent_on     Time.now
   end
