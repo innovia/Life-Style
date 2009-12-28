@@ -1,0 +1,3 @@
+$('#schedule').html("<% for sched in @schedules %><p>On: <%= sched.day %> <%= sched.start_time.strftime('%H:%M') %> - <%= sched.end_time.strftime('%H:%M') %> </p> <% end %>");
+  
+

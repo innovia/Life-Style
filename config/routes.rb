@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :schedules
   map.resources :stylists, :has_many  => :schedules
 
   map.resource :account, :controller => "users"
@@ -16,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :pictures, :collection => { :sort => :post, :delete_selected => :post }
   
-  map.resources :pages, :users, :services, :stylists, :products
+  map.resources :pages, :users, :services, :stylists, :products, :schedules
   
   map.resources :categories, :has_many => :services
    

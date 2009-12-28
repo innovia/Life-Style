@@ -6,8 +6,10 @@
 
 <%= javascript_include_tag "jquery", "jquery-ui-1.7.1.custom.min","jquery.tools.min", "jquery.timepicker","jquery.maskedinput.min", "jquery.validate.min", "application" %>
 
-<% if controller_name == "pages"  or  controller_name == "stylists" or controller_name == "products"%>
+<% if controller_name == "pages" or  controller_name == "stylists" or controller_name == "products" %>
+	<% unless controller.action_name == 'appointments' or controller.action_name == 'pages_manager' %>
 	<%= render :partial => "shared/init_yui_editor" %>
+	<%- end -%>
 <%- end -%>
 
 <%= stylesheet_link_tag "blueprint/src/reset", :media => "screen, projection" %>
@@ -68,11 +70,12 @@
 						 <% end %>
 						 <li>| <%= link_to "Pages Manager", manager_path %></li>
 						 <li>| <%= link_to "Service Categories", categories_path %></li>
+						 <li>| <%= link_to "Stylists schedules", schedules_path %></li>
 						 <% if controller_name == "pictures" %>
 						 <li>| <%= link_to "New gallery picture", new_picture_path  %> </li>
 						 <li>| <%= link_to "Gallery Manager", gallery_manager_path  %> </li>	
 						 <% end %>					
-							Life Style Salon NYC (c) Ver 1.1		
+							| version 1.2		
 					</ul>
 					<% end %> 
 				</div>
@@ -104,7 +107,9 @@
 					<div id="logo"></div>					
 				</div>	
 			</div> <!-- /stage -->
+			<span id="copy">Copyright © <%= Date.today.strftime('%Y') %>  LifeStyle Salon NYC. All rights reserved.</spanid="copy">
 		</div>	<!-- /container -->	
+		
 	<script>
 		    $(function () {
 				$(window).load(function() {
@@ -116,7 +121,10 @@
 		</script>	
 		
 		<% if controller_name == "pages"  or  controller_name == "stylists" or controller_name == "products"%>
+			<% unless controller.action_name == 'appointments' or controller.action_name == 'pages_manager' %>
 			<%= render :partial => "shared/call_yui_editor" %>			
 		<%- end -%>						
+		<%- end -%>						
+
 </body>
 </html>

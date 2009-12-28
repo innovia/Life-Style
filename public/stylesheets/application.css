@@ -484,3 +484,98 @@ label.checked {
 #display_content {
  width: 570px;
 }
+
+
+.service_icon {
+	-moz-border-radius: 5px;
+	border: 1px solid beige;
+	width: 100px;
+	height: 25px;
+	float: left;
+	margin: 15px;
+	padding: 10px;
+	font-size: 150%;
+	text-align: center;
+}
+
+.stylist_icon {
+	-moz-border-radius: 5px;
+	border: 1px solid beige;
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin: 15px;
+	padding: 10px;
+	font-size: 150%;
+	text-align: center;
+}
+
+
+.selected {
+	-moz-border-radius: 5px;
+	border: 5px solid #FFDE9F;
+	background: transparent url(/images/h300.png) repeat-x;
+ 	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src='/images/h300.png');
+}
+
+
+#wizard.scrollable {
+	position: relative;
+	overflow: hidden;
+	width: 595px;
+	height: 325px;
+}
+
+#wizard div.items {
+	width: 20000em;
+	position: absolute;
+}
+
+#wizard div.items div {
+	float: left;
+	width: 550px;
+	margin-left: 25px;
+	height: 325px !important;
+	overflow: auto;
+} 
+
+.left { float: left;}
+
+#your_info {
+	margin-left: 0 !important;
+}
+
+
+#your_info_left {
+	width: 240px !important;
+	height: 300px;
+	margin-right: 8px;
+	border-right: 1px solid #FFDE9F;
+}
+
+#your_info label{
+	display:block;
+	font-weight:bold;
+	text-align:right;
+	width: 110px;
+	float:left;
+}
+
+#your_info input {
+	border:1px solid #AACFE4;
+	margin:2px 0 12px 8px;
+	padding:3px 2px;
+}
+
+label.male {
+	width: 60px !important;
+	margin-left: 102px;
+}
+
+label.female {
+	margin-bottom: 12px;
+}
+
+#summary { margin-left: 50px !important;}
+
+#copy { color: #333; font-size: 10px;}

@@ -1,3 +1,7 @@
+jQuery.ajaxSetup({
+	'beforeSend': function(xhr){ xhr.setRequestHeader("Accept", "text/javascript")} 
+})
+
 $(document).ready(function() {
 		
 	$('#inner_content').fadeTo(500, 1).fadeIn("3000");
@@ -99,7 +103,6 @@ $(document).ready(function() {
 		  }
 	});
 	
-	$('#requested_date').datepicker();
 	$('#phone_number').mask("(999) 999-9999");
 	$('#cell').mask("(999) 999-9999");	
 	
@@ -108,10 +111,11 @@ $(document).ready(function() {
 	enable_edit(); 
 
 	// initialize scrollable  
-	$("div.scrollable").scrollable({size: 1});
+	$("div.scrollable").scrollable({size: 1, clickable: false});
 
 	$("div.vertical_scrollable").scrollable({ 
-	        vertical:true,  
+	        vertical:true,
+	  			clickable: false,
 	        size: 1,
 				  prev: 'div.prev_product',
 				  next: 'div.next_product'
@@ -134,5 +138,44 @@ $(document).ready(function() {
 		});
 		
 	}
+	
+		$('#wizard.scrollable').scrollable({size: 1, clickable: false});
+		
+		$('.service_icon').bind('click', function(event) {
+			 $('.service_icon').removeClass('selected');
+			 $(this).addClass('selected');
+			 var selectedService = $(this).attr("data-service");
+			 $('#service').val(selectedService);
+			 $('#service_name_summary').html($(this).attr("data-service_name"));
+		});
+		
+		$('.stylist_icon').bind('click', function(event) {
+			$('.stylist_icon').removeClass('selected');
+			$(this).addClass('selected');
+			var selectedStylist = $(this).attr("data-stylist");
+			$('#stylist').val(selectedStylist);
+			$('#stylist_name').html($(this).attr("data-stylist_name"));
+			$('#stylist_name_summary').html($(this).attr("data-stylist_name"));
+			
+			$.ajax({
+			  url: '/stylists/' + selectedStylist + '/schedules',
+			  type: "GET",
+			  dataType: "script",
+			  data: null	
+			});
+		});
+		
+		$('#requested_date').datepicker({
+				onSelect: function(dateText, inst){ $('#date_summary').html(dateText); }
+		});
+		
+		$('#hour').bind('blur', function(event) {
+			$('#hour_summary').html($('#hour').val());
+		});
+		
+		$('#minute').bind('blur', function(event) {
+			$('#minute_summary').html($('#minute').val());
+		});
+			
 	
 });

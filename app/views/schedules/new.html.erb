@@ -1,5 +1,11 @@
 <div class="prepend-1">
-	<h2 id="title">Add Stylist Schedule</h2>
+	<% if params[:stylist_id] %>
+		<% @h2 = "Set schedule for  #{@stylist.full_name.capitalize}" %>
+	<%- else -%>
+		<% @h2 = "Add Stylist Schedule" %>
+	<% end %>
+	
+	<h2 id="title"><%= @h2 %></h2>
 	<%= render :partial => 'form' %>
 
 <p><%= link_to "Back to List", schedules_path %></p>

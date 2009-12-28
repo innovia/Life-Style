@@ -3,22 +3,37 @@
 		width: 400px !important;
 	}
 </style>
+
+
 <% form_for @schedule do |f| %>
   <%= f.error_messages %>
+  <% unless params[:stylist_id] %>
+  	<p>
+			<%= f.label :stylist_id %><br />
+			<%= f.collection_select(:stylist_id, @stylists, "id", "full_name", :prompt => 'select a stylist') %>
+	  </p>
+	<%- else -%>
+			<%= f.hidden_field :stylist_id, {:value =>  params[:stylist_id]}  %>
+  <% end %>
+	
   <p>
-		<%= f.label :stylist_id %><br />
-		<%= f.collection_select(:stylist_id, @stylists, "id", "full_name", :prompt => 'select a stylist') %>
-  </p>
-  <p>
-    Days <br />
-    <div id='custom_weekly'>
-	 	Mon<%= check_box_tag('schedule[day][]','Mon') -%>
-	 	Tue<%= check_box_tag('schedule[day][]','Tue') -%>
-	 	Wed<%= check_box_tag('schedule[day][]','Wed') -%>
-	 	Thu<%= check_box_tag('schedule[day][]','Thu') -%>
-	 	Fri<%= check_box_tag('schedule[day][]','Fri') -%>
-	 	Sat<%= check_box_tag('schedule[day][]','Sat') -%>
-	 	Sun<%= check_box_tag('schedule[day][]','Sun') -%>
+    Days <br />		
+		<% @schedule.day.include?("Mon")? @Mon = true : @Mon = false %>
+    <% @schedule.day.include?("Tue")? @Tue = true : @Tue = false %>
+		<% @schedule.day.include?("Wed")? @Wed = true : @Wed = false %>
+		<% @schedule.day.include?("Thu")? @Thu = true : @Thu = false %>
+		<% @schedule.day.include?("Fri")? @Fri = true : @Fri = false %>
+		<% @schedule.day.include?("Sat")? @Sat = true : @Sat = false %>
+		<% @schedule.day.include?("Sun")? @Sun = true : @Sun = false %>
+					
+		<div id='custom_weekly'>
+	 	Mon<%= check_box_tag('schedule[day][]','Mon', @Mon) -%>
+	 	Tue<%= check_box_tag('schedule[day][]','Tue', @Tue) -%>
+	 	Wed<%= check_box_tag('schedule[day][]','Wed', @Wed) -%>
+	 	Thu<%= check_box_tag('schedule[day][]','Thu', @Thu) -%>
+	 	Fri<%= check_box_tag('schedule[day][]','Fri', @Fri) -%>
+	 	Sat<%= check_box_tag('schedule[day][]','Sat', @Sat) -%>
+	 	Sun<%= check_box_tag('schedule[day][]','Sun', @Sun) -%>
 		</div>
 		
   </p>
