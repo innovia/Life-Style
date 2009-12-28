@@ -497,6 +497,8 @@ label.checked {
 	text-align: center;
 }
 
+.service_icon:hover{ color: #fff;border: 2px solid white;}
+
 .stylist_icon {
 	-moz-border-radius: 5px;
 	border: 1px solid beige;
@@ -507,6 +509,8 @@ label.checked {
 	font-size: 150%;
 	text-align: center;
 }
+
+.stylist_icon:hover{ color: #fff;border: 2px solid white;}
 
 
 .selected {
