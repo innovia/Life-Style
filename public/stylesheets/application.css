@@ -490,7 +490,6 @@ label.checked {
 	-moz-border-radius: 5px;
 	border: 1px solid beige;
 	width: 100px;
-	height: 25px;
 	float: left;
 	margin: 15px;
 	padding: 10px;
@@ -502,7 +501,6 @@ label.checked {
 	-moz-border-radius: 5px;
 	border: 1px solid beige;
 	width: 100px;
-	height: 100px;
 	float: left;
 	margin: 15px;
 	padding: 10px;
