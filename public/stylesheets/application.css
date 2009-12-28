@@ -521,7 +521,7 @@ label.checked {
 	position: relative;
 	overflow: hidden;
 	width: 595px;
-	height: 325px;
+	height: 258px;
 }
 
 #wizard div.items {
@@ -577,3 +577,15 @@ label.female {
 #summary { margin-left: 50px !important;}
 
 #copy { color: #333; font-size: 10px;}
+
+#wiznav {list-style: none;}
+#wiznav li a { background-image: url('/images/back_next.png'); 
+							 text-indent: -9999px; 
+							 width: 107px;
+							 height: 38px;
+							 float: left; 
+							 width: 118px; 
+							 padding-top: 50px; 
+							 overflow: hidden; }
+							
+#wiznav li a.nextPage {background-position: 120px 0; float:right !important;}
