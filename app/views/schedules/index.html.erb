@@ -22,8 +22,15 @@
 <p><%= link_to "New Schedule", new_schedule_path %></p>
 <%- else -%>
 <div class="warning">	
-	<h2><%= @stylist.full_name.capitalize %> does not have a schedule set.</h2>
-	<p><%= link_to "Set a schedule for #{@stylist.full_name}", new_stylist_schedule_path(@stylist) %></p>		
+
+	<% unless  @stylist.nil? %>
+		<h2><%= @stylist.full_name.capitalize %> does not have a schedule set.</h2>
+		<p><%= link_to "Set a schedule for #{@stylist.full_name}", new_stylist_schedule_path(@stylist) %></p>		
+	<%- else -%>
+		<h2>There are no schedules set for any stylist yet.</h2>
+		<p><%= link_to "Set a schedule", new_schedule_path %></p>		
+	<% end -%>
+	
 </div>
 <% end -%>
 </div>

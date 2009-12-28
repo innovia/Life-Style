@@ -24,9 +24,13 @@ class SchedulesController < ApplicationController
   end
   
   def new
-    @stylist = Stylist.find(params[:stylist_id])
-    @schedule = Schedule.new
-    @stylists = Stylist.all
+    if params[:stylist_id] 
+      @stylist = Stylist.find(params[:stylist_id])
+      @schedule = Schedule.new
+    else
+      @schedule = Schedule.new
+      @stylists = Stylist.all
+    end
   end
   
   def create

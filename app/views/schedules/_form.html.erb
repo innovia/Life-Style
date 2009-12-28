@@ -17,7 +17,8 @@
   <% end %>
 	
   <p>
-    Days <br />		
+    Days <br />
+		<% unless @schedule.day.nil? %>
 		<% @schedule.day.include?("Mon")? @Mon = true : @Mon = false %>
     <% @schedule.day.include?("Tue")? @Tue = true : @Tue = false %>
 		<% @schedule.day.include?("Wed")? @Wed = true : @Wed = false %>
@@ -25,7 +26,8 @@
 		<% @schedule.day.include?("Fri")? @Fri = true : @Fri = false %>
 		<% @schedule.day.include?("Sat")? @Sat = true : @Sat = false %>
 		<% @schedule.day.include?("Sun")? @Sun = true : @Sun = false %>
-					
+		<% end -%>
+		
 		<div id='custom_weekly'>
 	 	Mon<%= check_box_tag('schedule[day][]','Mon', @Mon) -%>
 	 	Tue<%= check_box_tag('schedule[day][]','Tue', @Tue) -%>
