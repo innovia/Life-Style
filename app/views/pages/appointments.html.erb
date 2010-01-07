@@ -164,3 +164,87 @@
 	<li><a class="prev_page">prev</a></li>
 	<li><a class="next_page">next</a></li>
 </ul>
+
+<script type="text/javascript" charset="utf-8">
+	// main vertical scroll
+	api = $("#main").scrollable({
+		clickable: false,
+		vertical: true,
+		size: 1,
+		prev: 'a.prev_page',
+		next: 'a.next_page',
+		keyboard: false
+	}).navigator({navi: "#main_navi", api: true});	// main navigator (thumbnail images)
+
+	// horizontal scrollables. each one is circular and has its own navigator instance
+	horizontal = $(".scrollable").scrollable({size: 1, clickable: false, prev: 'a.prev_horizontal', next: 'a.next_horizontal'}).navigator({navi: ".navi", api: true});
+
+
+	function slide_drawer(msg){
+				drawer.html(msg);
+				drawer.slideDown(function()  { 
+	      drawer.css("backgroundColor", "#FFCB66"); // colored flash effect 
+	      setTimeout(function() { drawer.css("backgroundColor", "#fff"); }, 1000); 
+	  });
+	};
+
+	api.onBeforeSeek(function(event, i) { 
+	 drawer = $("#drawer"); 
+	 var page = api.getIndex();
+
+		switch(page){
+		case 0: // services page
+			if ($('.service_icon.selected').length == 0) {
+			slide_drawer('Please pick a service');
+				return false; // cancel seeking of the scrollable by returning false 						
+			}	else { 
+				            drawer.slideUp(); 
+				}
+			break;
+
+		case	1: // stylists page
+				if ($('.stylist_icon.selected').length == 0) {
+					slide_drawer('Please pick a stylist who will do the service');
+					return false; // cancel seeking of the scrollable by returning false 						
+				} else { 
+					drawer.slideUp(); 
+				}
+			break;
+		default:
+		}
+
+	});
+
+	api.onSeek(function(event, i){
+		page = api.getIndex();
+
+			if (page == 2 || page == 3 || page == 4) {
+					if ($('.stylist_icon.selected').length == 0) {
+						api.seekTo(1);
+						slide_drawer('Please pick a stylist who will do the service');
+					} else { 
+						drawer.slideUp(); 
+					}
+			}
+		
+	 		if (page == 4 && $('.stylist_icon.selected').length == 1 && $('form').valid() == true) {
+				
+				
+					if ($('#requested_date').val() == "" || $('#minute').val() == "" || $('#hour').val() == "") {
+						api.seekTo(2);
+						slide_drawer('Please pick a date and time, pay attention to the stylist schedule');
+					}	else { drawer.slideUp(); }
+
+					
+
+					
+				
+				if ( $('form').valid() == false) {
+					api.seekTo(3);
+				} else {
+					drawer.slideUp(); 		
+				} 
+	    }
+
+	});
+</script>
