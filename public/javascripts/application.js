@@ -23,9 +23,6 @@ $(document).ready(function() {
 
 	$("input.remove_title").attr("title", "");
 	
-	validate_appointment_request();
-	
-	function validate_appointment_request(){
 	$('#appointment_form').validate({
 		rules: {
 						first_name: { required: true, minlength: 2 },
@@ -82,8 +79,6 @@ $(document).ready(function() {
 					label.html(" ").addClass("checked"); 
 		  }
 	});
-}
-
 
 	$('#phone_number').mask("(999) 999-9999");
 	$('#cell').mask("(999) 999-9999");	
@@ -180,8 +175,6 @@ api = $("#main").scrollable({
 	keyboard: false
 }).navigator({navi: "#main_navi", api: true});	// main navigator (thumbnail images)
 
-
-
 // horizontal scrollables. each one is circular and has its own navigator instance
 horizontal = $(".scrollable").scrollable({size: 1, clickable: false, prev: 'a.prev_horizontal', next: 'a.next_horizontal'}).navigator({navi: ".navi", api: true});
 
@@ -217,7 +210,7 @@ api.onBeforeSeek(function(event, i) {
 			}
 		break;
 	
-	case	2: // date and time page
+	case 2: // date and time page
 					
 					if ($('#requested_date').val() == "") {
 						slide_drawer('Please pick a date, pay attention to the stylist schedule');
@@ -232,20 +225,54 @@ api.onBeforeSeek(function(event, i) {
 						return false;
 				}	else { drawer.slideUp(); }
 			
-		break;
-	
-	case 3: //form
-		 	if ($('.stylist_icon.selected').length == 0) {
-				slide_drawer('Please pick a stylist who will do the service');
-		//		$('#submit_request').attr("disabled", "true");
-			} else { //$('#submit_request').removeAttr("disabled"); 
-							 drawer.slideUp(); }
-	break; 
-	
+	break;
+
 	default:
 		
 	}
 
 });
+
+api.onSeek(function(event, i){
+	page = api.getIndex();
+	
+	if (page == 2 || page == 3 || page == 4) {
+			if ($('.stylist_icon.selected').length == 0) {
+					api.seekTo(1);
+					slide_drawer('Please pick a stylist who will do the service');
+			} else { 
+				drawer.slideUp(); 
+			}
+			
+	if ( page == 3 ) {
+				if ($('#requested_date').val() == "") {
+					api.seekTo(2);
+					slide_drawer('Please pick a date, pay attention to the stylist schedule');
+				}	else { drawer.slideUp(); }
+		
+			if ($('#minute').val() == "") { 
+				api.seekTo(2);
+				slide_drawer('Please fill in the correct time');	
+			}	else { drawer.slideUp(); }
+	
+			if ($('#hour').val() == ""){ 
+				api.seekTo(2);
+				slide_drawer('Please fill in the correct time');
+			}	else { drawer.slideUp(); }
+		}	
+	}
+		
+ if (page == 4 && $('.stylist_icon.selected').length != 0 ) {
+		if ( $('form').valid() == false) {
+				api.seekTo(3);
+		} else {
+			drawer.slideUp(); 		
+		} 
+ }
+
 });
+
+
+});
+
 
