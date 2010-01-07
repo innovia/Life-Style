@@ -1,6 +1,5 @@
 <div id="gallery">
 	<h2 id="title" align="center">Gallery</h2>
-
 <% if @pictures.empty? %>
 	<% unless logged_in? %>
 	 <h2> Coming soon... </h2>
@@ -15,7 +14,7 @@
 <!-- "previous page" action --> 
 <a class="prev prev_photo">Previous</a> 
 	<!-- root element for scrollable --> 
-	<div class="scrollable">          
+	<div id="gallery_scroll" class="scrollable">          
 		<!-- root element for the items --> 			
 		<div class="items">
 			<% @pictures.each do |pic| %>
@@ -24,9 +23,7 @@
 		</div> <!-- /items -->
 	</div> <!-- /scrollable -->
 <% end -%>
-
 <!-- "next page" action --> 
 <a class="next next_photo">Next</a>
 
-</div> <!-- /gallery-->
-<%= will_paginate @pictures %>
+</div> <!-- /gallery -->

@@ -4,8 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>LifeStyle Salon NYC - 822 BroadWay (212) 228-5577</title>
 
-<%= javascript_include_tag "jquery", "jquery-ui-1.7.1.custom.min","jquery.tools.min", "jquery.timepicker","jquery.maskedinput.min", "jquery.validate.min", "application" %>
-
+<%=  javascript_include_tag "jquery", "jquery.tools.min", "jquery.maskedinput.min", "jquery.validate.min", "jquery-ui-1.7.1.custom.min","application"  %>
+	
+		
 <% if controller_name == "pages" or  controller_name == "stylists" or controller_name == "products" %>
 	<% unless controller.action_name == 'appointments' or controller.action_name == 'pages_manager' %>
 	<%= render :partial => "shared/init_yui_editor" %>
@@ -120,11 +121,11 @@
 			});		
 		</script>	
 		
+		
 		<% if controller_name == "pages"  or  controller_name == "stylists" or controller_name == "products"%>
 			<% unless controller.action_name == 'appointments' or controller.action_name == 'pages_manager' %>
 			<%= render :partial => "shared/call_yui_editor" %>			
 		<%- end -%>						
 		<%- end -%>						
-
 </body>
 </html>

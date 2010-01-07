@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
   
   def appointments
-    @services = Service.all
-    @stylists = Stylist.all
+    @categories = Category.all
+    ser = Service.all # 19
+      @services = ser.in_groups_of(6) 
+    sty = Stylist.all
+      @stylists =  sty.in_groups_of(3) 
   end
   
   def create
@@ -16,7 +19,6 @@ class PagesController < ApplicationController
       flash[:notice] = "Sent"
       redirect_to :thank_you
   end
-  
   
   def edit
     @page = Page.find(params[:id])

@@ -1,93 +1,166 @@
-<div class="pages_wrapper">
-<h2 id="title">Sechdule an Appointment</h2>
-<div id="wizard" class="scrollable">	
- <div class="items">
-		<div id="select_a_service">
-		<h3>	What service would you like?</h3>
-	  		<% for service in @services %>
-					<%= link_to service.name, "#", :class => "service_icon", "data-service" => "#{service.id}", "data-service_name" => "#{service.name}" %>
-			<% end %>
-			<%= hidden_field_tag :service %>
-	  </div> <!-- /service -->
-	 
-		<div id="select_stylist">
-			<h3>Select your stylist:</h3><br/>
-			   <% for stylist in @stylists %>
-			     <%= link_to image_tag(stylist.photo(:thumb)) + stylist.full_name, "#",
-			 				 :class => "stylist_icon", "data-stylist" => "#{stylist.id}", "data-stylist_name" => "#{stylist.full_name.capitalize}" %>   
-			   <% end %>
-			
-			 	<%= hidden_field_tag :stylist %>
-		</div> <!-- /stylist -->
-		
-		<div id="comein">
-			<h3>When do you want to come in?</h3>
-	  	<span id="stylist_name"></span> is available within the following schedule: <br/>
-			Please book your appointment within this time.<br/>
-			<span id="schedule"></span>
-			On: <%= text_field_tag :requested_date,{}, :class => "date_picker", :size => 10 %>
-			<span class="req">*</span>
-			at what time? <%= text_field_tag :hour, {}, :id => "hour", :maxlength => 2, :size => 1 %>	: <%= text_field_tag :minute, {}, :maxlength => 2,:id => "minute", :size => 1 %>
-	  </div>
-	
-		<div id="your_info">
-			<div id="your_info_left">
-				<h3>Tell us how to reach you.</h3>
-				<h4>We will call or e-mail you to confirm your appointment.</h4>
-				<p>Note: We would appreciate a 24hrs notice via phone prior to your appointment for any cancellations.</p>				
-			</div>
-			
-					<label>First Name: <span class="req"> *</span></label>
-					<%= text_field_tag :first_name,{}, :id => "first_name", :size => 20 %>
-				
-					
-					<label>Last Name: <span class="req"> *</span></label>
-					<%= text_field_tag :last_name,{}, :size => 20 %>
-
-					<label>e-mail:<span class="req"> *</span></label>
-				  <%= text_field_tag :email, {}, :size => 20 %>
-
-					<label class="male">
-					    <input type="radio" id="gender_male" name="gender" value="male" />
-					    Male
-					</label>
-					<label class="female">
-					    <input type="radio" id="gender_female" name="gender" value="female" />
-					    Female
-					</label>
-					
-				<label>Day Time Phone:<span class="req"> *</span></label>
-			  <%= text_field_tag :phone_number,{}, :size => 20 %></span>
-
-				<label>Mobile Phone: </label>
-				<%= text_field_tag :cell, {}, :size => 20 %>
-				
-				<label> First Time Client?</label>
-				<%= check_box_tag :first_time %>	 
-				<br/>
-				
-				<label>Referred by:</label>
-				<%= text_field_tag :referred_by,{}, :size => 20 %>
-				</div>
-				
-				<div id="summary">
-					<h3>Your appointment summary:</h3>
-					<p>
-						You are coming for a 
-						<span id="service_name_summary"></span>
-						with
-						<span id="stylist_name_summary"></span>
-						on:
-						<span id="date_summary"></span>
-						
-						at - <span id="hour_summary"></span> : <span id="minute_summary"></span> <br/>
-						<%= submit_tag 'Send Request' %>
-					</p>
-				</div>
-	</div><!-- /items -->
-</div> <!-- /scrollable -->
-<ul id="wiznav">
-	<li><a class="prevPage">Previous</a> </li>
-	<li><a class="nextPage">Next</a></li>
+<!-- main navigator -->
+<ul id="main_navi">
+	<li class="select_service">Select a service</li>
+	<li class="select_stylist">Select a Stylist</li>
+	<li class="select_time">When do you like to come in</li>
+	<li class="your_info">Your info</li>
+	<li class="summary">Summary</li>
 </ul>
-</div>
+
+<div id="drawer">[ERROR MESSAGE]</div> 
+<!-- root element for the main scrollable -->
+<div id="main">
+	<!-- root element for pages -->
+	<div id="pages">
+		<!-- page #1  (services)-->
+		<div class="page">
+			
+			<%= hidden_field_tag :service %>	
+			<!-- sub navigator #1 -->
+			<div class="navi"></div>
+			<h3>	What service would you like?</h3>	
+			<!-- inner scrollable services -->
+				<a class="prev_horizontal browse left"> Previous </a>
+				<div class="scrollable">
+				<!-- root element for scrollable items (services groups) -->
+					<div class="items"> 
+						<!-- items  -->
+								<% @categories.each do |cat| %>
+								<div class="item" >
+									<ul class="services_list">
+										<%=h cat.name.upcase %>
+										<% cat.services.each do |service| %>
+										<li><%= link_to service.name, "#", :class => "service_icon", "data-service" => "#{service.id}", "data-service_name" => "#{service.name}" %>
+										</li>
+										<% end -%>
+									</ul>
+								</div> <!-- / service item -->
+							<% end -%>
+				</div> <!-- /items -->
+			</div> <!-- /scrollable -->
+			<a class="next_horizontal browse right"> Next </a>
+		</div> <!-- /page -->
+
+		<!-- page #2 (stylists) -->
+		<div class="page">
+			<%= hidden_field_tag :stylist %>
+			<div class="navi"></div>
+			<h3>Select your stylist:</h3>
+
+			<!-- inner scrollable #2( Stylists scrollable) -->
+			<a class="prev_horizontal browse left"> Previous </a>
+			<div class="scrollable">
+				<!-- root element for scrollable items -->
+				<div class="items">
+
+					<% @stylists.each do |stylists_chunk| %>
+						<div class="item">
+					   	<% stylists_chunk.each do | stylist | %>
+					    	<% unless stylist.nil? %> 
+									<%= link_to image_tag(stylist.photo(:thumb)) + stylist.full_name, "#",
+					 				  "data-stylist" => "#{stylist.id}", "data-stylist_name" => "#{stylist.full_name.capitalize}", :class  => "stylist_icon" %>   
+					   		<% end %>
+					 		<% end -%>
+						</div> <!-- /stylist item -->
+					<% end -%>
+
+				</div>
+
+			</div>
+			<a class="next_horizontal browse right"> Next </a>
+		</div>
+
+		<!-- page #3 (when)-->
+		<div class="page">
+							<h3><p>When do you want to come in? </p></h3>
+					  	<span id="stylist_name"></span> is available 
+							<span id="schedule"></span>
+							<br/>Date: <%= text_field_tag :requested_date,{}, :class => "date_picker", :size => 10 %>
+							<span class="req">*</span>
+							at what time? <%= text_field_tag :hour, {}, :id => "hour", :maxlength => 2, :size => 1 %>	: <%= text_field_tag :minute, {}, :maxlength => 2,:id => "minute", :size => 1 %>			
+		</div>
+
+		<!-- page #4 (how to reach you)-->
+		<div class="page">
+							<div id="your_info">
+										<h4>Tell us how to reach you.</h4>
+										<h4>We will call or e-mail you to confirm your appointment.</h4>								
+												
+											<% form_tag(pages_path, :id => "appointment_form") do -%>
+												 
+												<div class="form_item">
+													<label class="appt_label">First Name: <span class="req"> *</span></label>
+													<%= text_field_tag :first_name,{}, :id => "first_name", :class => "appt_field", :size => 20 %>
+												</div>
+												 
+												<div class="form_item">
+												 <label class="appt_label">Last Name: <span class="req"> *</span></label>
+												 <%= text_field_tag :last_name,{},  :id => "last_name", :class => "appt_field", :size => 20 %>
+												</div>
+												
+												<div class="form_item">
+												 <label class="appt_label">e-mail:<span class="req"> *</span></label>
+												 <%= text_field_tag :email,{}, :id => "email", :class => "appt_field", :size => 20 %>
+												</div>
+												
+												<div class="form_item">
+													<label class="form male">
+														Gender:
+												    <input type="radio" id="gender_male" name="gender" value="male" />
+												    Male
+													</label>
+													<label class="form female">
+												    <input type="radio" id="gender_female" name="gender" value="female" />
+												    Female
+													</label>
+												 </div>
+												
+												<div class="form_item">
+												 <label class="appt_label">Day Time Phone:<span class="req"> *</span></label>
+												 <%= text_field_tag :phone_number,{}, :id => "day_phone", :class => "appt_field", :size => 20 %></span>
+												</div>
+												
+												<div class="form_item">
+												 <label class="appt_label">Mobile Phone: </label>
+												 <%= text_field_tag :cell, {}, :class => "appt_field", :size => 20 %>
+											</div>
+											
+											<div class="form_item">
+												 <label class="appt_label"> First Time Client?</label>
+												 <%= check_box_tag :first_time %>
+											</div>
+											
+											<div class="form_item">
+												 <label class="appt_label">Referred by:</label>
+												 <%= text_field_tag :referred_by,{}, :class => "appt_field", :size => 20 %>
+											</div>
+										
+											<p>Note:<br/> We would appreciate a 24hrs notice via phone prior to your appointment for any cancellations.</p>				
+											
+								</div> <!-- /your info -->
+		</div>
+	
+		<!-- page #5 (summary)-->
+		<div class="page">
+								<h3>Appointment Request Summary:</h3>
+								I would like to come in for a: <br/>
+								<span id="service_name_summary"> </span> by <span id="stylist_name_summary"></span> on the <span id="date_summary"></span> at <span id="hour_summary"></span>:<span id="minute_summary"></span>
+								<br/>
+								My contact info:
+								<p>
+								<span id="first_name_summary"></span> <span id="last_name_summary"></span> <br/>
+								<span id="email_summary"></span><br/>
+								<span id="day_phone_summary"></span></br>
+								</p>
+								<div>
+									<%= submit_tag 'Send Request', :id => "submit_request" %>
+								</div>
+								<% end -%>
+			</div>
+		
+	</div> <!-- / pages -->
+</div><!--/main -->
+<ul id="pages_navigator">
+	<li><a class="prev_page">prev</a></li>
+	<li><a class="next_page">next</a></li>
+</ul>

@@ -2,7 +2,6 @@ class ServicesController < ApplicationController
   before_filter :require_user, :except => :index
   
   def index
-    debugger
    get_categories
    @category = Category.new
   end
