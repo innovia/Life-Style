@@ -227,24 +227,18 @@
 					}
 			}
 		
-	 		if (page == 4 && $('.stylist_icon.selected').length == 1 && $('form').valid() == true) {
-				
+	 		if (page == 4 && $('.stylist_icon.selected').length == 1) {
 				
 					if ($('#requested_date').val() == "" || $('#minute').val() == "" || $('#hour').val() == "") {
 						api.seekTo(2);
 						slide_drawer('Please pick a date and time, pay attention to the stylist schedule');
-					}	else { drawer.slideUp(); }
-
-					
-
-					
-				
-				if ( $('form').valid() == false) {
-					api.seekTo(3);
-				} else {
-					drawer.slideUp(); 		
-				} 
-	    }
-
+					}	else {
+						if ( $('form').valid() == false) {
+							api.seekTo(3);
+						} else {
+							drawer.slideUp(); 
+						}
+	    		}
+				}
 	});
 </script>
