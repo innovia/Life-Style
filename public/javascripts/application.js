@@ -29,12 +29,7 @@ $(document).ready(function() {
 						 last_name: { required: true, minlength: 2 },
 								 email: { required: true, email: true },
 								gender: "required",
-					phone_number:{ required: true, phoneUS: true },
-				requested_date:{ required: true, date: true },
-									hour:{ required: true, range: [1, 12] },
-					  		minute:{ required: true, range: [00, 59] },
-								service: "required",
-								stylist: "required"
+					phone_number:{ required: true, phoneUS: true }
 					}, // End Rules
 		messages: {
 		     	first_name:{
@@ -54,12 +49,6 @@ $(document).ready(function() {
 					},
 		phone_number:{
 							required: "phone number required"
-					},
-	requested_date:{ required: "When would you like to come in?"
-					},
-						hour:{ required: "Please specify the hour"
-					},
-					minute:{ required: "Please specify the minute"
 					}
 
 	},
@@ -99,37 +88,46 @@ $(document).ready(function() {
 		$('.service_icon').bind('click', function(event) {
 			 $('.service_icon').removeClass('selected');
 			 $(this).addClass('selected');
-			 var selectedService = $(this).attr("data-service");
+			 var selectedService = $(this).attr("data-service_name");
 			 $('#service').val(selectedService);
-			 $('#service_name_summary').html($(this).attr("data-service_name"));
+			 $('#service_name_summary').html(selectedService);
 		});
 
 		$('.stylist_icon').bind('click', function(event) {
 			$('.stylist_icon').removeClass('selected');
 			$(this).addClass('selected');
-			var selectedStylist = $(this).attr("data-stylist");
-			$('#stylist').val(selectedStylist);
-			$('#stylist_name').html($(this).attr("data-stylist_name"));
-			$('#stylist_name_summary').html($(this).attr("data-stylist_name"));
+				var selectedStylist = $(this).attr("data-stylist_name");
+				var stylistID = $(this).attr("data-stylist");
+				$('#stylist').val(selectedStylist);
+			
+				$('#stylist_name').html(selectedStylist);
+				$('#stylist_name_summary').html(selectedStylist);
 
 			$.ajax({
-			  url: '/stylists/' + selectedStylist + '/schedules',
+			  url: '/stylists/' + stylistID + '/schedules',
 			  type: "GET",
 			  dataType: "script",
 			  data: null	
 			});
 		});
 
-		$('#requested_date').datepicker({
-				onSelect: function(dateText, inst){ $('#date_summary').html(dateText); }
+		$('.date_picker').datepicker({
+				onSelect: function(dateText, inst){ 
+						$('#date_summary').html(dateText); 
+						$('#requested_date').val(dateText);
+				}
 		});
 
-		$('#hour').bind('blur', function(event) {
-			$('#hour_summary').html($('#hour').val());
+		$('#hours_select').bind('change', function(event) {
+			$('#hour_summary').html($('#hours_select :selected').text());
 		});
 
-		$('#minute').bind('blur', function(event) {
-			$('#minute_summary').html($('#minute').val());
+		$('#min_select').bind('change', function(event) {
+			$('#minute_summary').html($('#min_select :selected').text());
+		});
+		
+		$('#ampm_select').bind('change', function(event) {
+			$('#ampm_summary').html($('#ampm_select').val())
 		});
 		
 		$('#first_name').bind('blur', function(event) {

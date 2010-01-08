@@ -28,7 +28,7 @@
     border:1px solid #555;
 }
 .ui-timepickr.dark span:hover {
-    color:#eee;
+    color: red;
     background:#333;
-    border:1px solid #777;
+    border:1px solid red;
 }

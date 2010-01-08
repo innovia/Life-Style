@@ -6,7 +6,24 @@ class PagesController < ApplicationController
       @services = ser.in_groups_of(6) 
     sty = Stylist.all
       @stylists =  sty.in_groups_of(3) 
+    
+    @hours_options = []
+		(1..12).each do |hr| 
+			@hours_options << "<option value='#{hr}'>#{hr}</option>" 
+		end
+		
+		@min_options = []
+		(0..59).each do |min|
+		  if min < 10
+		    @min_options << "<option value='0#{min}'>0#{min}</option>"
+		  else
+  		  @min_options << "<option value='#{min}'>#{min}</option>"
+  	  end
+		end
+		
   end
+  
+  
   
   def create
       if  params['commit'] == "contact us"

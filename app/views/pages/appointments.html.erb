@@ -7,7 +7,7 @@
 	<li class="summary">Summary</li>
 </ul>
 
-<div id="drawer">[ERROR MESSAGE]</div> 
+<div id="drawer"></div> 
 <!-- root element for the main scrollable -->
 <div id="main">
 	<!-- root element for pages -->
@@ -15,7 +15,6 @@
 		<!-- page #1  (services)-->
 		<div class="page">
 			
-			<%= hidden_field_tag :service %>	
 			<!-- sub navigator #1 -->
 			<div class="navi"></div>
 			<h3>	What service would you like?</h3>	
@@ -43,7 +42,6 @@
 
 		<!-- page #2 (stylists) -->
 		<div class="page">
-			<%= hidden_field_tag :stylist %>
 			<div class="navi"></div>
 			<h3>Select your stylist:</h3>
 
@@ -75,9 +73,12 @@
 							<h3><p>When do you want to come in? </p></h3>
 					  	<span id="stylist_name"></span> is available 
 							<span id="schedule"></span>
-							<br/>Date: <%= text_field_tag :requested_date,{}, :class => "date_picker", :size => 10 %>
+							<br/>Date: <%= text_field_tag :date_picker,{}, :class => "date_picker", :size => 10 %>
 							<span class="req">*</span>
-							at what time? <%= text_field_tag :hour, {}, :id => "hour", :maxlength => 2, :size => 1 %>	: <%= text_field_tag :minute, {}, :maxlength => 2,:id => "minute", :size => 1 %>			
+							
+							at what time? 
+						
+							<%= select_tag "hours_select", "#{@hours_options}" %> :<%= select_tag "min_select", "#{@min_options}"  %> <%= select_tag "ampm_select", "<option>am</option><option>pm</option>" %>						  
 		</div>
 
 		<!-- page #4 (how to reach you)-->
@@ -87,7 +88,10 @@
 										<h4>We will call or e-mail you to confirm your appointment.</h4>								
 												
 											<% form_tag(pages_path, :id => "appointment_form") do -%>
-												 
+												 <%= hidden_field_tag :requested_date %>
+												 <%= hidden_field_tag :stylist %> 
+												 <%= hidden_field_tag :service %>	
+												
 												<div class="form_item">
 													<label class="appt_label">First Name: <span class="req"> *</span></label>
 													<%= text_field_tag :first_name,{}, :id => "first_name", :class => "appt_field", :size => 20 %>
@@ -144,7 +148,7 @@
 		<div class="page">
 								<h3>Appointment Request Summary:</h3>
 								I would like to come in for a: <br/>
-								<span id="service_name_summary"> </span> by <span id="stylist_name_summary"></span> on the <span id="date_summary"></span> at <span id="hour_summary"></span>:<span id="minute_summary"></span>
+								<span id="service_name_summary"> </span> by <span id="stylist_name_summary"></span> on the <span id="date_summary"></span> at <span id="hour_summary"></span>:<span id="minute_summary"></span> <span id="ampm_summary"></span>
 								<br/>
 								My contact info:
 								<p>
@@ -229,7 +233,7 @@
 		
 	 		if (page == 4 && $('.stylist_icon.selected').length == 1) {
 				
-					if ($('#requested_date').val() == "" || $('#minute').val() == "" || $('#hour').val() == "") {
+					if ($('#date_summary').html() == "" || $('#hour_summary').html() == "" || $('#minute_summary').html() == "" || $('#ampm_summary').html() == "" ) {
 						api.seekTo(2);
 						slide_drawer('Please pick a date and time, pay attention to the stylist schedule');
 					}	else {
