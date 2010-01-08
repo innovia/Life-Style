@@ -778,3 +778,9 @@ ul#pages_navigator li a.prev_page { background-position: 0px -17px;}
 		z-index:2;
 		color: #333;
 	}
+
+#notes_body {
+ width: 300px !important;
+ height: 80px !important;
+ padding: 2px !important;
+}

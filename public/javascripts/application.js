@@ -88,21 +88,12 @@ $(document).ready(function() {
 		$('.service_icon').bind('click', function(event) {
 			 $('.service_icon').removeClass('selected');
 			 $(this).addClass('selected');
-			 var selectedService = $(this).attr("data-service_name");
-			 $('#service').val(selectedService);
-			 $('#service_name_summary').html(selectedService);
 		});
 
 		$('.stylist_icon').bind('click', function(event) {
 			$('.stylist_icon').removeClass('selected');
 			$(this).addClass('selected');
-				var selectedStylist = $(this).attr("data-stylist_name");
 				var stylistID = $(this).attr("data-stylist");
-				$('#stylist').val(selectedStylist);
-			
-				$('#stylist_name').html(selectedStylist);
-				$('#stylist_name_summary').html(selectedStylist);
-
 			$.ajax({
 			  url: '/stylists/' + stylistID + '/schedules',
 			  type: "GET",
@@ -118,33 +109,11 @@ $(document).ready(function() {
 				}
 		});
 
-		$('#hours_select').bind('change', function(event) {
-			$('#hour_summary').html($('#hours_select :selected').text());
-		});
-
-		$('#min_select').bind('change', function(event) {
-			$('#minute_summary').html($('#min_select :selected').text());
+		$('#notes_body').bind('keyup', function(event) {
+			$('#notes').val($('#notes_body').val());
 		});
 		
-		$('#ampm_select').bind('change', function(event) {
-			$('#ampm_summary').html($('#ampm_select').val())
-		});
 		
-		$('#first_name').bind('blur', function(event) {
-			$('#first_name_summary').html($('#first_name').val());
-		});
-		
-		$('#last_name').bind('blur', function(event) {
-			$('#last_name_summary').html($('#last_name').val());
-		});
-
-		$('#email').bind('blur', function(event) {
-			$('#email_summary').html($('#email').val());
-		});
-
-		$('#day_phone').bind('blur', function(event) {
-			$('#day_phone_summary').html($('#day_phone').val());
-		});
 // jQuery Tools Section
 
 gallery();
