@@ -1,15 +1,15 @@
 <div class="form-item">
-	<label>First Name: <span class="req"> *</span></label><br/>
+	<label>First Name: <span class="req"> *</span></label>
 	<%= text_field_tag :first_name,{}, :size => 20 %>
 </div>
 
 <div class="form-item">	
-	<label>Last Name: <span class="req"> *</span></label><br/>
+	<label>Last Name: <span class="req"> *</span></label>
 	<%= text_field_tag :last_name,{}, :size => 20 %>
 </div>
 
 <div class="form-item">
-<label>e-mail:<span class="req"> *</span></label><br/>
+<label>e-mail:<span class="req"> *</span></label>
 <%= text_field_tag :email, {}, :size => 20 %>	
 </div>
 
@@ -24,6 +24,7 @@
 	</label>
 	  <br />
 </div>
+
 <br/>
 <div class="form-item">	
 <label>Day Time Phone:<span class="req"> *</span></label>
@@ -43,7 +44,7 @@
 
 <div class="form-item">
 	<span class="req">*</span>
-	at what time? <%= text_field_tag :hour, {}, :maxlength => 2, :size => 1 %>	: <%= text_field_tag :minute, {}, :maxlength => 2, :size => 1 %>
+	at what time? <%= select_tag "hours_select", "#{@hours_options}" %> :<%= select_tag "min_select", "#{@min_options}"  %> <%= select_tag "ampm_select", "<option>am</option><option>pm</option>" %>	
 </div>
 
 <div class="form-item">
@@ -57,17 +58,25 @@
 <span class="req">*</span>
 <%= select_tag(:stylist, options_from_collection_for_select(@stylists, :full_name, :full_name), :prompt => 'Pick a Stylist') %>
 </div>
-<br/>
+
 
 	<label> First Time Client?</label>
 	<%= check_box_tag :first_time %>	 
-<br/>
+
 	<label>Referred by:</label>
 	<%= text_field_tag :referred_by,{}, :size => 20 %>
+	<br/>
+		Please note:<p>This form is intended for a single service appointment request,
+		however if you would like any additional services
+		please feel free to add your own comments:</p>
+		<h5>
+		 We would appreciate a 24hrs notice via phone prior to your appointment for any cancellations.
+		</h5>
+		
+		<%= text_area_tag :notes_body  %>
+		<br/>
 	<%= submit_tag 'Send Request' %>
-<h5>
-	Note: We would appreciate a 24hrs notice via phone prior to your appointment for any cancellations.
-</h5>
+
 </p>
 
 

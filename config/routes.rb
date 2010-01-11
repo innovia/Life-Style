@@ -28,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
     page.thank_you 'thank_you', :action => "thank_you"
     page.contact_us 'contact_us', :action => "contact_us"
     page.specials 'specials', :action => "specials"
-    page.ami 'ami', :action => "ami"
+    page.appointments_ie 'appointments_ie', :action => "appointments_ie"
   end
   
   

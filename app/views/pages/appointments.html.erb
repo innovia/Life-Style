@@ -1,3 +1,9 @@
+<script type="text/javascript">
+	if ($.browser.msie) {
+		window.location.replace("/appointments_ie");
+	}
+</script>
+
 <!-- main navigator -->
 <ul id="main_navi">
 	<li class="select_service">Select a service</li>
@@ -170,7 +176,7 @@
 								however if you would like any additional services
 								please feel free to add your own comments:
 								
-								<%= text_area_tag :notes_body , :size  =>  "20x5" %>
+								<%= text_area_tag :notes_body  %>
 								
 								
 								<div>
@@ -199,7 +205,6 @@
 
 	// horizontal scrollables. each one is circular and has its own navigator instance
 	horizontal = $(".scrollable").scrollable({size: 1, clickable: false, prev: 'a.prev_horizontal', next: 'a.next_horizontal'}).navigator({navi: ".navi", api: true});
-
 
 	function slide_drawer(msg){
 				drawer.html(msg);
@@ -293,5 +298,7 @@
 						}
 				
 	 }
-	});
+});
+
+
 </script>

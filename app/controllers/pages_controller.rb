@@ -1,29 +1,23 @@
 class PagesController < ApplicationController
+
+  def appointments	
+                    @categories = Category.all
+                    ser = Service.all # 19
+                    @services = ser.in_groups_of(6) 
   
-  def appointments
-    @categories = Category.all
-    ser = Service.all # 19
-      @services = ser.in_groups_of(6) 
-    sty = Stylist.all
-      @stylists =  sty.in_groups_of(3) 
-    
-    @hours_options = []
-		(1..12).each do |hr| 
-			@hours_options << "<option value='#{hr}'>#{hr}</option>" 
-		end
-		
-		@min_options = []
-		(0..59).each do |min|
-		  if min < 10
-		    @min_options << "<option value='0#{min}'>0#{min}</option>"
-		  else
-  		  @min_options << "<option value='#{min}'>#{min}</option>"
-  	  end
-		end
-		
+                    sty = Stylist.all
+                    @stylists =  sty.in_groups_of(3) 
+                    hours
+                    minutes
   end
   
   
+  def appointments_ie
+     @services = Service.all
+     @stylists = Stylist.all
+     hours
+     minutes
+  end
   
   def create
       if  params['commit'] == "contact us"
@@ -68,4 +62,22 @@ class PagesController < ApplicationController
     redirect_to manager_path
   end
   
+  private
+  def hours
+    @hours_options = []
+  		(1..12).each do |hr| 
+  			@hours_options << "<option value='#{hr}'>#{hr}</option>" 
+  	end
+  end
+  
+  def minutes
+    @min_options = []
+  	  (0..59).each do |min|
+  	    if min < 10
+  	      @min_options << "<option value='0#{min}'>0#{min}</option>"
+  	    else
+  		    @min_options << "<option value='#{min}'>#{min}</option>"
+  	    end
+  	  end
+  end
 end
