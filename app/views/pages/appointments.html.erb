@@ -169,19 +169,14 @@
 								<span id="email_summary" class="summary"></span><br/>
 								Day time phone: <span id="day_phone_summary" class="summary"></span>
 								Mobile: <span id="cell_summary" class="summary"></span>
-								<br/>refered by:<span id="refered_summary" class="summary"></span></br>
+								<br/>refered by:<span id="refered_summary" class="summary"></span>
 								</p>
-								
-								Please note: This form is intended for a single service appointment request,
+								<p class="form_note"> <span class="req">Please note:</span><br/> This form is intended for a single service appointment request,
 								however if you would like any additional services
-								please feel free to add your own comments:
+								please feel free to add your own comments:</p>
 								
 								<%= text_area_tag :notes_body  %>
-								
-								
-								<div>
-									<%= submit_tag 'Send Request', :id => "submit_request" %>
-								</div>
+							  <%= submit_tag 'Send Request', :id => "submit_request" %>
 								<% end -%>
 			</div>
 		
@@ -283,16 +278,16 @@
 			
 			
 				// form page, is the form valid
-				if ( $('form').valid() == false) {
+				if ( $('form').valid() == false && $('.date_picker').val() != "") {
 							api.seekTo(3);
-						} else {
+						} else if ($('form').valid() == true && $('.date_picker').val() != "") {
 							drawer.slideUp();
 							$('#first_name_summary').html($('#first_name').val());
 							$('#last_name_summary').html($('#last_name').val());
 							$('#email_summary').html($('#email').val());
 							$('#day_phone_summary').html($('#day_phone').val());
 							$('#cell_summary').html($('#cell').val());
-							
+							$('#date_summary').html($('#date_picker').val());
 							if ($('#gender_male :checked').val()) {$('#gender_summary').html('male')}
 							
 						}

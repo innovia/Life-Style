@@ -754,13 +754,7 @@ ul#pages_navigator li a.prev_page { background-position: 0px -17px;}
 	padding: 5px 0;
 }
 
-.form-item {
-	width: 300px;
-}
 
-.form-item label {
-	float: left
-}
 
 
 .form_item label.error {
@@ -789,8 +783,17 @@ ul#pages_navigator li a.prev_page { background-position: 0px -17px;}
 		color: #333;
 	}
 
-#notes_body {
+#notes_body, #notes {
  width: 300px !important;
  height: 80px !important;
  padding: 2px !important;
+}
+
+p { margin: 0 !important;}
+
+.form_note {
+	background-image:url(/images/white_banner.png);
+	color: black;
+	_background-color: white;
+	padding: 6px;
 }
