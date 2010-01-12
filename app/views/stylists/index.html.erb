@@ -15,7 +15,7 @@ div.apple_overlay div.close {
 <div id="stylist_photo_index">
 	<h2 id="title" class="prepend-1">Stylists</h2>
 		<% if logged_in? %>
-			<%= link_to image_tag("add_service.png"), new_stylist_url, :title => "add stylist"%>
+			<%= link_to image_tag("add_service.png"), new_stylist_url, :title => "add stylist" %>
 		<% end %>
 	
 	<% if @stylists.empty? %>

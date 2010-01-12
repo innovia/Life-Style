@@ -584,10 +584,11 @@ label.female {
 
 /* main vertical scroll */
 #main {
+	float: left;
 	position:relative;
 	overflow:hidden;
 	height:349px;
-	width:487px;
+	width:478px;
 }
 
 /* root element for pages */
@@ -630,6 +631,7 @@ label.female {
 
 /* main navigator */
 #main_navi {
+	width: 110px;
 	float:left;
 	margin: 0 1.0em 1.0em !important;
 	padding:0px !important;
