@@ -44,7 +44,7 @@
 
 <div class="form-item">
 	<span class="req">*</span>
-	at what time? <%= select_tag "hours_select", "#{@hours_options}" %> :<%= select_tag "min_select", "#{@min_options}"  %> <%= select_tag "ampm_select", "<option>am</option><option>pm</option>" %>	
+	at what time? <%= select_tag "hours_select", "#{@hours_options}", :prompt => "select hour" %> :<%= select_tag "min_select", "#{@min_options}", :prompt => "select minute"  %> <%= select_tag "ampm_select", "<option>am</option><option>pm</option>", :prompt => "am / pm" %>				
 </div>
 
 <div class="form-item">
