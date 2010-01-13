@@ -69,8 +69,7 @@ $(document).ready(function() {
 		  }
 	});
 
-	$('#phone_number').mask("(999) 999-9999");
-	$('#cell').mask("(999) 999-9999");	
+	$('.phone').mask("(999) 999-9999");
 
 	function enable_edit(){
 		$('#edit_page').bind('click', function(event) {
@@ -108,11 +107,6 @@ $(document).ready(function() {
 						$('#requested_date').val(dateText);
 				}
 		});
-
-		$('#notes_body').bind('keyup', function(event) {
-			$('#notes').val($('#notes_body').val());
-		});
-		
 		
 // jQuery Tools Section
 
@@ -131,7 +125,6 @@ $("div.vertical_scrollable").scrollable({
 })
 
 $("#gallery_scroll").scrollable();
-
 
 });
 

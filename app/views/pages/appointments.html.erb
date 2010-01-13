@@ -84,7 +84,7 @@
 							
 							at what time? 
 						
-							<%= select_tag "hours_select", "#{@hours_options}" %> :<%= select_tag "min_select", "#{@min_options}"  %> <%= select_tag "ampm_select", "<option>am</option><option>pm</option>" %>						  
+							<%= select_tag "hours_select", "#{@hours_options}", :prompt => "select hour" %> :<%= select_tag "min_select", "#{@min_options}", :prompt => "select minute"  %> <%= select_tag "ampm_select", "<option>am</option><option>pm</option>", :prompt => "am / pm" %>						  
 		</div>
 
 		<!-- page #4 (how to reach you)-->
@@ -94,10 +94,13 @@
 										<h4>We will call or e-mail you to confirm your appointment.</h4>								
 												
 											<% form_tag(pages_path, :id => "appointment_form") do -%>
+												 <%= hidden_field_tag :hour %>
+												 <%= hidden_field_tag :minute %>
+												 <%= hidden_field_tag :ampm %>
+												
 												 <%= hidden_field_tag :requested_date %>
 												 <%= hidden_field_tag :stylist %> 
 												 <%= hidden_field_tag :service %>	
-												 <%= hidden_field_tag :notes %>
 												
 												<div class="form_item">
 													<label class="appt_label">First Name: <span class="req"> *</span></label>
@@ -128,12 +131,12 @@
 												
 												<div class="form_item">
 												 <label class="appt_label">Day Time Phone:<span class="req"> *</span></label>
-												 <%= text_field_tag :phone_number,{}, :id => "day_phone", :class => "appt_field", :size => 20 %></span>
+												 <%= text_field_tag :phone_number,{}, :id => "day_phone", :class => "appt_field phone", :size => 20 %></span>
 												</div>
 												
 												<div class="form_item">
 												 <label class="appt_label">Mobile Phone: </label>
-												 <%= text_field_tag :cell, {}, :class => "appt_field", :size => 20 %>
+												 <%= text_field_tag :cell, {}, :class => "appt_field phone", :size => 20 %>
 											</div>
 											
 											<div class="form_item">
@@ -175,7 +178,7 @@
 								however if you would like any additional services
 								please feel free to add your own comments:</p>
 								
-								<%= text_area_tag :notes_body  %>
+								<%= text_area_tag :notes %>
 							  <%= submit_tag 'Send Request', :id => "submit_request" %>
 								<% end -%>
 			</div>
@@ -239,7 +242,6 @@
 	api.onSeek(function(event, i){
 		page = api.getIndex();
 
-		
 	 		if (page == 4) {
 				// copy all request fields to summary if something is missing go back to fix it at the end of the copy
 				
@@ -266,19 +268,34 @@
 				}
 				
 				// is time and date selected // come in page
-				if ($('.date_picker').val() == "" ) {
+				if ( 	$('.date_picker').val() == ""  || 
+							$('#hours_select :selected').val() == "" ||
+							$('#min_select :selected').val() == "" || 
+							$('#ampm_select :selected').val() == "" ) 
+				{
 						api.seekTo(2);
-						slide_drawer('Please pick a date');
+						slide_drawer('Please pick a date and time');
 					}	else { 
 							drawer.slideUp();
-							$('#hour_summary').html($('#hours_select :selected').text());	
+							$('#hour_summary').html($('#hours_select :selected').text());
+							$('#hour').val($('#hours_select :selected').text());
+							
 							$('#minute_summary').html($('#min_select :selected').text());
+							$('#minute').val($('#min_select :selected').text());
+							
 							$('#ampm_summary').html($('#ampm_select :selected').text());
+							$('#ampm').val($('#ampm_select :selected').text());
 				}
 			
 			
 				// form page, is the form valid
-				if ( $('form').valid() == false && $('.date_picker').val() != "") {
+				if (	$('form').valid() == false &&
+					 		$('.date_picker').val() != "" &&
+					    $('#hours_select :selected').val() != "" &&
+							$('#min_select :selected').val() != "" && 
+							$('#ampm_select :selected').val() != "" )
+					 {
+							slide_drawer('Please correct the form fields');
 							api.seekTo(3);
 						} else if ($('form').valid() == true && $('.date_picker').val() != "") {
 							drawer.slideUp();
@@ -288,10 +305,7 @@
 							$('#day_phone_summary').html($('#day_phone').val());
 							$('#cell_summary').html($('#cell').val());
 							$('#date_summary').html($('#date_picker').val());
-							if ($('#gender_male :checked').val()) {$('#gender_summary').html('male')}
-							
-						}
-				
+				}
 	 }
 });
 

@@ -14,7 +14,7 @@
 
 <strong><%= @app_req[:requested_date] %></strong>
 
-<strong><%= @app_req[:hour] %>:<%= @app_req[:minute]  %></strong>
+<strong><%= "#{@app_req[:hour]}:#{@app_req[:minute]} #{@app_req[:ampm]}" %></strong>
 </p>
 
 <p>

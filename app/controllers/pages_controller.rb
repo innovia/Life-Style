@@ -65,7 +65,7 @@ class PagesController < ApplicationController
   private
   def hours
     @hours_options = []
-  		(1..12).each do |hr| 
+  		(1..12).each_with_index do |hr, index| 
   			@hours_options << "<option value='#{hr}'>#{hr}</option>" 
   	end
   end
