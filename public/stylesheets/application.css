@@ -635,38 +635,36 @@ label.female {
 	float:left;
 	margin: 0 1.0em 1.0em !important;
 	padding:0px !important;
-	
-}
-
-#main_navi li {
-	background: url(/images/appointment_request_ul.png);
-	clear:both;
-	font-size:12px;
-	height: 70px;
 	list-style-type:none;
-	width:114px;
-	cursor:pointer;
-	text-indent:-9999px;
 }
+	
+#main_navi li a {background: url(/images/appointment_request_ul.png); 
+									font-size:12px;
+									height: 70px;
+									width:114px;
+									cursor:pointer;
+									overflow: hidden;
+									display: block;
+									text-indent: -9999px;
+									}
 
+#main_navi li a.select_service {background-position: 245px -15px; }
+#main_navi li a.select_stylist {background-position: 245px -90px; }
+#main_navi li a.select_time {background-position: 245px -168px; }
+#main_navi li a.your_info {background-position: 245px -240px; }
+#main_navi li a.summary {background-position: 245px -316px; }
 
-#main_navi li.select_service {background-position: 245px -15px; }
-#main_navi li.select_stylist {background-position: 245px -90px; }
-#main_navi li.select_time {background-position: 245px -168px; }
-#main_navi li.your_info {background-position: 245px -240px; }
-#main_navi li.summary {background-position: 245px -316px; }
+#main_navi li.active a.select_service {background-position: 2px -15px; }
+#main_navi li.active a.select_stylist {background-position: 2px -90px; }
+#main_navi li.active a.select_time {background-position: 2px -168px; }
+#main_navi li.active a.your_info {background-position: 2px -240px; }
+#main_navi li.active a.summary {background-position: 2px -316px; }
 
-#main_navi li.select_service.active {background-position: 2px -15px; }
-#main_navi li.select_stylist.active {background-position: 2px -90px; }
-#main_navi li.select_time.active {background-position: 2px -168px; }
-#main_navi li.your_info.active {background-position: 2px -240px; }
-#main_navi li.summary.active {background-position: 2px -316px; }
-
-#main_navi li.select_service:hover {background-position: -249px -15px; }
-#main_navi li.select_stylist:hover {background-position: -249px -90px; }
-#main_navi li.select_time:hover {background-position: -249px -168px; }
-#main_navi li.your_info:hover {background-position: -249px -240px; }
-#main_navi li.summary:hover {background-position: -249px -316px; }
+#main_navi li a.select_service:hover {background-position: -249px -15px; }
+#main_navi li a.select_stylist:hover {background-position: -249px -90px; }
+#main_navi li a.select_time:hover {background-position: -249px -168px; }
+#main_navi li a.your_info:hover {background-position: -249px -240px; }
+#main_navi li a.summary:hover {background-position: -249px -316px; }
 
 
 
