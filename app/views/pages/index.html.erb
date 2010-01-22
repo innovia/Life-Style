@@ -6,17 +6,30 @@
 <div id="follow" class="prepend-1 left white_links">
 	<%= link_to image_tag("twitter.png") + "Follow us on twitter", "http://twitter.com/LifestyleSalon" %>
 	<br/>
-	<%#= link_to image_tag("facebook.gif"), "#" %>
+	<%= link_to image_tag("facebook.gif"), "http://www.facebook.com/pages/#/pages/New-York-NY/LifestyleSalonNYC/267898145854?ref=ts" %>
 </div>
 
 <div id="hours_box" class="span-8 prepend-3">
-	<h2> Salon Hours </h2>
-	<ul id="hours">
-	<li>Monday - Friday 10a.m - 8p.m</li>
-	<li>Saturday	10a.m - 7p.m</li>
-	<li>Sunday	11a.m - 6p.m</li>
-	</ul>
+	<div id="display_content">
+		<% if @page.body.nil? %>
+			<h2>Coming soon...</h2>
+		<%- else -%>
+		<%= @page.body  %>
+		<% end -%>
+	</div>
+	
+	
 	<% if logged_in? %>
 		<%= render :partial => "shared/update_page" %>
 	<% end -%>
 </div>
+
+<style type="text/css" media="screen">
+	#display_content {width: 300px;}
+	#edit_content {
+									position:absolute;
+									top:117px;
+									left:340px;
+								}
+	ul {list-style: none; font-family: inherit;}
+</style>

@@ -1,5 +1,10 @@
 class PagesController < ApplicationController
 
+  def show
+     @page = Page.find(params[:id])
+     render :action => @page.title 
+  end
+
   def appointments	
                     @categories = Category.all
                     ser = Service.all # 19
@@ -41,8 +46,9 @@ class PagesController < ApplicationController
       if params[:manager]
         page_origin = manager_path
       else
-        page_origin = @page.title.to_sym
+        page_origin = page_path(@page.id)
       end
+      
         redirect_to page_origin
     else
       flash[:error] = "Could not save changes please try again."
