@@ -2,8 +2,14 @@
 	<p align="center"> Lifestyle Salon NYC is a beautifully modern full service hair salon. <br/>
 		Located in the heart of Manhattan's Greenwich Village. </p>
 </div>
+<br/>
+<div id="follow" class="prepend-1 left white_links">
+	<%= link_to image_tag("twitter.png") + "Follow us on twitter", "http://twitter.com/LifestyleSalon" %>
+	<br/>
+	<%#= link_to image_tag("facebook.gif"), "#" %>
+</div>
 
-<div id="hours_box" class="span-8">
+<div id="hours_box" class="span-8 prepend-3">
 	<h2> Salon Hours </h2>
 	<ul id="hours">
 	<li>Monday - Friday 10a.m - 8p.m</li>
@@ -11,6 +17,6 @@
 	<li>Sunday	11a.m - 6p.m</li>
 	</ul>
 	<% if logged_in? %>
-		<%= yield(:yui_editor) %>
+		<%= render :partial => "shared/update_page" %>
 	<% end -%>
 </div>

@@ -48,13 +48,13 @@
 
 #gallery a.prev_photo {
 	background-position: -30px 0;
-	margin-left: 62px;
+	margin-left: 27px;
 }
 
 #gallery a.next_photo {
 	background-position: 0 -30px;
 	z-index: 9999;
-	margin-left: 582px;
+	margin-left: 550px;
 }
 
 /* mouseover state */

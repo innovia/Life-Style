@@ -132,6 +132,9 @@ body {background: url('/images/background.jpg'); color: white;}
 	height:101px;
 }
 
+.white_links a:hover {
+	color: white;
+}
 
 #image_on_stage {
 	height: 465px;
@@ -357,8 +360,10 @@ div.error h3{
 
 #hours_box {
 	color: #ffde9f;
-	margin-left: 300px;
-	padding-top: 15px;
+}
+
+#hours_box h2 {
+	margin-bottom: 0px !important;
 }
 
 #hours {

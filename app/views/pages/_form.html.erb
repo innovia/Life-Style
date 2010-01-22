@@ -28,12 +28,12 @@
 <br/>
 <div class="form-item">	
 <label>Day Time Phone:<span class="req"> *</span></label>
-<%= text_field_tag :phone_number,{}, :size => 12 %>
+<%= text_field_tag :phone_number,{}, :class => "phone", :size => 12 %>
 </div>
 
 <div class="form-item">
 <label>Mobile Phone: </label> 
-	<%= text_field_tag :cell, {}, :size => 12 %>
+	<%= text_field_tag :cell, {}, :class => "phone", :size => 12 %>
 </div>
 
 <div class="form-item">
@@ -44,7 +44,7 @@
 
 <div class="form-item">
 	<span class="req">*</span>
-	at what time? <%= select_tag "hours_select", "#{@hours_options}", :prompt => "select hour" %> :<%= select_tag "min_select", "#{@min_options}", :prompt => "select minute"  %> <%= select_tag "ampm_select", "<option>am</option><option>pm</option>", :prompt => "am / pm" %>				
+	at what time? <%= select_tag "hour", "#{@hours_options}", :prompt => "select hour" %> :<%= select_tag "minute", "#{@min_options}", :prompt => "select minute"  %> <%= select_tag "ampm", "<option>am</option><option>pm</option>", :prompt => "am / pm" %>				
 </div>
 
 <div class="form-item">
