@@ -19,10 +19,9 @@ class PicturesController < ApplicationController
       flash[:notice] = "Requested pictures have been deleted." 
       redirect_to gallery_manager_path
   end
-  
-  
+   
   def index
-    @pictures = Picture.paginate(:per_page => 9, :page => params[:page])    
+   @pictures = Picture.all(:order => "position")      
   end
   
   def new
@@ -58,13 +57,10 @@ class PicturesController < ApplicationController
     end
   end
   
-  
   def show
     @picture = Picture.find(params[:id])
   end
-  
-  
-  
+   
   def destroy 
       @picture = Picture.find(params[:id])
       if @picture.destroy
