@@ -1,12 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>LifeStyle Salon NYC - 822 BroadWay (212) 228-5577</title>
 
-<%=  javascript_include_tag "jquery","jquery-ui-1.7.1.custom.min", "jquery.tools.min", "jquery.maskedinput.min", "jquery.validate.min", "application"  %>
+<%=  javascript_include_tag "jquery-1.4.2.min","jquery-ui-1.8.4.custom.min", "jquery.tools.min", "jquery.maskedinput.min", "jquery.validate.min", "application"  %>
 	
-		
 <% if ["pages", "stylists", "products"].include?(controller_name) %>
 	<% unless ['appointments', 'pages_manager', 'appointments_ie'].include?(controller.action_name) %>
 	<%= render :partial => "shared/init_yui_editor" %>
@@ -125,7 +123,9 @@
 		
 		<% if ["pages", "stylists", "products"].include?(controller_name)%>
 			<% unless  ['appointments', 'pages_manager', 'appointments_ie'].include?(controller.action_name) %>
-			<%= render :partial => "shared/call_yui_editor" %>				
+				<% unless current_user.nil? %>
+				<%= render :partial => "shared/call_yui_editor" %>
+				<% end -%>				
 		<%- end -%>						
 		<%- end -%>						
 </body>

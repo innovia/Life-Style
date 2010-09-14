@@ -47,11 +47,10 @@ $(document).ready(function() {
 					gender:{
 				   		required: "Gender required"
 					},
-		phone_number:{
+					phone_number:{
 							required: "phone number required"
 					}
-
-	},
+	  },
 		// the errorPlacement has to take the table layout into account 
 		errorPlacement: function(error, element) { 
 		    if ( element.is(":radio") ) 
@@ -60,7 +59,7 @@ $(document).ready(function() {
 		        error.appendTo ( element.next() ); 
 		    else 
 		        error.appendTo( element.parent() ); 
-		  }, 
+		}, 
 
 		  // set this class to error-labels to indicate valid fields 
 		  success: function(label) { 

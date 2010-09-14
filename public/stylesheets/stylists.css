@@ -71,7 +71,7 @@
 } 
  
 /* default close button positioned on upper right corner */ 
-.apple_overlay div.close { 
+.apple_overlay a.close { 
     background-image:url(/images/overlay/close.png); 
     position:absolute; right:5px; top:5px; 
     cursor:pointer; 
