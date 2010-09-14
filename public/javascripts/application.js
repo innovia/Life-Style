@@ -119,8 +119,8 @@ $("div.vertical_scrollable").scrollable({
         vertical:true,
   			clickable: false,
         size: 1,
-			  prev: 'div.prev_product',
-			  next: 'div.next_product'
+			  prev: 'a.prevPage',
+			  next: 'a.nextPage'
 })
 
 $("#gallery_scroll").scrollable();

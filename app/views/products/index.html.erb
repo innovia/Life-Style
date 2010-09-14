@@ -1,31 +1,28 @@
 <div class="prepend-1">
-	<h2 id="title">Products </h2>
+	<h2 id="title">Products</h2>
+	<!-- old page
 	<% if logged_in? %>
 		<%= link_to image_tag("add_service.png"), new_product_url, :title => "add product" -%></h2>
 	<% end %>
 
 	<% if @products.empty? %>
-	<% unless logged_in? %>
-	 <h3> Coming soon... </h3>
-	<%- else -%>
-	<div class="warning">	
-		<h2>There are no products in the database</h2>
-		<p>Start by adding a new product</p>
-		<p><%= link_to "add new product", new_product_path %></p>		
-	</div>
-	<% end -%>
-	<% else -%>
-	
-
-	<!-- navigator --> 
-	<div class="navi"></div> 
-		<div id="actions">
-		<a class="prevPage">« Back</a>
-		<a class="nextPage">More products »</a>
+		<% unless logged_in? %>
+	 	<h3> Coming soon... </h3>
+		<%- else -%>
+		<div class="warning">	
+			<h2>There are no products in the database</h2>
+			<p>Start by adding a new product</p>
+			<p><%= link_to "add new product", new_product_path %></p>		
 		</div>
+		<% end -%>
+	<% else -%>
+
+	<div id="actions">
+		<a class="prevPage">&laquo; Previous products</a>
+		<a class="nextPage">More products &raquo;</a>
+	</div>
 	
 	<div class="vertical_scrollable">
-	
 		<div class="items"> 	
 			<% @products.each do |p| %>
 	 			<div class="product_shelf">
@@ -42,9 +39,29 @@
 																															:method => :delete %>
 				</div>
 				<% end -%>
-				</div> <!--/ product shelf -->
+				</div> 
 			<%- end -%>
-		</div> <!-- /items -->
-	</div> 	 <!-- /vertical -->
+		</div> 
+	</div> 	
 	<% end -%>
-</div><!-- /products_menu -->
+-->
+
+	<div id="products">
+		<!-- each 6 products do -->
+		<% @products.each_slice(3) do |row| %>
+			<% row.each do |p| %>
+				<div class="product">
+					<div class="prod_img"><%= image_tag p.photo.url(:thumb) %></div>
+					<h4 class="product_title"><%= p.title.upcase %></h4>
+					<div class="prod_desc"><%= p.desc %></div>
+					<div class="clear"></div>	
+				</div>
+			<% end -%>
+		<% end -%>
+		<div class="clear"></div>	
+	</div>
+
+
+
+
+</div>

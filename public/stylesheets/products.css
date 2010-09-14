@@ -1,96 +1,42 @@
-#actions {
-	width: 590px;
-}
-
-#actions a:hover {
-	color: #FFF;
-	text-decoration:underline;
-}
-
-#actions a {
-	color: #FFB;
-	cursor:pointer;
-	font-size:11px;
-}
-
-.nextPage {
-	float:right;
-}
-
-div.vertical_scrollable{
-	position:relative; 
-  	overflow:hidden;
-	height: 250px;      
-	width: 590px;
-}
-
-div.vertical_scrollable div.items{     
-    position:absolute; 
-    height:20000em;     
-}
-
-
+h2 { margin-bottom: 0;}
+#actions{width:590px;}
+#actions a:hover{color:#FFF;text-decoration:underline;}
+#actions a{color:#FFB;cursor:pointer;font-size:11px;}
+.nextPage{float:right;}
+div.vertical_scrollable{position:relative;overflow:hidden;height:250px;width:590px;}
+div.vertical_scrollable div.items{position:absolute;height:20000em;}
 /* Products */
+.product_shelf{padding-top:8px;height:236px;width:580px;}
+.product_title{color:#FFB;}
+.product_info{float:left;width:400px;}
+.product_shelf img{float:left;margin-top:4px;margin-right:17px;}
+.product_shelf .admin_links{display:inline;}
+#product_info_text_area{width:100px;height:120px;}
 
-.product_shelf{
-	padding-top: 8px;
-	height: 236px;
-	width: 580px;
+#products {
+	border-top: 1px dotted white;
+	border-bottom: 1px dotted white;
+	width: 600px;
+	height: 175px;
+	padding-left:10px;
 }
 
-.product_title{
-	color: #FFB;
-}
-
-.product_info {
+.product {
+	width: 185px;
+	height: 175px;
+	border-right: 1px dotted white;
 	float: left;
-	width: 400px;
 }
 
-.product_shelf img {
+.prod_img {
+	border: 1px solid green;
+	width: 64px;
+	height: 150px;
+	margin:17px 5px 0;
 	float: left;
-	margin-top: 4px;
-	margin-right: 17px;
 }
 
-
-.product_shelf .admin_links{
-	display: inline;
-}
-
-
-#product_info_text_area{
-	width: 100px;
-	height: 120px;
-}
-
-
-
-/*********** navigator ***********/
-/* position and dimensions of the navigator */
-div.navi {
-	margin-top: 10px;
-	margin-left:260px;
-	width:200px;
-	height:20px;
-}
-
-/* items inside navigator */
-div.navi a {
-	width:8px;
-	height:8px;
-	float:left;
-	margin:3px;
-	background:url('/images/scrollable/arrow/navigator.png') 0 0 no-repeat;
-	display:block;
-}
-
-/* mouseover state */
-div.navi a:hover {
-	background-position:0 -8px;      
-}
-
-/* active state (current page state) */
-div.navi a.active {
-	background-position:0 -16px;     
-}
+.prod_desc {
+	border: 1px solid red;
+	width: 120px;
+	margin-left:64px;
