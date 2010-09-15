@@ -1,6 +1,5 @@
 <div class="prepend-1">
 	<h2 id="title">Products</h2>
-	<!-- old page
 	<% if logged_in? %>
 		<%= link_to image_tag("add_service.png"), new_product_url, :title => "add product" -%></h2>
 	<% end %>
@@ -44,24 +43,4 @@
 		</div> 
 	</div> 	
 	<% end -%>
--->
-
-	<div id="products">
-		<!-- each 6 products do -->
-		<% @products.each_slice(3) do |row| %>
-			<% row.each do |p| %>
-				<div class="product">
-					<div class="prod_img"><%= image_tag p.photo.url(:thumb) %></div>
-					<h4 class="product_title"><%= p.title.upcase %></h4>
-					<div class="prod_desc"><%= p.desc %></div>
-					<div class="clear"></div>	
-				</div>
-			<% end -%>
-		<% end -%>
-		<div class="clear"></div>	
-	</div>
-
-
-
-
 </div>
