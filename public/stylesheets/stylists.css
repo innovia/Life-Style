@@ -1,114 +1,24 @@
-/*********************
-	Stylists 
-*********************/
-
-#triggers {
-	padding: 15px;
-}
-
-#stylist_photo_index img.thumb{
-	padding: 10px;
-}
-
-#stylist_photo_index h2{
-	display: inline;
-}
-
-#stylists_array {
-	list-style: none;
-	width: 500px;
-	margin: 0 auto;
-}
-
-#stylists_array li{
-	width: 145px;
-	height: 117px;
-	position: relative;
-}
-
-#stylists_array li a{
-	color: orange;
-}
-
-#stylists_array li .delete_icon{
-	position: absolute;
-	top: -13px;
-	left: 89px;
-}
-
-#stylists_array li .stylist_name{
-	position: absolute;
-	top: 87px;
-	left: 10px;
-}
-
-#gallery_photo_description{
-	height: 100px;
-	width: 350px;
-}
-
-.edit_stylist_icon {
-	display: inline;
-	float: left;
-	padding-right:10px;
-}
-
-.stylist_bio_photo {
-	float: left;
-	padding: 0 15px 15px 0;
-}
-
-.stylist_details {
-	width: 300px;
-}
+#triggers{padding:15px;}
+#stylist_photo_index img.thumb{padding:10px;}
+#stylist_photo_index h2{display:inline;}
+#stylists_array{list-style:none;width:500px;margin:0 auto;}
+#stylists_array li{width:150px;height:95px;text-align:center;/*position:relative;*/}
+li.column img{border:3px groove PeachPuff;}
+div.stylist_name_title{margin-top:-4px;}
+#stylists_array li a{color:orange;}
+#stylists_array li .delete_icon{position:absolute;top:-13px;left:89px;}
+#stylists_array li .stylist_name{position:absolute;top:87px;left:10px;}
+#gallery_photo_description{height:100px;width:350px;}
+.edit_stylist_icon{display:inline;float:left;padding-right:10px;}
+.stylist_bio_photo{float:left;padding:0 15px 15px 0;}
+.stylist_details{width:300px;}
 /* the overlayed element */ 
-.apple_overlay { 
-    display:none; 
-    background-image:url(/images/overlay/transparent.png); 
-    width:640px;              
-    padding:35px;  
-    font-size:11px; 
-} 
- 
+.apple_overlay{display:none;background-image:url(/images/overlay/transparent.png);width:640px;padding:35px;font-size:11px;}
 /* default close button positioned on upper right corner */ 
-.apple_overlay a.close { 
-    background-image:url(/images/overlay/close.png); 
-    position:absolute; right:5px; top:5px; 
-    cursor:pointer; 
-    height:35px; 
-    width:35px; 
-}
-
-
-#photos_array {
-	list-style: none;
-	width: 500px;
-	margin: 0 auto;
-}
-
-#photos_array li{
-	width: 145px;
-	height: 100px;
-	position: relative;
-}
-
-#photos_array li a{
-	color: orange;
-}
-
-#photos_array li .delete_icon{
-	position: absolute;
-	top: -13px;
-	left: 89px;
-}
-
-#edit_stylist {
-	margin-left:-50px;
-	margin-top:-30px;
-	width:600px;
-}
-
-#stylist_form_name {
-	margin-top: -30px;
-}
-
+.apple_overlay a.close{background-image:url(/images/overlay/close.png);position:absolute;right:5px;top:5px;cursor:pointer;height:35px;width:35px;}
+#photos_array{list-style:none;width:500px;margin:0 auto;}
+#photos_array li{width:145px;height:100px;position:relative;}
+#photos_array li a{color:orange;}
+#photos_array li .delete_icon{position:absolute;top:-13px;left:89px;}
+#edit_stylist{margin-left:-50px;margin-top:-30px;width:600px;}
+#stylist_form_name{margin-top:-30px;}
