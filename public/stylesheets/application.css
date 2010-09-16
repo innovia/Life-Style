@@ -118,7 +118,7 @@ label.checked{background:transparent url(/images/checked.gif) no-repeat scroll 0
 .service_icon:hover{color:#fff;background:transparent url(/images/hair_hover.png) 0 -16px no-repeat;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='/images/hair_hover.png');}
 .stylist_icon{float:left;margin:0px !important;padding:10px;font-size:150%;text-align:center;width:100px;}
 .stylist_icon a{color:#FFF;}
-.stylist_icon img{width:100px;height:66px;}
+.stylist_icon img{width:100px;height:66px;margin-bottom: -6px;}
 .stylist_icon:hover{color:#FFF !important;background:transparent url(/images/stylist_hover.png) 15px 74px no-repeat;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='/images/stylist_hover.png');}
 .stylist_icon .selected{margin:0 !important;}
 .selected{color:white;margin:11px !important;-moz-border-radius:5px;border:5px solid #FFDE9F;background:transparent url(/images/h300.png) repeat-x;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='/images/h300.png');}

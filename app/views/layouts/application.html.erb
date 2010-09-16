@@ -3,8 +3,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>LifeStyle Salon NYC - 822 BroadWay (212) 228-5577</title>
 
-<%=  javascript_include_tag "jquery-1.4.2.min","jquery-ui-1.8.4.custom.min", "jquery.tools.min", "jquery.maskedinput.min", "jquery.validate.min", "application"  %>
-	
+<%=  javascript_include_tag "jquery-1.4.2.min","jquery-ui-1.8.4.custom.min", "jquery.tools.min", "application"  %>
+
+<% if ['appointments', 'appointments_ie', 'contact_us'].include?(controller.action_name) %>
+	<%= javascript_include_tag "jquery.maskedinput.min", "jquery.validate.min" %>
+<% end -%>
+
+
 <% if ["pages", "stylists", "products"].include?(controller_name) %>
 	<% unless ['appointments', 'pages_manager', 'appointments_ie'].include?(controller.action_name) %>
 		<% unless current_user.nil? %>		

@@ -2,6 +2,7 @@
 	if ($.browser.msie) {
 		window.location.replace("/appointments_ie");
 	}
+	$(":date").dateinput();
 </script>
 
 <!-- main navigator -->
@@ -79,7 +80,8 @@
 							<h3><p>When do you want to come in? </p></h3>
 					  	<span id="stylist_name"></span> is available 
 							<span id="schedule"></span>
-							<br/>Date: <%= text_field_tag :date_picker,{}, :class => "date_picker", :size => 10 %>
+							<br/>Date: 
+							<input type="date" name="date_picker" id="date_picker">
 							<span class="req">*</span>
 							
 							at what time? 
