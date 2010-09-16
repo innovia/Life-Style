@@ -59,19 +59,12 @@ div.apple_overlay div.close {
 	  	</div> 
 		<% end -%>
 	<%- end -%>
-		
-		<!-- "prev page" button --> 
-		<div class="navi prevPage"></div> 
-
 		<div id="triggers"> 
 			<ul id="stylists_array" class="container">
 				<%= yield :stylists_thumbs %>
 			</ul>
 		</div>
-		
-		<!-- "next page" button --> 
-		<div class="navi nextPage"></div> 
-		
+
 		<%= yield :stylists %>
 
 		<%= will_paginate @stylists %>
