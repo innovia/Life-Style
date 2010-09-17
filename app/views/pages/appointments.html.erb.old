@@ -1,0 +1,315 @@
+<script type="text/javascript">
+	if ($.browser.msie) {
+		window.location.replace("/appointments_ie");
+	}
+	$(":date").dateinput();
+</script>
+
+<!-- main navigator -->
+<ul id="main_navi">
+	<li> <a class="select_service">Select a service</a></li>
+	<li> <a class="select_stylist">Select a Stylist</a></li>
+	<li> <a class="select_time">When do you like to come in</a></li>
+	<li> <a class="your_info">Your info</a></li>
+	<li> <a class="summary">Summary</a></li>
+</ul>
+
+<div id="drawer"></div> 
+<!-- root element for the main scrollable -->
+<div id="main">
+	<!-- root element for pages -->
+	<div id="pages">
+		<!-- page #1  (services)-->
+		<div class="page">
+			
+			<!-- sub navigator #1 -->
+			<div class="navi"></div>
+			<h3>	What service would you like?</h3>	
+			<!-- inner scrollable services -->
+				<a class="prev_horizontal browse left"> Previous </a>
+				<div class="scrollable">
+				<!-- root element for scrollable items (services groups) -->
+					<div class="items"> 
+						<!-- items  -->
+								<% @categories.each do |cat| %>
+								<div class="item" >
+									<ul class="services_list">
+										<%=h cat.name.upcase %>
+										<% cat.services.each do |service| %>
+										<li><%= link_to service.name, "#", :class => "service_icon", "data-service" => "#{service.id}", "data-service_name" => "#{service.name}" %>
+										</li>
+										<% end -%>
+									</ul>
+								</div> <!-- / service item -->
+							<% end -%>
+				</div> <!-- /items -->
+			</div> <!-- /scrollable -->
+			<a class="next_horizontal browse right"> Next </a>
+		</div> <!-- /page -->
+
+		<!-- page #2 (stylists) -->
+		<div class="page">
+			<div class="navi"></div>
+			<h3>Select your stylist:</h3>
+
+			<!-- inner scrollable #2( Stylists scrollable) -->
+			<a class="prev_horizontal browse left"> Previous </a>
+			<div class="scrollable">
+				<!-- root element for scrollable items -->
+				<div class="items">
+
+					<% @stylists.each do |stylists_chunk| %>
+						<div class="item">
+					   	<% stylists_chunk.each do | stylist | %>
+					    	<% unless stylist.nil? %> 
+									<%= link_to image_tag(stylist.photo(:thumb)) + stylist.full_name, "#",
+					 				  "data-stylist" => "#{stylist.id}", "data-stylist_name" => "#{stylist.full_name.capitalize}", :class  => "stylist_icon" %>   
+					   		<% end %>
+					 		<% end -%>
+						</div> <!-- /stylist item -->
+					<% end -%>
+
+				</div>
+
+			</div>
+			<a class="next_horizontal browse right"> Next </a>
+		</div>
+
+		<!-- page #3 (when)-->
+		<div class="page">
+							<h3><p>When do you want to come in? </p></h3>
+					  	<span id="stylist_name"></span> is available 
+							<span id="schedule"></span>
+							<br/>Date: 
+							<input type="date" name="date_picker" id="date_picker">
+							<span class="req">*</span>
+							
+							at what time? 
+						
+							<%= select_tag "hours_select", "#{@hours_options}", :prompt => "select hour" %> :<%= select_tag "min_select", "#{@min_options}", :prompt => "select minute"  %> <%= select_tag "ampm_select", "<option>am</option><option>pm</option>", :prompt => "am / pm" %>						  
+		</div>
+
+		<!-- page #4 (how to reach you)-->
+		<div class="page">
+							<div id="your_info">
+										<h4>Tell us how to reach you.</h4>
+										<h4>We will call or e-mail you to confirm your appointment.</h4>								
+												
+											<% form_tag(pages_path, :id => "appointment_form") do -%>
+												 <%= hidden_field_tag :hour %>
+												 <%= hidden_field_tag :minute %>
+												 <%= hidden_field_tag :ampm %>
+												
+												 <%= hidden_field_tag :requested_date %>
+												 <%= hidden_field_tag :stylist %> 
+												 <%= hidden_field_tag :service %>	
+												
+												<div class="form_item">
+													<label class="appt_label">First Name: <span class="req"> *</span></label>
+													<%= text_field_tag :first_name,{}, :id => "first_name", :class => "appt_field", :size => 20 %>
+												</div>
+												 
+												<div class="form_item">
+												 <label class="appt_label">Last Name: <span class="req"> *</span></label>
+												 <%= text_field_tag :last_name,{},  :id => "last_name", :class => "appt_field", :size => 20 %>
+												</div>
+												
+												<div class="form_item">
+												 <label class="appt_label">e-mail:<span class="req"> *</span></label>
+												 <%= text_field_tag :email,{}, :id => "email", :class => "appt_field", :size => 20 %>
+												</div>
+												
+												<div class="form_item">
+													<label class="form male">
+														Gender:
+												    <input type="radio" id="gender_male" name="gender" value="male" />
+												    Male
+													</label>
+													<label class="form female">
+												    <input type="radio" id="gender_female" name="gender" value="female" />
+												    Female
+													</label>
+												 </div>
+												
+												<div class="form_item">
+												 <label class="appt_label">Day Time Phone:<span class="req"> *</span></label>
+												 <%= text_field_tag :phone_number,{}, :id => "day_phone", :class => "appt_field phone", :size => 20 %></span>
+												</div>
+												
+												<div class="form_item">
+												 <label class="appt_label">Mobile Phone: </label>
+												 <%= text_field_tag :cell, {}, :class => "appt_field phone", :size => 20 %>
+											</div>
+											
+											<div class="form_item">
+												 <label class="appt_label"> First Time Client?</label>
+												 <%= check_box_tag :first_time %>
+											</div>
+											
+											<div class="form_item">
+												 <label class="appt_label">Referred by:</label>
+												 <%= text_field_tag :referred_by,{}, :class => "appt_field", :size => 20 %>
+											</div>
+										
+											<p>Note:<br/> We would appreciate a 24hrs notice via phone prior to your appointment for any cancellations.</p>				
+											
+								</div> <!-- /your info -->
+		</div>
+	
+		<!-- page #5 (summary)-->
+		<div class="page">
+								<h3>Appointment Request Summary:</h3>
+								I would like to come in for a: <br/>
+								<span id="service_name_summary" class="summary"></span> by 
+								<span id="stylist_name_summary" class="summary"></span> on the 
+								<span id="date_summary" class="summary"></span> at
+								<span id="hour_summary" class="summary"></span>:
+								<span id="minute_summary" class="summary"></span> 
+								<span id="ampm_summary" class="summary"></span>
+								<br/>
+								My contact info:
+								<p class="my_summary_info">
+								<span id="first_name_summary" class="summary"></span> 
+								<span id="last_name_summary" class="summary"></span> <br/>
+								<span id="email_summary" class="summary"></span><br/>
+								Day time phone: <span id="day_phone_summary" class="summary"></span>
+								Mobile: <span id="cell_summary" class="summary"></span>
+								<br/>refered by:<span id="refered_summary" class="summary"></span>
+								</p>
+								<p class="form_note"> <span class="req">Please note:</span><br/> This form is intended for a single service appointment request,
+								however if you would like any additional services
+								please feel free to add your own comments:</p>
+								
+								<%= text_area_tag :notes %>
+							  <%= submit_tag 'Send Request', :id => "submit_request" %>
+								<% end -%>
+			</div>
+		
+	</div> <!-- / pages -->
+</div><!--/main -->
+<ul id="pages_navigator">
+	<li><a class="prev_page">prev</a></li>
+	<li><a class="next_page">next</a></li>
+</ul>
+
+<script type="text/javascript" charset="utf-8">
+	// main vertical scroll
+	api = $("#main").scrollable({
+		clickable: false,
+		vertical: true,
+		size: 1,
+		prev: 'a.prev_page',
+		next: 'a.next_page',
+		keyboard: false
+	}).navigator({navi: "#main_navi", api: true});	// main navigator (thumbnail images)
+
+	// horizontal scrollables. each one is circular and has its own navigator instance
+	horizontal = $(".scrollable").scrollable({size: 1, clickable: false, prev: 'a.prev_horizontal', next: 'a.next_horizontal'}).navigator({navi: ".navi", api: true});
+
+	function slide_drawer(msg){
+				drawer.html(msg);
+				drawer.slideDown(function()  { 
+	      drawer.css("backgroundColor", "#FFCB66"); // colored flash effect 
+	      setTimeout(function() { drawer.css("backgroundColor", "#fff"); }, 1000); 
+	  });
+	};
+
+	api.onBeforeSeek(function(event, i) { 
+	 drawer = $("#drawer"); 
+	 var page = api.getIndex();
+
+		switch(page){
+		case 0: // services page
+			if ($('.service_icon.selected').length == 0) {
+			slide_drawer('Please pick a service');
+				return false; // cancel seeking of the scrollable by returning false 						
+			}	else { 
+				            drawer.slideUp(); 
+				}
+			break;
+
+		case	1: // stylists page
+				if ($('.stylist_icon.selected').length == 0) {
+					slide_drawer('Please pick a stylist who will do the service');
+					return false; // cancel seeking of the scrollable by returning false 						
+				} else { 
+					drawer.slideUp(); 
+				}
+			break;
+		default:
+		}
+
+	});
+
+	api.onSeek(function(event, i){
+		page = api.getIndex();
+
+	 		if (page == 4) {
+				// copy all request fields to summary if something is missing go back to fix it at the end of the copy
+				
+				// is service selected // services page
+				if ($('.service_icon.selected').length == 0) {
+					api.seekTo(0);
+					slide_drawer('Please pick a service');
+				} else { 
+					drawer.slideUp(); 
+					var selectedService = $('.service_icon.selected').attr("data-service_name");
+					$('#service').val(selectedService);
+					$('#service_name_summary').html(selectedService);
+				}
+				
+				// is stylist selected // stylists page
+				if ($('.stylist_icon.selected').length == 0) {
+					api.seekTo(1);
+					slide_drawer('Please pick a stylist who will do the service');
+				}	else { 
+						drawer.slideUp();
+						var selectedStylist = $('.stylist_icon.selected').attr("data-stylist_name");
+						$('#stylist').val(selectedStylist); //copy to form hidden field
+						$('#stylist_name_summary').html(selectedStylist);	// copy to summary
+				}
+				
+				// is time and date selected // come in page
+				if ( 	$('.date_picker').val() == ""  || 
+							$('#hours_select :selected').val() == "" ||
+							$('#min_select :selected').val() == "" || 
+							$('#ampm_select :selected').val() == "" ) 
+				{
+						api.seekTo(2);
+						slide_drawer('Please pick a date and time');
+					}	else { 
+							drawer.slideUp();
+							$('#hour_summary').html($('#hours_select :selected').text());
+							$('#hour').val($('#hours_select :selected').text());
+							
+							$('#minute_summary').html($('#min_select :selected').text());
+							$('#minute').val($('#min_select :selected').text());
+							
+							$('#ampm_summary').html($('#ampm_select :selected').text());
+							$('#ampm').val($('#ampm_select :selected').text());
+				}
+			
+			
+				// form page, is the form valid
+				if (	$('form').valid() == false &&
+					 		$('.date_picker').val() != "" &&
+					    $('#hours_select :selected').val() != "" &&
+							$('#min_select :selected').val() != "" && 
+							$('#ampm_select :selected').val() != "" )
+					 {
+							slide_drawer('Please correct the form fields');
+							api.seekTo(3);
+						} else if ($('form').valid() == true && $('.date_picker').val() != "") {
+							drawer.slideUp();
+							$('#first_name_summary').html($('#first_name').val());
+							$('#last_name_summary').html($('#last_name').val());
+							$('#email_summary').html($('#email').val());
+							$('#day_phone_summary').html($('#day_phone').val());
+							$('#cell_summary').html($('#cell').val());
+							$('#date_summary').html($('#date_picker').val());
+				}
+	 }
+});
+
+
+</script>

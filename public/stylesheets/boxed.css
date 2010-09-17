@@ -24,8 +24,4 @@ div.naviButton.disabled{visibility:hidden;}
 #box div.nextPage{left:580px;}
 /* box styling */
 #box{background-image:url(/images/overlay/black.png);width:656px;height:524px;position:absolute;display:none;}
-/* 
-image is contained on the overlay background image. 
-the closing button is thus just a transparent container. 
-*/
 #box div.close{background:none;position:absolute;left:8px;top:8px;cursor:pointer;height:35px;width:35px;}

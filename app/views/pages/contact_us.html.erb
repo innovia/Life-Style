@@ -7,7 +7,9 @@
 	<%- else -%>
 	<%= @page.body  %>
 	<% end -%>
-
+	<div class="warning">
+		<h4 id="red">Please do not use this form to schedule an appointment.</h4>
+	</div>
 <% form_tag(pages_path, :id => "contact_form") do -%>
 	<%= hidden_field(:page, :title) %>
 	<%= render :partial => "contact_form"  %> 
@@ -20,3 +22,7 @@
 	<%= render :partial => "shared/update_page" %>
 <% end -%>
 </div>
+
+<style type="text/css" media="screen">
+	#red{color: #FF450D;text-align: center;}
+</style>
