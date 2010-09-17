@@ -2,7 +2,7 @@
 #stylist_photo_index img.thumb{padding:10px;}
 #stylist_photo_index h2{display:inline;}
 #stylists_array{list-style:none;width:500px;margin:0 auto;}
-#stylists_array li{width:150px;height:95px;text-align:center;/*position:relative;*/}
+#stylists_array li{width:150px;height:107px;text-align:center;/*position:relative;*/}
 li.column img{border:3px groove PeachPuff;}
 div.stylist_name_title{margin-top:-4px;}
 #stylists_array li a{color:orange;}
