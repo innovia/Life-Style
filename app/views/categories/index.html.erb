@@ -15,7 +15,7 @@
 		</td>
 		<td align="center"><%= link_to image_tag("icons/large_error.png", :size => "24x24"), category_path(category), 
 																													:title => "remove category",
-																													:confirm => 'Are you sure?', 
+																													:confirm => 'Are you sure? This will remove all services under this category, No undo!', 
 																													:method => :delete %>
 		</td>
 	</tr>

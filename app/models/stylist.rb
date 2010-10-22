@@ -1,6 +1,5 @@
 class Stylist < ActiveRecord::Base
-  has_many :services
-  has_many :schedules
+  has_many :schedules, :dependent => :destroy
   
   has_attached_file :photo, 
                     :styles => {:small => "150x150>", :thumb => "100x100>", :original => "300x300"}, 
