@@ -44,11 +44,12 @@ class StylistsController < ApplicationController
 
   def destroy
     @stylist = Stylist.find(params[:id])
+    @removed = @stylist.full_name
     if @stylist.destroy
-      flash[:notice] = "Stylist removed"
+      flash[:notice] = "#{@removed} has been removed"
       redirect_to stylists_url
     else 
-      flash[:error] = "Could not remove the stylist"
+      flash[:error] = "Could not remove the stylist #{@removed}"
       render "index"
     end
   end 
