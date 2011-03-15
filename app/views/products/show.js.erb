@@ -1,0 +1,7 @@
+<div id="product-picture" class="prepend-1">
+	<%= image_tag(@product.photo.url(:large)) %>
+</div>
+
+<div id="product-info"><%= @product.info %></div>
+
+<%= link_to "Edit Product", :action => "edit" %>

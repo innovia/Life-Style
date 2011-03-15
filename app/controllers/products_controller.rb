@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :require_user, :except => :index  
+  before_filter :require_user, :except => [:index, :show]  
   
   def index
    @products = Product.all

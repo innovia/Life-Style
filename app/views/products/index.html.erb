@@ -1,46 +1,13 @@
-<div class="prepend-1">
-	<h2 id="title">Products</h2>
-	<% if logged_in? %>
-		<%= link_to image_tag("add_service.png"), new_product_url, :title => "add product" -%></h2>
-	<% end %>
-
-	<% if @products.empty? %>
-		<% unless logged_in? %>
-	 	<h3> Coming soon... </h3>
-		<%- else -%>
-		<div class="warning">	
-			<h2>There are no products in the database</h2>
-			<p>Start by adding a new product</p>
-			<p><%= link_to "add new product", new_product_path %></p>		
-		</div>
-		<% end -%>
-	<% else -%>
-
-	<div id="actions">
-		<a class="prevPage">&laquo; Previous products</a>
-		<a class="nextPage">More products &raquo;</a>
-	</div>
-	
-	<div class="vertical_scrollable">
-		<div class="items"> 	
+<%= javascript_include_tag 'products' %>
+<div id="side-bar">
+	<div id="products-list" class="prepend-1">
+	 In Store Products
 			<% @products.each do |p| %>
-	 			<div class="product_shelf">
-					<%= image_tag p.photo.url(:thumb) %>
-					<h3 class="product_title"><%= p.title.upcase %></h3>
-					<h4 class="product_info"><%= p.info %></h4>
-				<% if logged_in? %>
-				<div class="admin_links">
-				<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_product_path(p), :title => "edit product" %>
-				<%= link_to image_tag("icons/large_error.png", :size => "24x24"), product_path(p), :title => "remove product",
-																															:id => "delete icon",
-																															:class  => "delete_icon",
-																															:confirm => 'Are you sure?', 
-																															:method => :delete %>
-				</div>
-				<% end -%>
-				</div> 
-			<%- end -%>
-		</div> 
-	</div> 	
-	<% end -%>
+					<h4 data-productID="<%= p.id %>" class="product-title"><%= p.title.upcase %></h4>
+			<% end %>
+	</div>
+</div>
+
+<div id="product-focus">
+	Click on a Prooduct
 </div>
