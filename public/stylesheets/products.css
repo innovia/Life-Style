@@ -23,6 +23,11 @@ div.vertical_scrollable div.items{position:absolute;height:20000em;}
 	background: url('/images/white_side_bar.png') repeat;
 }
 
+#products-list { margin-left: 15px;}
+
+.product-title { display: inline;float: left;
+    margin-right: 10px;}
+
 #product-focus {
 	margin-top: -15px;
 	width: 480px;
@@ -40,4 +45,28 @@ div.vertical_scrollable div.items{position:absolute;height:20000em;}
 #product-info {
 	overflow: auto;
 	margin-left: 15px;
+}
+#admin_links {border: 1px solid #999;}
+
+/* tooltip styling */
+.tooltip {	
+	display:none;
+	background:  url(http://static.flowplayer.org/tools/img/tooltip/black_arrow_big.png);
+	height:163px;
+	padding:40px 30px 10px 30px;
+	width:310px;
+	font-size:11px;
+	color:#fff;
+}
+
+/* a .label element inside tooltip */
+.tooltip .label {
+	color:yellow;
+	width:35px;
+}
+
+.tooltip a {
+	color:#ad4;
+	font-size:11px;
+	font-weight:bold;
 }

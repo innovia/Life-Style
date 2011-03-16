@@ -1,9 +1,21 @@
 <%= javascript_include_tag 'products' %>
 <div id="side-bar">
-	<div id="products-list" class="prepend-1">
-	 In Store Products
+	<div id="products-list">
+	  Salon Products <%= link_to image_tag("icons/layout_edit.png", :size => "16x16"), new_product_path, :title => "new product" %>
 			<% @products.each do |p| %>
-					<h4 data-productID="<%= p.id %>" class="product-title"><%= p.title.upcase %></h4>
+					<h4 data-productID="<%= p.id %>" class="product-title"><a class="tooltip-trigger"><%= p.title %></a></h4>
+					<% if logged_in? %>
+					<!-- tooltip element -->
+					<div class="admin_links tooltip" >
+						<h3> Edit <%= p.title %> </h3>
+					<%= link_to image_tag("icons/layout_edit.png", :size => "16x16"), edit_product_path(p), :title => "edit product" %>
+					<%= link_to image_tag("icons/large_error.png", :size => "16x16"), product_path(p), :title => "remove product",
+																																:id => "delete icon",
+																																:class  => "delete_icon",
+																																:confirm => 'Are you sure?', 
+																																:method => :delete %>
+					</div>
+					<% end -%> 
 			<% end %>
 	</div>
 </div>
@@ -11,3 +23,5 @@
 <div id="product-focus">
 	Click on a Prooduct
 </div>
+
+
