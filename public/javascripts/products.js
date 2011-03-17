@@ -1,6 +1,4 @@
-$(document).ready(function() {
-	$(".tooltip-trigger").tooltip({ effect: 'slide', position: 'center left', delay: 500});
-		
+$(document).ready(function() {		
 	$('.product-title').bind('click', function(event) {
  		var product = $(this).attr("data-productID");
 		$.get('/products/' + product,function(data){

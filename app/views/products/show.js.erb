@@ -1,7 +1,16 @@
 <div id="product-picture" class="prepend-1">
 	<%= image_tag(@product.photo.url(:large)) %>
+	<% if logged_in? %>
+
+	<div class="admin_links">
+	<%= link_to image_tag("icons/layout_edit.png", :size => "24x24"), edit_product_path(@product), :title => "edit product" %>
+	<%= link_to image_tag("icons/large_error.png", :size => "24x24"), product_path(@product), :title => "remove product",
+																												:id => "delete icon",
+																												:class  => "delete_icon",
+																												:confirm => 'Are you sure?', 
+																												:method => :delete %>
+	</div>
+	<% end -%>
 </div>
 
 <div id="product-info"><%= @product.info %></div>
-
-<%= link_to "Edit Product", :action => "edit" %>
