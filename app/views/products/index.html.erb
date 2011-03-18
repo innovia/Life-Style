@@ -1,6 +1,10 @@
 <%= javascript_include_tag 'products', 'reflection' %>
 <div id="side-bar">
-	<h4 id="product-header">Salon Products <%= link_to image_tag("icons/add.png", :size => "16x16"), new_product_path, :title => "new product" %></h4>
+	<h4 id="product-header">Salon Products 
+	
+	<% if logged_in? %>
+		<%= link_to image_tag("icons/add.png", :size => "16x16"), new_product_path, :title => "new product" %></h4>
+	<% end -%>
 	
 	<ul id="products-list">	
 			<% @products.each do |p| %>
