@@ -2,7 +2,14 @@ class ProductsController < ApplicationController
   before_filter :require_user, :except => [:index, :show]  
   
   def index
-   @products = Product.all
+   @products = Product.all(:order => "title ASC")  
+  end
+  
+  def sort
+    params[:product].each_with_index do |id, index|
+      Product.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render :nothing => true
   end
   
   def new

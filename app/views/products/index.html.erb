@@ -1,15 +1,17 @@
 <%= javascript_include_tag 'products' %>
 <div id="side-bar">
-	<div id="products-list">
-	  Salon Products <%= link_to image_tag("icons/layout_edit.png", :size => "16x16"), new_product_path, :title => "new product" %>
+	<h4 id="product-header">Salon Products <%= link_to image_tag("icons/add.png", :size => "16x16"), new_product_path, :title => "new product" %></h4>
+	
+	<ul id="products-list">	
 			<% @products.each do |p| %>
-					<h4 data-productID="<%= p.id %>" class="product-title"><a class="tooltip-trigger"><%= p.title %></a></h4>
+				<li>
+					<h4 data-productID="<%= p.id %>" class="product-title">
+						<a class="tooltip-trigger"><%= p.title %></a>
+					</h4>
+				</li>
 			<% end %>
-	</div>
+	</ul>
+	
 </div>
 
-<div id="product-focus">
-	Click on a Product
-</div>
-
-
+<div id="product-focus"><h4 id="primer">Please click on a Product</h4></div>
