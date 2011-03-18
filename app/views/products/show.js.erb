@@ -1,5 +1,5 @@
 <div id="product-picture">
-	<%= image_tag(@product.photo.url(:original)) %>
+	<%= image_tag(@product.photo.url(:original), :class => 'reflect') %>
 </div>
 <% if logged_in? %>
 

@@ -46,6 +46,7 @@ div.vertical_scrollable div.items{position:absolute;height:20000em;}
 	text-align: center;
 }
 
+.reflect {text-align: center; margin: 0 auto;}
 #product-picture img { width: 300px; height: auto;}
 #product-picture img { width: auto; height: 215px;}
 
