@@ -86,7 +86,7 @@ div.error h3{margin-left:70px;margin-top:10px;}
 .hide{display:none;}
 #location_map{margin-left:-61px;}
 #index_title{color:#ffde9f;font-size:120%;margin-left:-93px;margin-top:22px;}
-#white_banner{-moz-border-radius-topleft:15px;color:#7b7b7b;margin-top:-15px;w/idth:690px;height:59px;background-image:url('/images/white_banner.png');}
+#white_banner{-webkit-border-top-left-radius: 15px; -moz-border-radius-topleft:15px;color:#7b7b7b;margin-top:-15px;w/idth:690px;height:59px;background-image:url('/images/white_banner.png');}
 #white_banner p{padding-top:9px;font-size:120%;}
 #hours_box{color:#ffde9f;}
 #hours_box h2{margin-bottom:0px !important;}
