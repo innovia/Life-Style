@@ -86,7 +86,7 @@ div.error h3{margin-left:70px;margin-top:10px;}
 .hide{display:none;}
 #location_map{margin-left:-61px;}
 #index_title{color:#ffde9f;font-size:120%;margin-left:-93px;margin-top:22px;}
-#white_banner{color:#7b7b7b;margin-top:159px;w/idth:690px;height:59px;background-image:url('/images/white_banner.png');}
+#white_banner{-moz-border-radius-topleft:15px;color:#7b7b7b;margin-top:-15px;w/idth:690px;height:59px;background-image:url('/images/white_banner.png');}
 #white_banner p{padding-top:9px;font-size:120%;}
 #hours_box{color:#ffde9f;}
 #hours_box h2{margin-bottom:0px !important;}
@@ -202,3 +202,7 @@ ul#pages_navigator li a.prev_page{background-position:0px -17px;}
 #notes_body,#notes{width:300px !important;height:80px !important;padding:2px !important;}
 p{margin:0 !important;}
 .form_note{background-image:url(/images/white_banner.png);color:black;_background-color:white;padding:6px;}
+
+#follow_us {float:left; color: #333; margin-left: 45px;}
+#follow_us a { color: #333;}
+#follow_us img {   margin-left: 8px; vertical-align: text-top;}

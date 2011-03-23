@@ -106,6 +106,10 @@
 					</div> <!-- /see through -->
 				</div> <!-- /image on stage -->
 				<div id="phone" class="footer">212-228-5577</div>
+				<div id="follow_us">
+					Follow us on <%= link_to image_tag('facebook-icon.png') + " FaceBook","http://www.facebook.com/pages/#/pages/New-York-NY/LifestyleSalonNYC/267898145854?ref=ts" %>
+					<%= link_to image_tag('twitter-icon.png') + " Twitter","http://twitter.com/LifestyleSalon" %>
+				</div>
 				<div id="address" class="footer"> 822 Broadway - New York, NY 10003</div>
 				</div><!-- /left col -->
 				
@@ -124,15 +128,15 @@
 					$('#see_through_box').fadeIn("slow");			
 					});							 
 			});		
-		</script>	
+	</script>	
 		
 		
-		<% if ["pages", "stylists", "products"].include?(controller_name)%>
+	<% if ["pages", "stylists", "products"].include?(controller_name)%>
 			<% unless  ['appointments', 'pages_manager', 'appointments_ie'].include?(controller.action_name) %>
 				<% unless current_user.nil? %>
 					<%= render :partial => "shared/call_yui_editor" %>
 				<% end -%>				
-		<%- end -%>						
-		<%- end -%>						
+			<%- end -%>						
+	<%- end -%>						
 </body>
 </html>
